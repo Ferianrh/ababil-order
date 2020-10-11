@@ -53,17 +53,24 @@ a{
     line-height: 60px;
     margin: 25px 0;
 }
-.btn{
-    display: inline-block;
+.btn-primary{
     background: #ff523b;
     color: #fff;
+    border-color:#ff523b ;
+}
+.btn-welcome{
+    display: inline-block;
+    
     padding: 8px 30px;
-    margin: 30px 0;
+    /* margin: 30px 0; */
     border-radius: 25px;
+    margin: 30px 0;
 }
 
-.btn:hover{
-    background: #563434;
+.btn-welcome:hover{
+    background: #ffffff;
+    color:#ff523b;
+    border-color:#ff523b;
 }
 
 .header{
