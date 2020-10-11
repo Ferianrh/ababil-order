@@ -34,3 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/jersey', function(){
     return view("jersey");
 });
+
+Route::get('/form-jersey', function(){
+    return view("form-jersey");
+});
