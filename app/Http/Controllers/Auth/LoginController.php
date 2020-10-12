@@ -62,7 +62,10 @@ class LoginController extends Controller
             if(Hash::check($request->password,$data->password)){
                 Auth::login($data);
                 // dd($data);
-                return redirect('admin/dashboard');
+                if(Auth::user()->role->role=='admin'){
+                    return redirect('admin.dashboard');
+                }
+                return redirect('home');
     
             }
             return redirect()->back()->withErrors('password', 'The Message');

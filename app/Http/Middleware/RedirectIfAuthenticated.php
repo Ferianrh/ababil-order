@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
             foreach($role as $row){
                 
                 if( $row->role == 'admin'){
-                    return redirect()->route('admin/dashboard');
+                    return redirect()->route('admin.dashboard');
                 }
                 return redirect()->route('home');
             }

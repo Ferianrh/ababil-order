@@ -10,7 +10,16 @@
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Account</a></li>
                         @if(Auth::check())
-                        <li>Hi, {{Auth::user()->username}}</li>
+                        <li><p>Hi, {{Auth::user()->username}}</p></li>
+                        <li>
+                            <a href="{{route('logout')}}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                <i class="fa fa-power-off mr-1 ml-1"></i> Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
                         @else
                         <li><a href="{{ route('login') }}">Login</a></li>
                         @endif

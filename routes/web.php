@@ -26,14 +26,21 @@ Route::group(['middleware' => 'guest'], function () {
 
 // Route::get('/','')
 
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//admin
+Route::get('admin/dashboard', function(){
+    return view('admin/dashboard');
+})->middleware(['role','auth'])->name('admin.dashboard');
+//user
+Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 
 
-Route::get('/jersey', function(){
-    return view("jersey");
-});
+// Route::get('/jersey', function(){
+//     return view("jersey");
+// });
 
 Route::get('/form-jersey', function(){
     return view("form-jersey");
