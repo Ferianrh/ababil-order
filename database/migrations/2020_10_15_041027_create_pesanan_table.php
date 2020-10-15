@@ -13,7 +13,7 @@ class CreatePesananTable extends Migration
      */
     public function up()
     {
-        Schema::table('pesanan', function (Blueprint $table) {
+        Schema::create('pesanan', function (Blueprint $table) {
             $table->increments('id_pesanan');
             $table->integer('id_paket')->nullable()->unsigned();
             $table->integer('id_custom')->nullable()->unsigned();
@@ -47,7 +47,6 @@ class CreatePesananTable extends Migration
             ->references('id_kain')->on('kain')
             ->onUpdate('cascade')
             ->onDelete('restrict');
-
         });
     }
 
@@ -58,8 +57,6 @@ class CreatePesananTable extends Migration
      */
     public function down()
     {
-        Schema::table('pelanggan', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('pesanan');
     }
 }

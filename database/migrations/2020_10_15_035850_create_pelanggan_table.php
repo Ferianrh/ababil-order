@@ -13,19 +13,7 @@ class CreatePelangganTable extends Migration
      */
     public function up()
     {
-        Schema::table('pelanggan', function (Blueprint $table) {
-            //
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('pelanggan', function (Blueprint $table) {
+        Schema::create('pelanggan', function (Blueprint $table) {
             $table->increments('id_pelanggan');
             $table->integer('id')->unsigned();
             $table->integer('id_provinsi')->unsigned();
@@ -56,5 +44,15 @@ class CreatePelangganTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('restrict');
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pelanggan');
     }
 }

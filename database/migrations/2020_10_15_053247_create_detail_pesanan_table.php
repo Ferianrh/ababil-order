@@ -15,12 +15,12 @@ class CreateDetailPesananTable extends Migration
     {
         Schema::create('detail_pesanan', function (Blueprint $table) {
             $table->increments('id_detail');
-            $table->integer('id_pelanggan');
-            $table->integer('id_pesanan');
-            $table->integer('id_ukuran');
-            $table->integer('id_print');
-            $table->integer('id_jahit');
-            $table->integer('jumlah');
+            $table->unsignedInteger('id_pelanggan');
+            $table->unsignedInteger('id_pesanan');
+            $table->unsignedInteger('id_ukuran');
+            $table->unsignedInteger('id_print');
+            $table->unsignedInteger('id_jahit');
+            $table->integer('jumlah')->unsigned();
             $table->timestamps();
             $table->softDeletes();
 
