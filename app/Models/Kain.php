@@ -14,4 +14,8 @@ class Kain extends Model
         'nama_kain',
         'deskripsi_kain'
     ];
+
+    public function pesanan(){
+        return $this->hasMany('App\Models\DetailPesanan','id_kain');
+    }
 }

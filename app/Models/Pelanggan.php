@@ -24,4 +24,8 @@ class Pelanggan extends Model
     public function userPelanggan(){
         return $this->hasOne('App\Models\User','id','id_pelanggan');
     }
+
+    public function detailPesan(){
+        return $this->hasMany('App\Models\DetailPesanan','id_pelanggan');
+    }
 }
