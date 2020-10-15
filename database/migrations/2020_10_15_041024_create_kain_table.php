@@ -16,7 +16,7 @@ class CreateKainTable extends Migration
         Schema::create('kain', function (Blueprint $table) {
             $table->increments('id_kain');
             $table->string('nama_kain',50);
-            $table->string('deskripsi_kain',150);
+            $table->string('deskripsi_kain',150)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

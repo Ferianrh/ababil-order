@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class KatalogTableSeeder extends Seeder
+class CustomPrintTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,14 +11,17 @@ class KatalogTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('katalog')->insert(
+        //
+        DB::table('custom_print')->insert(
             [
-                'nama_paket'=>'Paket A',
-                'deskripsi_paket' => 'full set, atas full printing, nomor celana polyflex / sablon/bordir',
-                'harga_paket' => '135000',
+                'id_print' => '1',
+                'id_ukuran' => '1',
+                'id_jahit' =>'1',
+                'harga' => '17000',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
-            ],
+
+            ]
         );
     }
 }

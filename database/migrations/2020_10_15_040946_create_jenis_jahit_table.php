@@ -16,7 +16,7 @@ class CreateJenisJahitTable extends Migration
         Schema::create('jenis_jahit', function (Blueprint $table) {
             $table->increments('id_jahit');
             $table->string('nama_jahit',50);
-            $table->string('deskripsi_jahit',100);
+            $table->string('deskripsi_jahit',100)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
