@@ -11,6 +11,8 @@ class Kurir extends Model
 
     protected $primaryKey = 'id_kurir';
 
+    protected $guarded = [];
+
     protected $fillable = [
         'kode_kurir',
         'nama_kurir'

@@ -15,6 +15,7 @@ class CreateProvinsiTable extends Migration
     {
         Schema::create('provinsi', function (Blueprint $table) {
             $table->increments('id_provinsi');
+            // $table->integer('province_id')->unsigned();
             $table->string('nama_provinsi',100);
             $table->timestamps();
             $table->softDeletes();
