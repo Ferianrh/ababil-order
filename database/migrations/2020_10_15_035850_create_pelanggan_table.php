@@ -1,0 +1,60 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreatePelangganTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('pelanggan', function (Blueprint $table) {
+            //
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('pelanggan', function (Blueprint $table) {
+            $table->increments('id_pelanggan');
+            $table->integer('id')->unsigned();
+            $table->integer('id_provinsi')->unsigned();
+            $table->integer('id_kota')->unsigned();
+            $table->string('nama_lengkap',100);
+            $table->date('tanggal_lahir');
+            $table->string('alamat_lengkap',200);
+            $table->string('no_hp',15);
+            $table->string('email',50);
+            $table->timestamps();
+            $table->softDeletes();
+
+            //foreign key
+            $table->foreign('id_provinsi')
+            ->references('id_provinsi')->on('provinsi')
+            ->onUpdate('cascade')
+            ->onDelete('restrict');
+
+            //foreign key
+            $table->foreign('id_kota')
+            ->references('id_kota')->on('kota')
+            ->onUpdate('cascade')
+            ->onDelete('restrict');
+
+            //foreign key
+            $table->foreign('id')
+            ->references('id')->on('users')
+            ->onUpdate('cascade')
+            ->onDelete('restrict');
+        });
+    }
+}
