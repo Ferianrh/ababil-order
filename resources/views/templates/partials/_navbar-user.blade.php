@@ -8,8 +8,35 @@
                         <li><a href="#">Products</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">Account</a></li>
+                        
                         @if(Auth::check())
+                        <li>
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hi, {{Auth::user()->username}}
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#">
+                                       Hi, {{Auth::user()->username}}
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        Profil
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                            <i class="fa fa-power-off mr-1 ml-1"></i> Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        
+<!--                         
                         <li><p>Hi, {{Auth::user()->username}}</p></li>
                         <li>
                             <a href="{{route('logout')}}" onclick="event.preventDefault();
@@ -19,8 +46,9 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                        </li>
+                        </li> -->
                         @else
+                        
                         <li><a href="{{ route('login') }}">Login</a></li>
                         @endif
                     </ul>
