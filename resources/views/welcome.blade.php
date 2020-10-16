@@ -4,24 +4,23 @@
 @endpush
 
 @section('content')
-<div class="container">
+    <div class="container">
         @include('templates.partials._navbar-user')
         <br>
         <br>
         <div class="row">
-                <div class="col-4">
-                    <h1>Bring Your Style With <br> TSTL - <a style="color: red">A</a>babil Sublime Printing</h1>
-                    <p style="font-family: sans-serif">Lestarikan Kebudayaan dan tanamkan rasa Nasionalisme pada diri kalian dengan <br>Apparel dari TSTL - Ababil Sublime Printing yang dibungkus dengan teknologi dan modernisasi.</p>
-                </div>
-                <div class="col-4">
-                    <img src="{{asset('assets/images/examples/image1.png')}}"> 
-                </div>
+            <div class="col-4">
+                <h1>Bring Your Style With <br> TSTL - <a style="color: red">A</a>babil Sublime Printing</h1>
+                <p style="font-family: sans-serif">Lestarikan Kebudayaan dan tanamkan rasa Nasionalisme pada diri kalian dengan <br>Apparel dari TSTL - Ababil Sublime Printing yang dibungkus dengan teknologi dan modernisasi.</p>
             </div>
-    </div>
+            <div class="col-4">
+                <img src="{{asset('assets/images/examples/image1.png')}}"> 
+            </div>
+        </div>
     </div>
     <div class="container">
         
-        <div class="row content">
+        <div class="row content mt-5">
             <div class="col-md-10 offset-md-1">
                 <div class="row content-isi">    
                     <div class="col-4">
@@ -143,6 +142,8 @@
 @endsection
 
 @push('scripts')
+@include('templates.partials._scripts-user')
+
 <script type="text/javascript">
             var menuitems = document.getElementById("menuitems");
             menuitems.style.maxHeight = "0px";

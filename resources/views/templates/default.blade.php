@@ -98,7 +98,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     
-    @include('templates.partials._scripts')
+
     @stack('scripts')
 
 

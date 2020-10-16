@@ -63,7 +63,7 @@ class LoginController extends Controller
                 Auth::login($data);
                 // dd($data);
                 if(Auth::user()->role->role=='admin'){
-                    return redirect('admin.dashboard');
+                    return redirect('admin/dashboard');
                 }
                 return redirect('home');
     
