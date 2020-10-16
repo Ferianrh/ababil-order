@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="container">
-        @include('templates.partials._navbar-user')
+        @include('templates.partials._navbar-user') 
         <br>
         <br>
         <div class="row">

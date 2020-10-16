@@ -12,41 +12,27 @@
                         @if(Auth::check())
                         <li>
                             <div class="dropdown">
-                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Hi, {{Auth::user()->username}}
+                                <a class="btn btn-primary dropdown-toggle text-center pr-3" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-user-circle"></i> {{Auth::user()->username}}
                                 </a>
 
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item" href="#">
-                                       Hi, {{Auth::user()->username}}
+                                        <i class="fa fa-user-circle mr-3 ml-1"></i>  {{Auth::user()->username}}
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        Profil
+                                    <a class="dropdown-item" href="">
+                                        <i class="fa fa-cog mr-3 ml-1"></i> Profil
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        <a href="{{route('logout')}}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                            <i class="fa fa-power-off mr-1 ml-1"></i> Logout
+                                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();" >
+                                            <i class="fa fa-power-off mr-3 ml-1"></i> Logout
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
-                                    </a>
                                 </div>
                             </div>
                         </li>
-                        
-<!--                         
-                        <li><p>Hi, {{Auth::user()->username}}</p></li>
-                        <li>
-                            <a href="{{route('logout')}}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                                <i class="fa fa-power-off mr-1 ml-1"></i> Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li> -->
                         @else
                         
                         <li><a href="{{ route('login') }}">Login</a></li>
