@@ -7,25 +7,11 @@
 .border--radius{
     border-radius:5px ;
 }
-h3{
-    margin-bottom: 1.04em;
-    font-size: 1.78571429em;
-    line-height: 1.5em;
-}
+
 h1:not(:last-child), .h1:not(:last-child) {
     margin-bottom: .59090909090909em;
 }
-h1,h2,h3,h4,h5,h6{
-    font-weight: 400 !important; 
-    font-variant-ligatures: common-ligatures;
-}
-h1{
-    letter-spacing: -.01em;
-    font-size: 3.14285714em;
-    line-height: 1.31818182em;
-    
-    /* color:#252525; */
-}
+
 .btn--lg{
     font-size: .85714286em;
     padding-top: .58035714em;
