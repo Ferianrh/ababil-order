@@ -1,12 +1,12 @@
-<div class="row" id="tambahModal">
+<div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <!-- Modal -->
-        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tambah Jenis Jahit Baru</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Ubah Data Jenis Jahit</h5>
                         <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </a>
@@ -15,17 +15,22 @@
                         <!-- ============================================================== -->
                         <!-- basic form -->
                         <!-- ============================================================== -->
-                        <form action="{{ route('sisi-print.store') }}" method="POST" id="basicform"
+                        <form action="" method="POST" id="updateForm"
                             data-parsley-validate="">
                             @csrf
+                            {{ method_field('PUT') }}
                             <div class="form-group">
-                                <label class="control-label">Keterangan Print<span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" name="ket_print" placeholder="Keterangan Print" required>
+                                <label class="control-label">Nama kain <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control" id="nama_kain" name="nama_kain" placeholder="Nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Deskripsi kain <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control" id="deskripsi_kain"  name="deskripsi_kain" placeholder="Deskripsi kain">
                             </div>
                             <div class="row">
                                 <div class="ml-3">
                                     <p class="text-left">
-                                        <button type="submit" class="btn btn-space btn-success">Simpan</button>
+                                        <button type="submit" class="btn btn-space btn-primary">Simpan</button>
                                         <button class="btn btn-space btn-secondary" data-dismiss="modal">Batal</button>
                                     </p>
                                 </div>

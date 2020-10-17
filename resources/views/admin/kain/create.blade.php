@@ -15,12 +15,16 @@
                         <!-- ============================================================== -->
                         <!-- basic form -->
                         <!-- ============================================================== -->
-                        <form action="{{ route('sisi-print.store') }}" method="POST" id="basicform"
+                        <form action="{{ route('kain.store') }}" method="POST" id="basicform"
                             data-parsley-validate="">
                             @csrf
                             <div class="form-group">
-                                <label class="control-label">Keterangan Print<span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" name="ket_print" placeholder="Keterangan Print" required>
+                                <label class="control-label">Nama kain <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control" name="nama_kain" placeholder="Nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Deskripsi kain <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control" name="deskripsi_kain" placeholder="Deskripsi kain">
                             </div>
                             <div class="row">
                                 <div class="ml-3">

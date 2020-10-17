@@ -17,9 +17,10 @@ class CreateDetailPesananTable extends Migration
             $table->increments('id_detail');
             $table->unsignedInteger('id_pelanggan');
             $table->unsignedInteger('id_pesanan');
-            $table->unsignedInteger('id_ukuran');
+            $table->unsignedInteger('id_ukuran')->nullable();
             $table->unsignedInteger('id_print');
             $table->unsignedInteger('id_jahit');
+            $table->integer('id_custom')->nullable()->unsigned();
             $table->integer('jumlah')->unsigned();
             $table->timestamps();
             $table->softDeletes();

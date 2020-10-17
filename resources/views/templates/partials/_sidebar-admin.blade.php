@@ -26,6 +26,10 @@
                     <h3 class="menu-title text-left" >Data</h3><!-- /.menu-title -->
                     
                     <li>
+                        <a href="{{route('katalog.index')}}"  class="text-left"> <i class="menu-icon fa fa-book"></i>Katalog</a>
+                    </li>
+
+                    <li>
                         <a href="{{route('jenis-jahit.index')}}"  class="text-left"> <i class="menu-icon fa fa-hashtag"></i>Jenis Jahit</a>
                     </li>
 
@@ -34,10 +38,18 @@
                     </li>
 
                     <li>
-                        <a href="tabel-pemesanan.php"  class="text-left"> <i class="menu-icon fa fa-envelope"></i>Pemesanan</a>
+                        <a href="{{route('sisi-print.index')}}"  class="text-left"> <i class="menu-icon fa fa-cube"></i>Sisi Print</a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('kain.index')}}"  class="text-left"> <i class="menu-icon fa fa-hashtag"></i>Kain</a>
+                    </li>
+
+                    <li>
+                        <a href="#"  class="text-left"> <i class="menu-icon fa fa-envelope"></i>Pemesanan</a>
                     </li>
                     <li>
-                        <a href="tabel-barang.php" class="text-left"> <i class="menu-icon fa fa-tasks"></i>Barang</a>
+                        <a href="#" class="text-left"> <i class="menu-icon fa fa-tasks"></i>Barang</a>
                     </li>
                     
 

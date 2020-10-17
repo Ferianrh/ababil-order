@@ -37,6 +37,9 @@ Route::get('admin/dashboard', function(){
 
 Route::resource('admin/jenis-jahit','JenisJahitController')->middleware(['role','auth']);
 Route::resource('admin/ukuran','UkuranController')->middleware(['role','auth']);
+Route::resource('admin/sisi-print','SisiPrintController')->middleware(['role','auth']);
+Route::resource('admin/kain','KainController')->middleware(['role','auth']);
+Route::resource('admin/katalog','KatalogController')->middleware(['role','auth']);
 //user
 Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 

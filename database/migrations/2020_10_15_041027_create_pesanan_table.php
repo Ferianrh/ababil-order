@@ -16,9 +16,9 @@ class CreatePesananTable extends Migration
         Schema::create('pesanan', function (Blueprint $table) {
             $table->increments('id_pesanan');
             $table->integer('id_paket')->nullable()->unsigned();
-            $table->integer('id_custom')->nullable()->unsigned();
             $table->integer('id_kurir')->nullable()->unsigned();
             $table->integer('id_kain')->nullable()->unsigned();
+            $table->integer('id_custom')->nullable()->unsigned();
             $table->date('tanggal_pesanan');
             $table->string('alamat_pengiriman',200);
             $table->string('status_pesanan',30);

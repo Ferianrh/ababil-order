@@ -65,6 +65,16 @@
                                 <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
                                 Tambah Data</a>
                             </div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert">x</button>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="card-body">
                                 <table id="basic-datatables" class="table table-striped table-bordered">
                                     <thead>

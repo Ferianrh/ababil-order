@@ -20,12 +20,8 @@
                             @csrf
                             {{ method_field('PUT') }}
                             <div class="form-group">
-                                <label class="control-label">Nama Jahit <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="nama_jahit" name="nama_jahit" placeholder="Nama" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Deskripsi Jahit <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="deskripsi_jahit"  name="deskripsi_jahit" placeholder="Deskripsi Jahit">
+                                <label class="control-label">Keterangan Print <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control" id="ket_print" name="ket_print" placeholder="Nama" required>
                             </div>
                             <div class="row">
                                 <div class="ml-3">

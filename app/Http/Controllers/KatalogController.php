@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Ukuran;
+use App\Models\Katalog;
 
-class UkuranController extends Controller
+class KatalogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,10 @@ class UkuranController extends Controller
      */
     public function index()
     {
-        $size = Ukuran::get();
+        //view
+        $katalog = Katalog::get();
 
-        return view('admin/ukuran/index',compact('size'));
+        return view('admin/katalog/index',compact('katalog'));
     }
 
     /**
@@ -38,13 +39,7 @@ class UkuranController extends Controller
      */
     public function store(Request $request)
     {
-        //insert
-        $jenis = Ukuran::insert([
-            'nama_ukuran' => $request->nama_ukuran,
-            'singkatan_ukuran' => $request->singkatan_ukuran,            
-            'detil_ukuran' => $request->detil_ukuran
-        ]);
-        return redirect()->back()->with(['success' => 'Data Jahit Berhasil Ditambahkan']);
+        //
     }
 
     /**
@@ -79,12 +74,6 @@ class UkuranController extends Controller
     public function update(Request $request, $id)
     {
         //
-        Ukuran::where('id_ukuran', $id)->update([
-            "nama_ukuran" => $request->nama_ukuran,
-            "singkatan_ukuran" => $request->singkatan_ukuran,
-            "detil_ukuran" => $request->detil_ukuran
-        ]);
-        return redirect()->back();
     }
 
     /**
@@ -95,8 +84,6 @@ class UkuranController extends Controller
      */
     public function destroy($id)
     {
-        // $ukuran = Ukuran::where('id_ukuran',$id)->first();
-        // $ukuran->delete();
-        // return redirect()->back()->with('success', 'Data Kamar Berhasil Dihapus');
+        //
     }
 }

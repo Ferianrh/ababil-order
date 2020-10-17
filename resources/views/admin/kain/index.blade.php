@@ -65,33 +65,25 @@
                                 <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
                                 Tambah Data</a>
                             </div>
-                            @if ($errors->any())
-                                <div class="alert alert-danger alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert">x</button>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             <div class="card-body">
                                 <table id="basic-datatables" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Keterangan Print</th>
+                                            <th>Nama Jahit</th>
+                                            <th>Deskripsi Jahit</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($sisi as $row)
+                                        @foreach($kain as $row)
                                         <tr>
-                                            <td>{{$row->keterangan_print}}</td>
+                                            <td>{{$row->nama_kain}}</td>
+                                            <td>{{$row->deskripsi_kain}}</td>
                                             <td>
-                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('sisi-print.update',$row->id_print)}}" data-nama="{{$row->keterangan_print}}">
+                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('kain.update',$row->id_kain)}}" data-nama="{{$row->nama_kain}}" data-desc="{{ $row->deskripsi_kain }}">
                                                     <i class="fa fa-edit"> </i>
                                                 </button>
-                                                <!-- <button href="{{route('sisi-print.destroy',$row->id_print)}}" class="btn btn-danger btn-sm" id="delete" data-title="{{ $row->keterangan_print }}">
+                                                <!-- <button href="{{route('kain.destroy', $row->id_kain)}}" class="btn btn-danger btn-sm" id="delete" data-title="{{ $row->nama_kain }}">
                                                     <i class="fa fa-trash"> </i>
                                                 </button> -->
                                             </td>
@@ -102,8 +94,8 @@
                             </div>
                         </div>
                     </div>
-                    @include('admin.sisiPrint.create')
-                    @include('admin.sisiPrint.edit')
+                    @include('admin.kain.create')
+                    @include('admin.kain.edit')
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
@@ -151,10 +143,11 @@
 
         $('button#edit').on('click', function () {
             var href = $(this).attr('href');
+            var deskripsi = $(this).data("desc");
             var nama = $(this).data("nama");
             
-            // $('#deskripsi_jahit').val(deskripsi);
-            $('#ket_print').val(nama);
+            $('#deskripsi_kain').val(deskripsi);
+            $('#nama_kain').val(nama);
             $('#updateForm').attr('action', href);
             $("#editModal").modal('show');
         });

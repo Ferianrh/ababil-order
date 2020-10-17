@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Ukuran;
+use App\Models\Kain;
 
-class UkuranController extends Controller
+class KainController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,10 @@ class UkuranController extends Controller
      */
     public function index()
     {
-        $size = Ukuran::get();
-
-        return view('admin/ukuran/index',compact('size'));
+        //view
+        $kain = Kain::get();
+        
+        return view('admin/kain/index',compact('kain'));
     }
 
     /**
@@ -39,12 +40,12 @@ class UkuranController extends Controller
     public function store(Request $request)
     {
         //insert
-        $jenis = Ukuran::insert([
-            'nama_ukuran' => $request->nama_ukuran,
-            'singkatan_ukuran' => $request->singkatan_ukuran,            
-            'detil_ukuran' => $request->detil_ukuran
+        $kain = Kain::insert([
+            'nama_kain' => $request->nama_kain,
+            'deskripsi_kain' => $request->deskripsi_kain
         ]);
-        return redirect()->back()->with(['success' => 'Data Jahit Berhasil Ditambahkan']);
+
+        return redirect()->back()->with(['success' => 'Data Kain Berhasil Ditambahkan']);
     }
 
     /**
@@ -78,11 +79,10 @@ class UkuranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        Ukuran::where('id_ukuran', $id)->update([
-            "nama_ukuran" => $request->nama_ukuran,
-            "singkatan_ukuran" => $request->singkatan_ukuran,
-            "detil_ukuran" => $request->detil_ukuran
+        //update
+        $kain = Kain::where('id_kain', $id)->update([
+            'nama_kain' => $request->nama_kain,
+            'deskripsi_kain' =>$request->deskripsi_kain
         ]);
         return redirect()->back();
     }
@@ -95,8 +95,6 @@ class UkuranController extends Controller
      */
     public function destroy($id)
     {
-        // $ukuran = Ukuran::where('id_ukuran',$id)->first();
-        // $ukuran->delete();
-        // return redirect()->back()->with('success', 'Data Kamar Berhasil Dihapus');
+        //
     }
 }
