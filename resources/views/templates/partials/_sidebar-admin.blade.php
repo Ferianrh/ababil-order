@@ -29,9 +29,7 @@
                         <a href="{{route('katalog.index')}}"  class="text-left"> <i class="menu-icon fa fa-book"></i>Katalog</a>
                     </li>
 
-                    <li>
-                        <a href="{{route('jenis-jahit.index')}}"  class="text-left"> <i class="menu-icon fa fa-hashtag"></i>Jenis Jahit</a>
-                    </li>
+                    <!--  -->
 
                     <li>
                         <a href="{{route('ukuran.index')}}"  class="text-left"> <i class="menu-icon fa fa-arrows-alt"></i>Ukuran</a>

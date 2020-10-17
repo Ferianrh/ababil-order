@@ -79,23 +79,23 @@
                                 <table id="basic-datatables" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Jenis Ukuran</th>
-                                            <th>Singkatan Ukuran</th>
-                                            <th>Detail Ukuran Badan(Panjang x Lebar) X Lengan (Panjang x Pendek)</th>
+                                            <th>Nama Paket</th>
+                                            <th>Deskripsi Paket</th>
+                                            <th>Harga Paket</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($size as $row)
+                                        @foreach($katalog as $row)
                                         <tr>
-                                            <td>{{$row->nama_ukuran}}</td>
-                                            <td>{{$row->singkatan_ukuran}}</td>
-                                            <td>{{$row->detil_ukuran}}</td>
+                                            <td>{{$row->nama_paket}}</td>
+                                            <td>{{$row->deskripsi_paket}}</td>
+                                            <td>{{$row->harga_paket}}</td>
                                             <td>
-                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('ukuran.update', $row->id_ukuran)}}" data-short ="{{$row->singkatan_ukuran}}" data-nama="{{$row->nama_ukuran}}" data-desc="{{ $row->detil_ukuran }}">
+                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('katalog.update', $row->id_paket)}}" data-nama="{{$row->nama_paket}}" data-desc="{{ $row->deskripsi_paket }}" data-harga="{{$row->harga_paket}}">
                                                     <i class="fa fa-edit"> </i>
                                                 </button>
-                                                <!-- <button href="{{ route('ukuran.destroy', $row->id_ukuran) }}" class="btn btn-danger btn-sm" id="delete" data-title="{{ $row->singkatan_ukuran}} " data-sub="{{$row->nama_ukuran}}">
+                                                <!-- <button href="{{ route('katalog.destroy', $row->id_paket) }}" class="btn btn-danger btn-sm" id="delete" data-sub="{{$row->nama_paket}}">
                                                     <i class="fa fa-trash"> </i>
                                                 </button> -->
                                             </td>
@@ -106,8 +106,8 @@
                             </div>
                         </div>
                     </div>
-                    @include('admin.ukuran.create')
-                    @include('admin.ukuran.edit')
+                    @include('admin.katalog.create')
+                    @include('admin.katalog.edit')
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
@@ -157,12 +157,12 @@
         $('button#edit').on('click', function () {
             var href = $(this).attr('href');
             var deskripsi = $(this).data('desc');
-            var short = $(this).data('short');
+            var harga = $(this).data('harga');
             var nama = $(this).data('nama');
             
             $('#detil').val(deskripsi);
             $('#nama').val(nama);
-            $('#short').val(short);
+            $('#harga').val(harga);
             $('#updateForm').attr('action', href);
             $("#editModal").modal('show');
         });

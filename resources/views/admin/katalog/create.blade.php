@@ -6,7 +6,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tambah Jenis Jahit Baru</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Paket Baru</h5>
                         <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </a>
@@ -15,25 +15,21 @@
                         <!-- ============================================================== -->
                         <!-- basic form -->
                         <!-- ============================================================== -->
-                        <form action="{{ route('ukuran.store') }}" method="POST" id="basicform"
+                        <form action="{{ route('katalog.store') }}" method="POST" id="basicform"
                             data-parsley-validate="">
                             @csrf
                             <div class="form-group">
-                                <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
+                                <label class="control-label">Nama Paket <span class="text-danger">*</span> :</label>
                                 <!-- <input type="text" class="form-control" id="nama_ukuran" name="nama_ukuran" placeholder="Jenis Ukuran" required> -->
-                                <select name="nama_ukuran" id="nama_ukuran" class="form-control">
-                                    <option value="Dewasa">Dewasa</option>
-                                    <option value="Kids (SSB)">Kids (SSB)</option>
-                                    <option value="SD/TK">SD/TK</option>
-                                </select>
+                                <input type="text" class="form-control" name="nama_paket" placeholder="Nama Paket" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Singkatan Ukuran <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="singkatan_ukuran"  name="singkatan_ukuran" placeholder="Singkatan Ukuran">
+                                <label class="control-label">Deskripsi Paket <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control" name="singkatan_ukuran" placeholder="Deskripsi Paket" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Detil Ukuran <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="detil_ukuran"  name="detil_ukuran" placeholder="Detil Ukuran">
+                                <label class="control-label">Harga Paket <span class="text-danger">*</span> :</label>
+                                <input type="numeric" class="form-control"  name="harga_paket" placeholder="Harga Paket">
                             </div>
                             <div class="row">
                                 <div class="ml-3">

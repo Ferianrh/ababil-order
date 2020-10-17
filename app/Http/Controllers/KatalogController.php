@@ -73,7 +73,14 @@ class KatalogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //update
+        $katalog = Katalog::where('id_paket',$id)->update([
+            'nama_paket' => $request->nama_paket,
+            'deskripsi_paket' => $request->deskripsi_paket,
+            'harga_paket' => $request->harga_paket
+        ]);
+
+        return redirect()->back();
     }
 
     /**

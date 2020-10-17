@@ -6,7 +6,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ubah Data Jenis Jahit</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Ubah Data Paket</h5>
                         <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </a>
@@ -20,16 +20,17 @@
                             @csrf
                             {{ method_field('PUT') }}
                             <div class="form-group">
-                                <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="nama" name="nama_ukuran" placeholder="Jenis Ukuran" required>
+                                <label class="control-label">Nama Paket <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control" id="nama" name="nama_paket" placeholder="Nama Paket" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Singkatan Ukuran <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="short"  name="singkatan_ukuran" placeholder="Singkatan Ukuran">
+                                <label class="control-label">Deskripsi Paket<span class="text-danger">*</span> :</label>
+                                <!-- <input type="text" class="form-control" id="detil"  name="deskripsi_paket" placeholder="Deskripsi Paket"> -->
+                                <textarea name="deskripsi_paket" class="form-control d-block" id="detil" cols="80" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Detil Ukuran <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="detil"  name="detil_ukuran" placeholder="Detil Ukuran">
+                                <label class="control-label">Harga Paket <span class="text-danger">*</span> :</label>
+                                <input type="text" class="form-control" id="harga"  name="harga_paket" placeholder="Harga Paket">
                             </div>
                             <div class="row">
                                 <div class="ml-3">
