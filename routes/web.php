@@ -48,3 +48,6 @@ Route::get('/form-jersey', function(){
 Route::get('/setting', function(){
     return view("setting-profile");
 });
+Route::get('/pemesanan', function(){
+    return view("pemesanan");
+});
