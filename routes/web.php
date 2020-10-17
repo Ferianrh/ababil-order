@@ -34,6 +34,9 @@ Auth::routes();
 Route::get('admin/dashboard', function(){
     return view('admin/dashboard');
 })->middleware(['role','auth'])->name('admin.dashboard');
+
+Route::resource('admin/jenis-jahit','JenisJahitController')->middleware(['role','auth']);
+Route::resource('admin/ukuran','UkuranController')->middleware(['role','auth']);
 //user
 Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 

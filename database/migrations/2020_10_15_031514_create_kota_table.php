@@ -16,8 +16,8 @@ class CreateKotaTable extends Migration
         Schema::create('kota', function (Blueprint $table) {
             $table->increments('id_kota');
             $table->integer('id_provinsi')->unsigned();
-            // $table->integer('province_id')->unsigned();
-            // $table->integer('city_id')->unsigned();
+            $table->integer('province_id')->unsigned();
+            $table->integer('city_id')->unsigned();
             $table->string('nama_kota',100);
             $table->timestamps();
             $table->softDeletes();

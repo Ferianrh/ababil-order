@@ -18,8 +18,10 @@ class UkuranTableSeeder extends Seeder
                 'detil_ukuran' => 'Badan(72x49,2) X Lengan (60 / 24)',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
-            ],
+            ]
+        );
 
+        DB::table('ukuran')->insert(
             [
                 'singkatan_ukuran' => 'M',
                 'nama_ukuran' => 'Dewasa',

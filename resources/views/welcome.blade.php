@@ -142,7 +142,7 @@
 @endsection
 
 @push('scripts')
-@include('templates.partials._scripts-user')
+@include('templates.partials._scriptsuser')
 
 <script type="text/javascript">
             var menuitems = document.getElementById("menuitems");

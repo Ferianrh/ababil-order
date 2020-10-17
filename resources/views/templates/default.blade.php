@@ -13,19 +13,19 @@
     <title>Ababil - Sublime Printing</title>
 
     <!-- admin styles -->
-    <link rel="stylesheet" href="{{asset('assets/libs/bootstrap/dist/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/libs/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/libs/themify-icons/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/libs/flag-icon-css/css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/libs/selectFX/css/cs-skin-elastic.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/libs/jqvmap/dist/jqvmap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/themify-icons/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/selectFX/css/cs-skin-elastic.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/jqvmap/dist/jqvmap.min.css') }}">
+    
 
     <!-- user styles -->
-    <link rel="stylesheet" href="{{asset('dist/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{ asset('assets/libs') }}">
 
     <!-- chartist CSS -->
     <!-- <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
@@ -97,8 +97,8 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    
-
+    @include('templates.partials._scriptsuser')
+    @include('templates.partials._sweetalert')
     @stack('scripts')
 
 

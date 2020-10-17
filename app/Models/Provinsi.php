@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Provinsi extends Model
 {
+
+    protected $guarded = [];
+
     protected $table = 'provinsi';
 
     protected $primaryKey = 'id_provinsi';
-
-    protected $guarded = [];
 
     protected $fillable = [
         'province_id',

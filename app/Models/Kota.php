@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Kota extends Model
 {
     //
+    protected $guarded = [];
 
     protected $table = 'kota';
 
     protected $primaryKey = 'id_kota';
-
-    protected $guarded = [];
 
     protected $fillable = [
         'id_provinsi',
