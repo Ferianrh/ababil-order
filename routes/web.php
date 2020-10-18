@@ -51,3 +51,6 @@ Route::get('/setting', function(){
 Route::get('/pemesanan', function(){
     return view("pemesanan");
 });
+Route::get('/pengiriman', function(){
+    return view("pengiriman");
+});

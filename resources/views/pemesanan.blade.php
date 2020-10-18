@@ -11,10 +11,10 @@
         <br>
         <br>
     </div>
-    <section>
-    <div class="container">
-        <div class="row justiy-content-md-center">
-            <div class="col-md-8 col-md-offset-2 ">
+   
+    <div class="container ">
+        <div class="row justiy-content-md-center ">
+            <div class="col-md-8 col-md-offset-2 mt-4 mb-4">
                 <div class="p-5 bg--white border--radius">
                 <h1 class="mt-0 text-center">Form Pemesanan</h1>
                     <form>
@@ -36,7 +36,7 @@
                                     </label>
                                     </div>
                                     <div class="col-md-3">
-                                    <input type="text" class="form-control" >
+                                    <input type="text" class="form-control" placeholder="jumlah" >
                                     </div>
                                     <div class="col-md-1">
                                     <input class="form-check-input" type="checkbox" id="gridCheck1">
@@ -45,7 +45,7 @@
                                     </label>
                                     </div>
                                     <div class="col-md-3">
-                                    <input type="text" class="form-control" >
+                                    <input type="text" class="form-control" placeholder="jumlah">
                                     </div>
                                 </div>
                                 
@@ -57,7 +57,7 @@
                                     </label>
                                     </div>
                                     <div class="col-md-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" placeholder="jumlah">
                                     </div>
                                     <div class="col-md-1">
                                     <input class="form-check-input" type="checkbox" id="gridCheck1">
@@ -66,7 +66,7 @@
                                     </label>
                                     </div>
                                     <div class="col-md-3">
-                                    <input type="text" class="form-control" >
+                                    <input type="text" class="form-control" placeholder="jumlah">
                                     </div>
                                 </div>
                                 
@@ -78,7 +78,7 @@
                                     </label>
                                     </div>
                                     <div class="col-md-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" placeholder="jumlah">
                                     </div>
                                     <div class="col-md-1">
                                     <input class="form-check-input" type="checkbox" id="gridCheck1">
@@ -87,7 +87,7 @@
                                     </label>
                                     </div>
                                     <div class="col-md-3">
-                                    <input type="text" class="form-control" >
+                                    <input type="text" class="form-control" placeholder="jumlah">
                                     </div>
                                 </div>
                                 
@@ -108,7 +108,7 @@
             </div>
         </div>
     </div>
-    </section>
+    
 </div>
 
     @include('templates.partials._footer')
