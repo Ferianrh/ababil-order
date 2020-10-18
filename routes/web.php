@@ -58,3 +58,12 @@ Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 Route::get('/form-jersey', function(){
     return view("form-jersey");
 });
+Route::get('/setting', function(){
+    return view("setting-profile");
+});
+Route::get('/pemesanan', function(){
+    return view("pemesanan");
+});
+Route::get('/pengiriman', function(){
+    return view("pengiriman");
+});

@@ -1,11 +1,11 @@
 @extends('templates.default')
 @push('style')
-    {{-- aditional style --}}
+    <link rel="stylesheet" href="{{asset('dist/css/jersey.css')}}">
 @endpush
 
 @section('content')
     <div class="container">
-        @include('templates.partials._navbar-user')
+        @include('templates.partials._navbar-user') 
         <br>
         <br>
         <div class="row">
@@ -19,12 +19,12 @@
         </div>
     </div>
     <div class="container">
-        
+        <H3 class="text-center mt-4">Newest Products</H3>
         <div class="row content mt-5">
             <div class="col-md-10 offset-md-1">
                 <div class="row content-isi">    
                     <div class="col-4">
-                        <div class="card bg-jersey text-dark" style="width: 16rem;">
+                        <div class="card bg-jersey text-dark" >
                             <img src="{{asset('assets/images/examples/A.jpeg')}}">
                             <hr>
                             <div class="card-body">
@@ -40,8 +40,8 @@
                         </div>
                     </div>
                     
-                    <div class="col-4">
-                        <div class="card bg-jersey text-dark" style="width: 16rem;">
+                    <div class="col-4 ">
+                        <div class="card bg-jersey text-dark" >
                             <img src="{{asset('assets/images/examples/A.jpeg')}}">
                             <hr>
                             <div class="card-body">
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="col-4">
-                        <div class="card bg-jersey text-dark" style="width: 16rem;">
+                        <div class="card bg-jersey text-dark" >
                             <img src="{{asset('assets/images/examples/A.jpeg')}}">
                             <hr>
                             <div class="card-body">
@@ -77,7 +77,7 @@
                 
                 <div class="row content-isi">    
                     <div class="col-4">
-                        <div class="card bg-jersey text-dark" style="width: 16rem;">
+                        <div class="card bg-jersey text-dark" >
                             <img src="{{asset('assets/images/examples/A.jpeg')}}">
                             <hr>
                             <div class="card-body">
@@ -94,7 +94,7 @@
                     </div>
                     
                     <div class="col-4">
-                        <div class="card bg-jersey text-dark" style="width: 16rem;">
+                        <div class="card bg-jersey text-dark" >
                             <img src="{{asset('assets/images/examples/A.jpeg')}}">
                             <hr>
                             <div class="card-body">
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="col-4">
-                        <div class="card bg-jersey text-dark" style="width: 16rem;">
+                        <div class="card bg-jersey text-dark" >
                             <img src="{{asset('assets/images/examples/A.jpeg')}}">
                             <hr>
                             <div class="card-body">

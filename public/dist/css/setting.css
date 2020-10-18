@@ -1,0 +1,31 @@
+.bg--secondary{
+    background-color: #fafafa;
+}
+.bg--white{
+    background-color: #fff;
+}
+.border--radius{
+    border-radius:5px ;
+}
+
+h1:not(:last-child), .h1:not(:last-child) {
+    margin-bottom: .59090909090909em;
+}
+
+.btn--lg{
+    font-size: .85714286em;
+    padding-top: .58035714em;
+    padding-bottom: .58035714em;
+    display: block;
+    font-weight: 700;
+    width: 100%;
+}
+section{
+    padding-top: 104px;
+    padding-bottom:104px ;
+}
+.judul{
+    font-size: .875rem;
+    color: #bbb;
+}
+

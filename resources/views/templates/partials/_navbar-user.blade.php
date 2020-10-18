@@ -8,19 +8,33 @@
                         <li><a href="#">Products</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">Account</a></li>
+                        
                         @if(Auth::check())
-                        <li><p>Hi, {{Auth::user()->username}}</p></li>
                         <li>
-                            <a href="{{route('logout')}}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                                <i class="fa fa-power-off mr-1 ml-1"></i> Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle text-center pr-3" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-user-circle"></i> {{Auth::user()->username}}
+                                </a>
+
+                                <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa fa-user-circle mr-3 ml-1"></i>  {{Auth::user()->username}}
+                                    </a>
+                                    <a class="dropdown-item" href="">
+                                        <i class="fa fa-cog mr-3 ml-1"></i> Profil
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();" >
+                                            <i class="fa fa-power-off mr-3 ml-1"></i> Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                </div>
+                            </div>
                         </li>
                         @else
+                        
                         <li><a href="{{ route('login') }}">Login</a></li>
                         @endif
                     </ul>
