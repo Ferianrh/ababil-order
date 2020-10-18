@@ -12,7 +12,6 @@ class Pesanan extends Model
 
     protected $fillable = [
         'id_paket',
-        'id_custom',
         'id_kurir',
         'id_kain',
         'total_pembayaran',
@@ -30,9 +29,7 @@ class Pesanan extends Model
         return $this->belongsTo('App\Models\Katalog','id_paket');
     }
 
-    public function customPrint(){
-        return $this->belongsTo('App\Models\CustomPrint','id_custom');
-    }
+    
 
     public function kurir(){
         return $this->belongsTo('App\Models\Kurir','id_kurir');

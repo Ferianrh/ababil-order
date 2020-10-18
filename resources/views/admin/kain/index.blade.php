@@ -61,7 +61,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Tabel Data Jenis Jahit</strong>
+                                <strong class="card-title">Tabel Data Kain</strong>
                                 <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
                                 Tambah Data</a>
                             </div>
@@ -69,8 +69,8 @@
                                 <table id="basic-datatables" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Nama Jahit</th>
-                                            <th>Deskripsi Jahit</th>
+                                            <th>Nama Kain</th>
+                                            <th>Deskripsi Kain</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -118,7 +118,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script>
-        
         //additional
         // $('button#delete').on('click', function () {
         // var href = $(this).attr('href');

@@ -40,6 +40,13 @@ Route::resource('admin/ukuran','UkuranController')->middleware(['role','auth']);
 Route::resource('admin/sisi-print','SisiPrintController')->middleware(['role','auth']);
 Route::resource('admin/kain','KainController')->middleware(['role','auth']);
 Route::resource('admin/katalog','KatalogController')->middleware(['role','auth']);
+Route::get('admin/pelanggan','PelangganController@index')->middleware(['role','auth'])->name('pelanggan.index');
+Route::resource('admin/custom-print','CustomPrintController')->middleware(['role','auth']);
+
+//ajax data
+Route::get('/getUkuran','CustomPrintController@getUkuran');
+Route::get('/getJenis','CustomPrintController@getJenis');
+Route::get('/getSisi','CustomPrintController@getSisi');
 //user
 Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 

@@ -16,4 +16,12 @@ class Provinsi extends Model
     protected $fillable = [
         'nama_provinsi'
     ];
+
+    public function pelanggan(){
+        return $this->hasMany('App\Models\Pelanggan','id_provinsi');
+    }
+
+    public function Kota(){
+        return $this->hasMany('App\Models\Kota','id_provinsi');
+    }
 }

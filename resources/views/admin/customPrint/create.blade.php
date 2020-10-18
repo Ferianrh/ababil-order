@@ -1,12 +1,12 @@
-<div class="row">
+<div class="row" id="tambahModal">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <!-- Modal -->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ubah Data Ukuran</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Custom Print Baru</h5>
                         <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </a>
@@ -15,25 +15,30 @@
                         <!-- ============================================================== -->
                         <!-- basic form -->
                         <!-- ============================================================== -->
-                        <form action="" method="POST" id="updateForm"
+                        <form action="{{ route('ukuran.store') }}" method="POST" id="basicform"
                             data-parsley-validate="">
                             @csrf
-                            {{ method_field('PUT') }}
                             <div class="form-group">
-                                <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
-                                <select name="nama_ukuran" id="nama" class="form-control">
-                                    <option value="Dewasa">Dewasa</option>
-                                    <option value="Kids (SSB)">Kids (SSB)</option>
-                                    <option value="SD/TK">SD/TK</option>
+                                <label class="control-label">Sisi Print <span class="text-danger">*</span> :</label>
+                                <select name="sisi_print" id="nama" class="form-control">
+                                    <option value="" selected disabled>--Select Sisi Print--</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Singkatan Ukuran <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="short"  name="singkatan_ukuran" placeholder="Singkatan Ukuran">
+                                <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
+                                <select name="nama_ukuran" id="short" class="form-control">
+                                <option value="" selected disabled>--Select Jenis Ukuran--</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Detil Ukuran <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" id="detil"  name="detil_ukuran" placeholder="Detil Ukuran">
+                                <label class="control-label">Jenis Jahit <span class="text-danger">*</span> :</label>
+                                <select name="jenis_jahit" id="detil" class="form-control">
+                                <option value="" selected disabled>--Select Jenis Jahit--</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Harga <span class="text-danger">*</span> :</label>
+                                <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga">
                             </div>
                             <div class="row">
                                 <div class="ml-3">

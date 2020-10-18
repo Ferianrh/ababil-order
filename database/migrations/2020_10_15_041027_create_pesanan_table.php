@@ -18,7 +18,6 @@ class CreatePesananTable extends Migration
             $table->integer('id_paket')->nullable()->unsigned();
             $table->integer('id_kurir')->nullable()->unsigned();
             $table->integer('id_kain')->nullable()->unsigned();
-            $table->integer('id_custom')->nullable()->unsigned();
             $table->date('tanggal_pesanan');
             $table->string('alamat_pengiriman',200);
             $table->string('status_pesanan',30);
@@ -30,11 +29,6 @@ class CreatePesananTable extends Migration
             //foreign key
             $table->foreign('id_paket')
             ->references('id_paket')->on('katalog')
-            ->onUpdate('cascade')
-            ->onDelete('restrict');
-
-            $table->foreign('id_custom')
-            ->references('id_custom')->on('custom_print')
             ->onUpdate('cascade')
             ->onDelete('restrict');
 

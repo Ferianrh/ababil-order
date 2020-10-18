@@ -61,7 +61,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Tabel Data Sisi Print</strong>
+                                <strong class="card-title">Tabel Data Custom Print</strong>
                                 <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
                                 Tambah Data</a>
                             </div>
@@ -79,19 +79,25 @@
                                 <table id="basic-datatables" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Keterangan Print</th>
+                                            <th>Sisi Print</th>
+                                            <th>Ukuran</th>
+                                            <th>Jenis jahit</th>
+                                            <th>harga</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($sisi as $row)
+                                        @foreach($custom as $row)
                                         <tr>
-                                            <td>{{$row->keterangan_print}}</td>
+                                            <td>{{$row->sisiPrint->keterangan_print}}</td>
+                                            <td>{{$row->ukuran->singkatan_ukuran." (".$row->ukuran->nama_ukuran.")"}}</td>
+                                            <td>{{$row->jenisJahit->nama_jahit}}</td>
+                                            <td>{{$row->harga}}</td>
                                             <td>
-                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('sisi-print.update',$row->id_print)}}" data-nama="{{$row->keterangan_print}}">
+                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('custom-print.update', $row->id_custom)}}" data-short ="{{$row->id_ukuran}}" data-nama="{{$row->id_print}}" data-harga="{{$row->harga}}" data-desc="{{$row->id_jahit }}">
                                                     <i class="fa fa-edit"> </i>
                                                 </button>
-                                                <!-- <button href="{{route('sisi-print.destroy',$row->id_print)}}" class="btn btn-danger btn-sm" id="delete" data-title="{{ $row->keterangan_print }}">
+                                                <!-- <button href="{{ route('custom-print.destroy', $row->id_custom) }}" class="btn btn-danger btn-sm" id="delete" data-title=" " data-sub="">
                                                     <i class="fa fa-trash"> </i>
                                                 </button> -->
                                             </td>
@@ -102,8 +108,8 @@
                             </div>
                         </div>
                     </div>
-                    @include('admin.sisiPrint.create')
-                    @include('admin.sisiPrint.edit')
+                    @include('admin.customPrint.create')
+                    @include('admin.customPrint.edit')
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
@@ -118,7 +124,7 @@
 
 @push('scripts')
 @include('templates.partials._sweetalert')
-
+@include('templates.partials._scriptsuser')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
@@ -131,8 +137,9 @@
         // $('button#delete').on('click', function () {
         // var href = $(this).attr('href');
         // var name = $(this).data('title');
+        // var sub = $(this).data('sub');
         // Swal.fire({
-        //         title: "Anda yakin untuk menghapus Jenis Jahit \"" + name + "\"?",
+        //         title: "Anda yakin untuk menghapus Ukuran \n\"" + name + "(" + sub + ")\"?",
         //         text: "Setelah dihapus, data tidak bisa dikembalikan!",
         //         icon: 'warning',
         //         showCancelButton: true,
@@ -149,12 +156,92 @@
         //     })
         // });
 
+        $(document).ready(function(){
+            $.get({
+                url:"{{url('/getUkuran')}}",
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+
+                        var id = response[i]['id_ukuran'];
+                        var name = response[i]['singkatan_ukuran'];
+                        var jenis = response[i]['nama_ukuran'];
+
+                        var option = "<option value='"+id+"'>"+name+" ("+ jenis +")</option>"; 
+
+                        $("#updateForm #short").append(option); 
+                        $("#basicform #short").append(option);
+                    }
+                }
+            });
+
+            $.get({
+                url:"{{url('/getSisi')}}",
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+
+                        var id = response[i]['id_print'];
+                        var name = response[i]['keterangan_print'];
+
+                        var option = "<option value='"+id+"'>"+name+"</option>"; 
+
+                        $("#updateForm #nama").append(option);
+                        $("#basicform #nama").append(option); 
+                    }
+                }
+            });
+
+            $.get({
+                url:"{{url('/getJenis')}}",
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+
+                        var id = response[i]['id_jahit'];
+                        var name = response[i]['nama_jahit'];
+
+                        var option = "<option value='"+id+"'>"+name+"</option>"; 
+
+                        $("#updateForm #detil").append(option);
+                        $("#basicform #detil").append(option); 
+                    }
+                }
+            });
+
+        });
+
         $('button#edit').on('click', function () {
-            var href = $(this).attr('href');
-            var nama = $(this).data("nama");
             
-            // $('#deskripsi_jahit').val(deskripsi);
-            $('#ket_print').val(nama);
+            var href = $(this).attr('href');
+            var deskripsi = $(this).data('desc');
+            var short = $(this).data('short');
+            var nama = $(this).data('nama');
+            var harga = $(this).data('harga');
+            
+            $('#detil').val(deskripsi);
+            $('#nama').val(nama);
+            $('#short').val(short);
+            $('#updateForm #harga').val(harga);
+
             $('#updateForm').attr('action', href);
             $("#editModal").modal('show');
         });

@@ -17,15 +17,24 @@ class Pelanggan extends Model
         'nama_lengkap',
         'tanggal_lahir',
         'alamat_lengkap',
+        'kode_pos',
         'no_hp',
         'email'
     ];
 
-    public function userPelanggan(){
+    public function user(){
         return $this->hasOne('App\Models\User','id','id_pelanggan');
     }
 
     public function detailPesan(){
         return $this->hasMany('App\Models\DetailPesanan','id_pelanggan');
+    }
+
+    public function provinsi(){
+        return $this->belongsTo('App\Models\Provinsi','id_provinsi');
+    }
+
+    public function Kota(){
+        return $this->belongsTo('App\Models\Kota','id_kota');
     }
 }

@@ -15,12 +15,10 @@
                         <a href="{{route('admin.dashboard')}}" class="text-left"> <i class="menu-icon fa fa-dashboard"></i>Ababil-Sublime Printing </a>
                     </li>
                     
-                    <h3 class="menu-title text-left" >Edit Akun</h3><!-- /.menu-title -->
+                    <h3 class="menu-title text-left" >Akun</h3><!-- /.menu-title -->
+                    
                     <li >
-                        <a href="tabel-admin.php" class="text-left"> <i class="menu-icon fa fa-laptop"></i>Pegawai</a>
-                    </li>
-                    <li >
-                        <a href="tabel-pelanggan.php" class="text-left"> <i class="menu-icon fa fa-table"></i>Pembeli</a>
+                        <a href="{{ route('pelanggan.index') }}" class="text-left"> <i class="menu-icon fa fa-table"></i>Pelanggan</a>
                     </li>
                     
                     <h3 class="menu-title text-left" >Data</h3><!-- /.menu-title -->
@@ -29,7 +27,9 @@
                         <a href="{{route('katalog.index')}}"  class="text-left"> <i class="menu-icon fa fa-book"></i>Katalog</a>
                     </li>
 
-                    <!--  -->
+                    <li>
+                        <a href="{{route('custom-print.index')}}"  class="text-left"> <i class="menu-icon fa fa-gear"></i>Custom Print</a>
+                    </li>
 
                     <li>
                         <a href="{{route('ukuran.index')}}"  class="text-left"> <i class="menu-icon fa fa-arrows-alt"></i>Ukuran</a>
@@ -45,11 +45,7 @@
 
                     <li>
                         <a href="#"  class="text-left"> <i class="menu-icon fa fa-envelope"></i>Pemesanan</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-left"> <i class="menu-icon fa fa-tasks"></i>Barang</a>
-                    </li>
-                    
+                    </li>                    
 
                 </ul>
             </div><!-- /.navbar-collapse -->

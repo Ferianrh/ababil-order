@@ -61,7 +61,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Tabel Data Jenis Jahit</strong>
+                                <strong class="card-title">Tabel Data Katalog</strong>
                                 <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
                                 Tambah Data</a>
                             </div>

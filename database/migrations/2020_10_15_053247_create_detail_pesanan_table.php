@@ -18,18 +18,14 @@ class CreateDetailPesananTable extends Migration
             $table->unsignedInteger('id_pelanggan');
             $table->unsignedInteger('id_pesanan');
             $table->unsignedInteger('id_ukuran')->nullable();
-            $table->unsignedInteger('id_print');
-            $table->unsignedInteger('id_jahit');
+            // $table->unsignedInteger('id_print');
+            // $table->unsignedInteger('id_jahit');
             $table->integer('id_custom')->nullable()->unsigned();
             $table->integer('jumlah')->unsigned();
             $table->timestamps();
             $table->softDeletes();
 
             //foreign key
-            $table->foreign('id_jahit')
-            ->references('id_jahit')->on('jenis_jahit')
-            ->onUpdate('cascade')
-            ->onDelete('restrict');
 
             $table->foreign('id_pelanggan')
             ->references('id_pelanggan')->on('pelanggan')
@@ -41,15 +37,11 @@ class CreateDetailPesananTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('restrict');
 
-            $table->foreign('id_ukuran')
-            ->references('id_ukuran')->on('ukuran')
+            $table->foreign('id_custom')
+            ->references('id_custom')->on('custom_print')
             ->onUpdate('cascade')
             ->onDelete('restrict');
 
-            $table->foreign('id_print')
-            ->references('id_print')->on('sisi_print')
-            ->onUpdate('cascade')
-            ->onDelete('restrict');
         });
     }
 

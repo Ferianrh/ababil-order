@@ -134,8 +134,6 @@
 
  <!-- tampilkan barang -->
 
-    @include('templates.partials._footer')
-
  <!-- tampilkan barang -->
 
     @include('templates.partials._footer')

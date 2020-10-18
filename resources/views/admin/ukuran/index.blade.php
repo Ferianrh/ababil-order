@@ -61,7 +61,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Tabel Data Jenis Jahit</strong>
+                                <strong class="card-title">Tabel Data Ukuran</strong>
                                 <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
                                 Tambah Data</a>
                             </div>
@@ -129,8 +129,7 @@
   <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-    <script>
-        
+    <script>        
         //additional
         // $('button#delete').on('click', function () {
         // var href = $(this).attr('href');

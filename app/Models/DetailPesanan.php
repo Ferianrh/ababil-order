@@ -11,6 +11,10 @@ class DetailPesanan extends Model
     protected $primaryKey = 'id_detail';
 
     protected $fillable =[
+        'id_pelanggan',
+        'id_pesanan',
+        'id_custom',
+        'id_ukuran',
         'jumlah'
     ];
 
@@ -22,15 +26,19 @@ class DetailPesanan extends Model
         return $this->belongsto('App\Models\Pesanan','id_pesanan');
     }
 
-    public function sisiPrint(){
-        return $this->belongsto('App\Models\SisiPrint','id_print');
-    }
+    // public function sisiPrint(){
+    //     return $this->belongsto('App\Models\SisiPrint','id_print');
+    // }
 
     public function ukuran(){
         return $this->belongsto('App\Models\Ukuran','id_ukuran');
     }
 
-    public function jenisJahit(){
-        return $this->belongsto('App\Models\JenisJahit','id_jahit');
+    public function customPrint(){
+        return $this->belongsTo('App\Models\CustomPrint','id_custom');
     }
+
+    // public function jenisJahit(){
+    //     return $this->belongsto('App\Models\JenisJahit','id_jahit');
+    // }
 }

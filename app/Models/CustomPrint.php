@@ -25,4 +25,9 @@ class CustomPrint extends Model
     public function jenisJahit(){
         return $this->belongsto('App\Models\JenisJahit','id_jahit');
     }
+
+    public function detailPesanan(){
+        return $this->hasMany('App\Models\DetailPesanan','id_custom');
+    }
+
 }

@@ -61,9 +61,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Tabel Data Sisi Print</strong>
-                                <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
-                                Tambah Data</a>
+                                <strong class="card-title">Tabel Data Pelanggan</strong>
+                                <!-- <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
+                                Tambah Data</a> -->
                             </div>
                             @if ($errors->any())
                                 <div class="alert alert-danger alert-dismissable">
@@ -79,22 +79,29 @@
                                 <table id="basic-datatables" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Keterangan Print</th>
-                                            <th>Aksi</th>
+                                            <th>Nama Pelanggan</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>Provinsi</th>
+                                            <th>Kota</th>
+                                            <th>Alamat Lengkap</th>
+                                            <th>Kode Pos</th>
+                                            <th>No Telepon</th>
+                                            <th>Email</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($sisi as $row)
+                                        @foreach($cust as $row)
                                         <tr>
-                                            <td>{{$row->keterangan_print}}</td>
-                                            <td>
-                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('sisi-print.update',$row->id_print)}}" data-nama="{{$row->keterangan_print}}">
-                                                    <i class="fa fa-edit"> </i>
-                                                </button>
-                                                <!-- <button href="{{route('sisi-print.destroy',$row->id_print)}}" class="btn btn-danger btn-sm" id="delete" data-title="{{ $row->keterangan_print }}">
-                                                    <i class="fa fa-trash"> </i>
-                                                </button> -->
-                                            </td>
+                                            <td>{{$row->nama_lengkap}}</td>
+                                            <td>{{$row->tanggal_lahir}}</td>
+                                            <td>{{$row->provinsi->nama_provinsi}}</td>
+                                            <td>{{$row->kota->nama_kota}}</td>
+                                            <td>{{$row->alamat_lengkap}}</td>
+                                            <td>{{$row->kode_pos}}</td>
+
+                                            <td>{{$row->no_hp}}</td>
+                                            <td>{{$row->email}}</td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -102,23 +109,17 @@
                             </div>
                         </div>
                     </div>
-                    @include('admin.sisiPrint.create')
-                    @include('admin.sisiPrint.edit')
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
     <!-- Right Panel -->
 
-<form action="" method="post" id="deleteForm">
-    {{ csrf_field() }}
-    {{ method_field('DELETE') }}
-</form>
 
 @endsection
 
 @push('scripts')
 @include('templates.partials._sweetalert')
-
+@include('templates.partials._scriptsuser')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
@@ -126,13 +127,30 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
         
         //additional
         // $('button#delete').on('click', function () {
         // var href = $(this).attr('href');
         // var name = $(this).data('title');
+        // var sub = $(this).data('sub');
         // Swal.fire({
-        //         title: "Anda yakin untuk menghapus Jenis Jahit \"" + name + "\"?",
+        //         title: "Anda yakin untuk menghapus Ukuran \n\"" + name + "(" + sub + ")\"?",
         //         text: "Setelah dihapus, data tidak bisa dikembalikan!",
         //         icon: 'warning',
         //         showCancelButton: true,
@@ -149,15 +167,6 @@
         //     })
         // });
 
-        $('button#edit').on('click', function () {
-            var href = $(this).attr('href');
-            var nama = $(this).data("nama");
-            
-            // $('#deskripsi_jahit').val(deskripsi);
-            $('#ket_print').val(nama);
-            $('#updateForm').attr('action', href);
-            $("#editModal").modal('show');
-        });
     </script>
 
 @endpush

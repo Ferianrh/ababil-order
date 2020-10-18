@@ -55,7 +55,7 @@ class User extends Authenticatable
     }
 
     //Relation User to Santri
-    public function santri(){
+    public function pelanggan(){
         return $this->hasOne('App\Models\Pelanggan', 'id_user');
     }
 }

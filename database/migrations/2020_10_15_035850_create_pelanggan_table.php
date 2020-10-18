@@ -21,6 +21,7 @@ class CreatePelangganTable extends Migration
             $table->string('nama_lengkap',100);
             $table->date('tanggal_lahir');
             $table->string('alamat_lengkap',200);
+            $table->integer('kode_pos')->unsigned();
             $table->string('no_hp',15);
             $table->string('email',50);
             $table->timestamps();

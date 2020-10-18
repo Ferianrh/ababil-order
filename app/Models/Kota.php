@@ -15,7 +15,11 @@ class Kota extends Model
 
     protected $fillable = [
         'id_provinsi',
-        'city_id',
         'nama_kota'
     ];
+
+    public function pelanggan(){
+        return $this->hasMany('App\Models\Pelanggan','id_kota');
+    }
+
 }
