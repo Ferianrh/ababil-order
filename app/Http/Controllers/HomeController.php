@@ -25,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user/welcome');
+        $katalog = Katalog::get();
+        return view('user/welcome',['katalog'=>$katalog]);
     }
 }

@@ -21,12 +21,14 @@ class CreateUkuranTable extends Migration
             $table->string('detil_ukuran',100);
             $table->timestamps();
             $table->softDeletes();
-        });
 
-        $table->foreign('id_jahit')
+            $table->foreign('id_jahit')
             ->references('id_jahit')->on('jenis_jahit')
             ->onUpdate('cascade')
             ->onDelete('restrict');
+        });
+
+        
     }
 
     /**

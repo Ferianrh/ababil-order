@@ -23,23 +23,24 @@
         <div class="row content mt-5">
             <div class="col-md-10 offset-md-1">
                 <div class="row content-isi">    
-                    <div class="col-4">
-                        <div class="card bg-jersey text-dark" >
-                            <img src="{{asset('assets/images/examples/A.jpeg')}}">
-                            <hr>
-                            <div class="card-body">
-                                <center><h5 class="card-title">
-                                    Paket A
-                                </h5></center>
-                                <p class="card-text">
-                                    Full set, atas full printing, nomor celana polyflex/sablon/bordir
-                                </p>
-                                <a href="#" class="btn btn-primary btn-card">Beli</a>
-                                <p class="float-right" >135.000</p>
-                            </div>  
+                    @foreach($katalog as $row)
+                        <div class="col-4 mt-3">
+                            <div class="card bg-jersey text-dark" >
+                                <img src={{ URL::asset("assets/images/examples/$row->gambar_desain") }} width="150" alt="">
+                                <hr>
+                                <div class="card-body">
+                                    <center><h5 class="card-title">
+                                        {{$row->nama_paket}}
+                                    </h5></center>
+                                    <p class="card-text">
+                                        {{$row->deskripsi_paket}}
+                                    </p>
+                                    <a href="#" class="btn btn-primary btn-card">Beli</a>
+                                    <p class="float-right" >{{$row->harga_paket}}</p>
+                                </div>  
+                            </div>
                         </div>
-                    </div>
-                    
+                    @endforeach
                 </div>
 
             </div>
