@@ -81,7 +81,8 @@
                                         <tr>
                                             <th>Nama Paket</th>
                                             <th>Deskripsi Paket</th>
-                                            <th>Harga Paket</th>
+                                            <th>Harga Paket /pcs</th>
+                                            <th>Gambar Ilustrasi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -91,13 +92,16 @@
                                             <td>{{$row->nama_paket}}</td>
                                             <td>{{$row->deskripsi_paket}}</td>
                                             <td>{{$row->harga_paket}}</td>
+                                            <td >
+                                                <img src={{ URL::asset("assets/images/examples/$row->gambar_desain") }} width="150" alt="">
+                                            </td>
                                             <td>
-                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('katalog.update', $row->id_paket)}}" data-nama="{{$row->nama_paket}}" data-desc="{{ $row->deskripsi_paket }}" data-harga="{{$row->harga_paket}}">
+                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('katalog.update', $row->id_paket)}}" data-nama="{{$row->nama_paket}}" data-desc="{{ $row->deskripsi_paket }}" data-harga="{{$row->harga_paket}}" data-image="{{$row->gambar_desain}}">
                                                     <i class="fa fa-edit"> </i>
                                                 </button>
-                                                <!-- <button href="{{ route('katalog.destroy', $row->id_paket) }}" class="btn btn-danger btn-sm" id="delete" data-sub="{{$row->nama_paket}}">
+                                                <button href="{{ route('katalog.destroy', $row->id_paket) }}" class="btn btn-danger btn-sm" id="delete" data-sub="{{$row->nama_paket}}">
                                                     <i class="fa fa-trash"> </i>
-                                                </button> -->
+                                                </button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -126,43 +130,67 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
-  <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script>
         
-        //additional
-        // $('button#delete').on('click', function () {
-        // var href = $(this).attr('href');
-        // var name = $(this).data('title');
-        // var sub = $(this).data('sub');
-        // Swal.fire({
-        //         title: "Anda yakin untuk menghapus Ukuran \n\"" + name + "(" + sub + ")\"?",
-        //         text: "Setelah dihapus, data tidak bisa dikembalikan!",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         cancelButtonText: 'Batal',
-        //         confirmButtonText: 'Ya, hapus'
-        //     })
-        //     .then((willDelete) => {
-        //         if (willDelete.value) {
-        //             $('#deleteForm').attr('action', href);
-        //             $('#deleteForm').submit();
-        //         }
-        //     })
-        // });
+        // additional
+        $('button#delete').on('click', function () {
+        var href = $(this).attr('href');
+        var name = $(this).data('title');
+        var sub = $(this).data('sub');
+        Swal.fire({
+                title: "Anda yakin untuk menghapus Paket \"" + sub + "\"?",
+                text: "Setelah dihapus, data tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, hapus'
+            })
+            .then((willDelete) => {
+                if (willDelete.value) {
+                    $('#deleteForm').attr('action', href);
+                    $('#deleteForm').submit();
+                }
+            })
+        });
+
+function previewImage() {
+    document.getElementById("image-preview").style.display = "block"; 
+    document.getElementById("image-preview").style.width = "300";
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
+
+    oFReader.onload = function (oFREvent) {
+        document.getElementById("image-preview").src = oFREvent.target.result;
+    };
+};
+
+function updateImage() {
+    document.getElementById("image-update").style.display = "block"; 
+    document.getElementById("image-update").style.width = "300";
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById("image-src").files[0]);
+
+    oFReader.onload = function (oFREvent) {
+        document.getElementById("image-update").src = oFREvent.target.result;
+    };
+};
 
         $('button#edit').on('click', function () {
             var href = $(this).attr('href');
             var deskripsi = $(this).data('desc');
             var harga = $(this).data('harga');
             var nama = $(this).data('nama');
+            var image = $(this).data('image');
             
             $('#detil').val(deskripsi);
             $('#nama').val(nama);
             $('#harga').val(harga);
+            $('#image-update').attr('src',"../../assets/images/examples/" + image);
             $('#updateForm').attr('action', href);
             $("#editModal").modal('show');
         });

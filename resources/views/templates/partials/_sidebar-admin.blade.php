@@ -15,13 +15,13 @@
                         <a href="{{route('admin.dashboard')}}" class="text-left"> <i class="menu-icon fa fa-dashboard"></i>Ababil-Sublime Printing </a>
                     </li>
                     
-                    <h3 class="menu-title text-left" >Akun</h3><!-- /.menu-title -->
+                    <h3 class="menu-title " >Akun</h3><!-- /.menu-title -->
                     
                     <li >
                         <a href="{{ route('pelanggan.index') }}" class="text-left"> <i class="menu-icon fa fa-table"></i>Pelanggan</a>
                     </li>
                     
-                    <h3 class="menu-title text-left" >Data</h3><!-- /.menu-title -->
+                    <h3 class="menu-title" >Data</h3><!-- /.menu-title -->
                     
                     <li>
                         <a href="{{route('katalog.index')}}"  class="text-left"> <i class="menu-icon fa fa-book"></i>Katalog</a>

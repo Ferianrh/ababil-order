@@ -29,8 +29,13 @@
                                 <textarea name="deskripsi_paket" class="form-control d-block" id="detil" cols="80" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Harga Paket <span class="text-danger">*</span> :</label>
+                                <label class="control-label">Harga Paket/pcs <span class="text-danger">*</span> :</label>
                                 <input type="text" class="form-control" id="harga"  name="harga_paket" placeholder="Harga Paket">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Ilustrasi Gambar <span class="text-danger">*</span>:</label>
+                                <input type="file" class="form-control mt-3" name="image"  required accept="image/*" id="image-src" onchange="updateImage();">
+                                <img id="image-update" src="" class="rounded mx-auto d-block p-2" width="250">
                             </div>
                             <div class="row">
                                 <div class="ml-3">

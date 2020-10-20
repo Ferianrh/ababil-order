@@ -16,7 +16,7 @@
                         <!-- basic form -->
                         <!-- ============================================================== -->
                         <form action="{{ route('katalog.store') }}" method="POST" id="basicform"
-                            data-parsley-validate="">
+                            data-parsley-validate="" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label class="control-label">Nama Paket <span class="text-danger">*</span> :</label>
@@ -25,21 +25,29 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Deskripsi Paket <span class="text-danger">*</span> :</label>
-                                <input type="text" class="form-control" name="singkatan_ukuran" placeholder="Deskripsi Paket" required>
+                                <input type="text" class="form-control" name="deskripsi_paket" placeholder="Deskripsi Paket" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Harga Paket <span class="text-danger">*</span> :</label>
+                                <label class="control-label">Harga Paket /pcs <span class="text-danger">*</span> :</label>
                                 <input type="numeric" class="form-control"  name="harga_paket" placeholder="Harga Paket">
                             </div>
+                        
+                            <div class="form-group">
+                                <label class="control-label">Ilustrasi Gambar <span class="text-danger">*</span>:</label>
+                                <input type="file" class="form-control mt-3" name="image"  required accept="image/*" id="image-source" onchange="previewImage();">
+                                <img id="image-preview" src="" class="rounded mx-auto d-block p-2">
+                            </div>
+                            <!-- <button type="submit" class="btn btn-success mt-2 float-right">Simpan</button> -->
                             <div class="row">
                                 <div class="ml-3">
                                     <p class="text-left">
-                                        <button type="submit" class="btn btn-space btn-success">Simpan</button>
-                                        <button class="btn btn-space btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        <button class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                     </p>
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
                 <!-- ============================================================== -->

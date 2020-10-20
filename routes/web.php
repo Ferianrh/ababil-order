@@ -17,7 +17,7 @@
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', function(){
-        return view('welcome');
+        return view('user/welcome');
         
     });
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -47,8 +47,14 @@ Route::resource('admin/custom-print','CustomPrintController')->middleware(['role
 Route::get('/getUkuran','CustomPrintController@getUkuran');
 Route::get('/getJenis','CustomPrintController@getJenis');
 Route::get('/getSisi','CustomPrintController@getSisi');
+Route::get('/getProvince','LocationsController@getProvince');
+Route::get('/getCity/{id}','LocationsController@getCity');
+
+
 //user
 Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
+Route::resource('/setting', 'SettingController')->middleware(['auth']);
+Route::resource('/pesan','PesanController')->middleware(['auth']);
 
 
 // Route::get('/jersey', function(){
@@ -58,9 +64,7 @@ Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 Route::get('/form-jersey', function(){
     return view("form-jersey");
 });
-Route::get('/setting', function(){
-    return view("setting-profile");
-});
+
 Route::get('/pemesanan', function(){
     return view("pemesanan");
 });

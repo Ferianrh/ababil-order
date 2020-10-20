@@ -4,21 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Ukuran;
+use App\Models\Pelanggan;
+use App\Models\User;
 
-class UkuranController extends Controller
+use Auth;
+
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $size = Ukuran::get();
-
-        return view('admin/ukuran/index',compact('size'));
+    public function index(){
+        $pelanggan = Pelanggan::where('id',Auth::user()->id)->first();
+        return view('user/setting',compact('pelanggan'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -38,13 +41,7 @@ class UkuranController extends Controller
      */
     public function store(Request $request)
     {
-        //insert
-        $jenis = Ukuran::insert([
-            'nama_ukuran' => $request->nama_ukuran,
-            'singkatan_ukuran' => $request->singkatan_ukuran,            
-            'detil_ukuran' => $request->detil_ukuran
-        ]);
-        return redirect()->back()->with(['success' => 'Data Jahit Berhasil Ditambahkan']);
+        //
     }
 
     /**
@@ -76,14 +73,25 @@ class UkuranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-        Ukuran::where('id_ukuran', $id)->update([
-            "nama_ukuran" => $request->nama_ukuran,
-            "singkatan_ukuran" => $request->singkatan_ukuran,
-            "detil_ukuran" => $request->detil_ukuran
+    public function update(Request $request, $id){
+        if($request->password != null && $request->confirm_password != null && $request->password == $request->confirm_password ){
+            $user = User::where('id',$id)->update([
+                'password' => $request->password
+            ]);
+        }elseif($request->password != $request->confirm_password){
+            return redirect()->back()->with(['msg'=> 'Konfirmasi Sandi Tidak Sama !']);
+        }
+
+        $pelanggan = Pelanggan::where('id',$id)->update([
+            'id_provinsi' => $request->provinsi,
+            'id_kota' => $request->kota,
+            'nama_lengkap' =>$request->nama_lengkap,
+            'tanggal_lahir' =>$request->tanggal_lahir,
+            'alamat_lengkap' => $request->alamat_lengkap,
+            'kode_pos' => $request->kode_pos,
+            'no_hp' => $request->no_hp
         ]);
+
         return redirect()->back();
     }
 
@@ -95,8 +103,6 @@ class UkuranController extends Controller
      */
     public function destroy($id)
     {
-        // $ukuran = Ukuran::where('id_ukuran',$id)->first();
-        // $ukuran->delete();
-        // return redirect()->back()->with('success', 'Data Ukuran Berhasil Dihapus');
+        //
     }
 }

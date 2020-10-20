@@ -39,7 +39,21 @@ class KatalogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //insert
+        $uploadedFile = $request->file('image');
+            $extension = '.'.$uploadedFile->getClientOriginalExtension();
+            $filename  = $request->nama_paket.$extension;
+            $file = str_replace(' ','_',$filename);
+            $uploadedFile->move(base_path('public/assets/images/examples'), $file);
+
+        $katalog = Katalog::create([
+            'nama_paket' => $request->nama_paket,
+            'deskripsi_paket' => $request->deskripsi_paket,
+            'harga_paket' => $request->harga_paket,
+            'gambar_desain' => $file
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -74,10 +88,17 @@ class KatalogController extends Controller
     public function update(Request $request, $id)
     {
         //update
+        $uploadedFile = $request->file('image');
+            $extension = '.'.$uploadedFile->getClientOriginalExtension();
+            $filename  = $request->nama_paket.$extension;
+            $file = str_replace(' ','_',$filename);
+            $uploadedFile->move(base_path('public/assets/images/examples'), $file);
+
         $katalog = Katalog::where('id_paket',$id)->update([
             'nama_paket' => $request->nama_paket,
             'deskripsi_paket' => $request->deskripsi_paket,
-            'harga_paket' => $request->harga_paket
+            'harga_paket' => $request->harga_paket,
+            'gambar_desain' => $file
         ]);
 
         return redirect()->back();
@@ -91,6 +112,8 @@ class KatalogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $paket = Katalog::where('id_paket',$id)->first();
+        $paket->delete();
+        return redirect()->back()->with('success', 'Data paket Berhasil Dihapus');
     }
 }

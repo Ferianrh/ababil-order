@@ -16,6 +16,7 @@ class KatalogTableSeeder extends Seeder
                 'nama_paket'=>'Paket A',
                 'deskripsi_paket' => 'full set, atas full printing, nomor celana polyflex / sablon/bordir',
                 'harga_paket' => '135000',
+                'gambar_desain' => 'A.jpeg',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],

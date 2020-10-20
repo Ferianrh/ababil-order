@@ -18,7 +18,7 @@ class CreateKatalogTable extends Migration
             $table->string('nama_paket',50);
             $table->string('deskripsi_paket',150);
             $table->integer('harga_paket');
-            // $table->string('gambar_desain',100);
+            $table->string('gambar_desain',100);
             $table->timestamps();
             $table->softDeletes();
         });

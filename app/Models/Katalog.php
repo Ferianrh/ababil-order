@@ -13,7 +13,8 @@ class Katalog extends Model
     protected $fillable = [
         'nama_paket',
         'deskripsi_paket',
-        'harga_paket'
+        'harga_paket',
+        'gambar_desain'
     ];
 
     public function pesanan(){

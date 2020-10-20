@@ -11,11 +11,16 @@ class Ukuran extends Model
     protected $primaryKey = 'id_ukuran';
 
     protected $fillable = [
+        'id_jahit',
         'singkatan_ukuran',
         'nama_ukuran',
         'detil_ukuran'
     ];
 
+    public function jenisJahit(){
+        return $this->belongsto('App\Models\JenisJahit','id_jahit');
+    }
+    
     public function pesanan(){
         return $this->hasMany('App\Models\DetailPesanan','id_ukuran');
     }

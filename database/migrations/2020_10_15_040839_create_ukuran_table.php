@@ -15,12 +15,18 @@ class CreateUkuranTable extends Migration
     {
         Schema::create('ukuran', function (Blueprint $table) {
             $table->increments('id_ukuran');
+            $table->integer('id_jahit')->unsigned();
             $table->string('singkatan_ukuran',7);
             $table->string('nama_ukuran',100);
             $table->string('detil_ukuran',100);
             $table->timestamps();
             $table->softDeletes();
         });
+
+        $table->foreign('id_jahit')
+            ->references('id_jahit')->on('jenis_jahit')
+            ->onUpdate('cascade')
+            ->onDelete('restrict');
     }
 
     /**

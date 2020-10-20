@@ -20,6 +20,10 @@ class JenisJahit extends Model
         return $this->hasMany('App\Models\CustomPrint','id_jahit');
     }
 
+    public function ukuran(){
+        return $this->hasMany('App\Models\Ukuran','id_jahit');
+    }
+
     public function detailPesan(){
         return $this->hasMany('App\Models\DetailPesanan','id_jahit');
     }

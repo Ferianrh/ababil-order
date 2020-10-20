@@ -168,13 +168,10 @@
                     var len = 0;
                     len = response.length;
                     for(var i=0; i<len; i++){
-
                         var id = response[i]['id_ukuran'];
                         var name = response[i]['singkatan_ukuran'];
                         var jenis = response[i]['nama_ukuran'];
-
                         var option = "<option value='"+id+"'>"+name+" ("+ jenis +")</option>"; 
-
                         $("#updateForm #short").append(option); 
                         $("#basicform #short").append(option);
                     }
@@ -192,12 +189,9 @@
                     var len = 0;
                     len = response.length;
                     for(var i=0; i<len; i++){
-
                         var id = response[i]['id_print'];
                         var name = response[i]['keterangan_print'];
-
                         var option = "<option value='"+id+"'>"+name+"</option>"; 
-
                         $("#updateForm #nama").append(option);
                         $("#basicform #nama").append(option); 
                     }
@@ -215,19 +209,17 @@
                     var len = 0;
                     len = response.length;
                     for(var i=0; i<len; i++){
-
                         var id = response[i]['id_jahit'];
                         var name = response[i]['nama_jahit'];
-
                         var option = "<option value='"+id+"'>"+name+"</option>"; 
-
                         $("#updateForm #detil").append(option);
                         $("#basicform #detil").append(option); 
                     }
                 }
             });
-
         });
+
+
 
         $('button#edit').on('click', function () {
             
