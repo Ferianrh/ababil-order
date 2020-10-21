@@ -36,7 +36,7 @@
                                         {{$row->deskripsi_paket}}
                                     </p>
                                     <a href="#" class="btn btn-primary btn-card">Beli</a>
-                                    <p class="float-right" >{{$row->harga_paket}}</p>
+                                    <p class="float-right" >{{ format_rupiah($row->harga_paket) }}</p>
                                 </div>  
                             </div>
                         </div>
