@@ -41,7 +41,7 @@ Route::get('admin/pelanggan','PelangganController@index')->middleware(['role','a
 Route::resource('admin/custom-print','CustomPrintController')->middleware(['role','auth']);
 
 //ajax data
-Route::get('/getUkuran','CustomPrintController@getUkuran');
+Route::get('/getUkuran/{id}','CustomPrintController@getUkuran');
 Route::get('/getJenis','CustomPrintController@getJenis');
 Route::get('/getSisi','CustomPrintController@getSisi');
 Route::get('/getProvince','LocationsController@getProvince');

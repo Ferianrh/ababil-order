@@ -15,7 +15,7 @@
                         <!-- ============================================================== -->
                         <!-- basic form -->
                         <!-- ============================================================== -->
-                        <form action="{{ route('ukuran.store') }}" method="POST" id="basicform"
+                        <form action="{{ route('custom-print.store') }}" method="POST" id="basicform"
                             data-parsley-validate="">
                             @csrf
                             <div class="form-group">
@@ -25,15 +25,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
-                                <select name="nama_ukuran" id="short" class="form-control">
-                                <option value="" selected disabled>--Select Jenis Ukuran--</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label class="control-label">Jenis Jahit <span class="text-danger">*</span> :</label>
                                 <select name="jenis_jahit" id="detil" class="form-control">
                                 <option value="" selected disabled>--Select Jenis Jahit--</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
+                                <select name="nama_ukuran" id="short" class="form-control">
+                                <option value="" selected disabled>--Select Jenis Ukuran--</option>
                                 </select>
                             </div>
                             <div class="form-group">

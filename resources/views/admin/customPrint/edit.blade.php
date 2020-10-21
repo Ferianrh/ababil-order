@@ -26,14 +26,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
-                                <select name="nama_ukuran" id="short" class="form-control">
+                                <label class="control-label">Jenis Jahit <span class="text-danger">*</span> :</label>
+                                <select name="jenis_jahit" id="detil" class="form-control">
                                     
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Jenis Jahit <span class="text-danger">*</span> :</label>
-                                <select name="jenis_jahit" id="detil" class="form-control">
+                                <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
+                                <select name="nama_ukuran" id="short" class="form-control">
                                     
                                 </select>
                             </div>

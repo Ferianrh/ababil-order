@@ -20,6 +20,13 @@
                             @csrf
                             {{ method_field('PUT') }}
                             <div class="form-group">
+                            <label class="control-label">Jenis Jahit<span class="text-danger">*</span> :</label>
+                                <select class="form-control" id="jenis" name="id_jahit">
+                                    <option value="1">Reglan</option>
+                                    <option value="2">Non-Reglan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
                                 <select name="nama_ukuran" id="nama" class="form-control">
                                     <option value="Dewasa">Dewasa</option>

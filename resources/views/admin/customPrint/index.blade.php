@@ -156,9 +156,34 @@
         //     })
         // });
 
-        $(document).ready(function(){
+    $(document).ready(function(){
+        $.get({
+            url:"{{url('/getJenis')}}",
+            type:'get',
+            dataType: 'json',
+            data: {
+                    "_token": "{{ csrf_token() }}",
+                },
+            success:function(response){
+                var len = 0;
+                len = response.length;
+                for(var i=0; i<len; i++){
+                    var id = response[i]['id_jahit'];
+                    var name = response[i]['nama_jahit'];
+                    var option = "<option value='"+id+"'>"+name+"</option>"; 
+                    $("#updateForm #detil").append(option);
+                    $("#basicform #detil").append(option); 
+                }
+            }
+        });
+
+        $("#updateForm #detil").on('change',function(){
+            $("#updateForm #short option").each(function(){
+                $(this).remove();
+            });
+            var updateJahit = $(this).val();
             $.get({
-                url:"{{url('/getUkuran')}}",
+                url:"{{url('/getUkuran')}}/" + updateJahit,
                 type:'get',
                 dataType: 'json',
                 data: {
@@ -173,51 +198,62 @@
                         var jenis = response[i]['nama_ukuran'];
                         var option = "<option value='"+id+"'>"+name+" ("+ jenis +")</option>"; 
                         $("#updateForm #short").append(option); 
-                        $("#basicform #short").append(option);
-                    }
-                }
-            });
-
-            $.get({
-                url:"{{url('/getSisi')}}",
-                type:'get',
-                dataType: 'json',
-                data: {
-                        "_token": "{{ csrf_token() }}",
-                    },
-                success:function(response){
-                    var len = 0;
-                    len = response.length;
-                    for(var i=0; i<len; i++){
-                        var id = response[i]['id_print'];
-                        var name = response[i]['keterangan_print'];
-                        var option = "<option value='"+id+"'>"+name+"</option>"; 
-                        $("#updateForm #nama").append(option);
-                        $("#basicform #nama").append(option); 
-                    }
-                }
-            });
-
-            $.get({
-                url:"{{url('/getJenis')}}",
-                type:'get',
-                dataType: 'json',
-                data: {
-                        "_token": "{{ csrf_token() }}",
-                    },
-                success:function(response){
-                    var len = 0;
-                    len = response.length;
-                    for(var i=0; i<len; i++){
-                        var id = response[i]['id_jahit'];
-                        var name = response[i]['nama_jahit'];
-                        var option = "<option value='"+id+"'>"+name+"</option>"; 
-                        $("#updateForm #detil").append(option);
-                        $("#basicform #detil").append(option); 
+                        // $("#basicform #short").append(option);
                     }
                 }
             });
         });
+
+        $("#basicform #detil").on('change',function(){
+            var updateJahit = $(this).val();
+            $("#basicForm #short option").each(function(){
+                $(this).remove();
+            });
+            $.get({
+                url:"{{url('/getUkuran')}}/" + updateJahit,
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+                        var id = response[i]['id_ukuran'];
+                        var name = response[i]['singkatan_ukuran'];
+                        var jenis = response[i]['nama_ukuran'];
+                        var option = "<option value='"+id+"'>"+name+" ("+ jenis +")</option>"; 
+                        // $("#updateForm #short").append(option); 
+                        $("#basicform #short").append(option);
+                    }
+                }
+            });
+        });
+        
+
+        $.get({
+            url:"{{url('/getSisi')}}",
+            type:'get',
+            dataType: 'json',
+            data: {
+                    "_token": "{{ csrf_token() }}",
+                },
+            success:function(response){
+                var len = 0;
+                len = response.length;
+                for(var i=0; i<len; i++){
+                    var id = response[i]['id_print'];
+                    var name = response[i]['keterangan_print'];
+                    var option = "<option value='"+id+"'>"+name+"</option>"; 
+                    $("#updateForm #nama").append(option);
+                    $("#basicform #nama").append(option); 
+                }
+            }
+        });
+
+        
+    });
 
 
 
@@ -234,9 +270,33 @@
             $('#short').val(short);
             $('#updateForm #harga').val(harga);
 
+            var updateJahit = $("#updateForm #detil").val();
+            $.get({
+                url:"{{url('/getUkuran')}}/" + updateJahit,
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+                        var id = response[i]['id_ukuran'];
+                        var name = response[i]['singkatan_ukuran'];
+                        var jenis = response[i]['nama_ukuran'];
+                        var option = "<option value='"+id+"'>"+name+" ("+ jenis +")</option>"; 
+                        $("#updateForm #short").append(option); 
+                        // $("#basicform #short").append(option);
+                    }
+                }
+            });
+
             $('#updateForm').attr('action', href);
             $("#editModal").modal('show');
         });
+
+        
     </script>
 
 @endpush

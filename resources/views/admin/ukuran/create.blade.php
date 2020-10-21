@@ -19,9 +19,18 @@
                             data-parsley-validate="">
                             @csrf
                             <div class="form-group">
+                            <label class="control-label">Jenis Jahit<span class="text-danger">*</span> :</label>
+                                <select class="form-control" name="id_jahit">
+                                    <option selected disabled>--Jenis Jahit--</option>
+                                    <option value="1">Reglan</option>
+                                    <option value="2">Non-Reglan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
                                 <!-- <input type="text" class="form-control" id="nama_ukuran" name="nama_ukuran" placeholder="Jenis Ukuran" required> -->
                                 <select name="nama_ukuran" id="nama_ukuran" class="form-control">
+                                    <option selected disabled>--Jenis Ukuran--</option>
                                     <option value="Dewasa">Dewasa</option>
                                     <option value="Kids (SSB)">Kids (SSB)</option>
                                     <option value="SD/TK">SD/TK</option>

@@ -40,6 +40,7 @@ class UkuranController extends Controller
     {
         //insert
         $jenis = Ukuran::insert([
+            "id_jahit" => $request->id_jahit,
             'nama_ukuran' => $request->nama_ukuran,
             'singkatan_ukuran' => $request->singkatan_ukuran,            
             'detil_ukuran' => $request->detil_ukuran
@@ -80,6 +81,7 @@ class UkuranController extends Controller
     {
         //
         Ukuran::where('id_ukuran', $id)->update([
+            "id_jahit" => $request->id_jahit,
             "nama_ukuran" => $request->nama_ukuran,
             "singkatan_ukuran" => $request->singkatan_ukuran,
             "detil_ukuran" => $request->detil_ukuran

@@ -11,6 +11,9 @@ class CustomPrint extends Model
     protected $primaryKey = 'id_custom';
 
     protected $fillable =[
+        'id_print',
+        'id_jahit',
+        'id_ukuran',
         'harga'
     ];
 

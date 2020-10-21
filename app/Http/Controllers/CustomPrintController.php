@@ -11,8 +11,8 @@ use App\Models\SisiPrint;
 
 class CustomPrintController extends Controller
 {
-    public function getUkuran(){
-        $ukuran = Ukuran::orderBy('nama_ukuran')->get();
+    public function getUkuran($id){
+        $ukuran = Ukuran::where('id_jahit',$id)->orderBy('nama_ukuran')->get();
 
         return response()->json($ukuran);
     }
@@ -56,7 +56,14 @@ class CustomPrintController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $custom = CustomPrint::create([
+            'id_print' => $request->sisi_print,
+            'id_ukuran' => $request->nama_ukuran,
+            'id_jahit' => $request->jenis_jahit,
+            'harga' =>$request->harga
+        ]);
+
+        return redirect()->back();
     }
 
     /**

@@ -79,6 +79,7 @@
                                 <table id="basic-datatables" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>Jenis Jahit</th>
                                             <th>Jenis Ukuran</th>
                                             <th>Singkatan Ukuran</th>
                                             <th>Detail Ukuran Badan(Panjang x Lebar) X Lengan (Panjang x Pendek)</th>
@@ -88,11 +89,12 @@
                                     <tbody>
                                         @foreach($size as $row)
                                         <tr>
+                                            <td>{{$row->jenisJahit->nama_jahit}}</td>
                                             <td>{{$row->nama_ukuran}}</td>
                                             <td>{{$row->singkatan_ukuran}}</td>
                                             <td>{{$row->detil_ukuran}}</td>
                                             <td>
-                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('ukuran.update', $row->id_ukuran)}}" data-short ="{{$row->singkatan_ukuran}}" data-nama="{{$row->nama_ukuran}}" data-desc="{{ $row->detil_ukuran }}">
+                                                <button class="btn btn-success btn-sm " id="edit" href="{{route('ukuran.update', $row->id_ukuran)}}" data-jenis="{{$row->id_jahit}}" data-short ="{{$row->singkatan_ukuran}}" data-nama="{{$row->nama_ukuran}}" data-desc="{{ $row->detil_ukuran }}">
                                                     <i class="fa fa-edit"> </i>
                                                 </button>
                                                 <!-- <button href="{{ route('ukuran.destroy', $row->id_ukuran) }}" class="btn btn-danger btn-sm" id="delete" data-title="{{ $row->singkatan_ukuran}} " data-sub="{{$row->nama_ukuran}}">
@@ -158,10 +160,12 @@
             var deskripsi = $(this).data('desc');
             var short = $(this).data('short');
             var nama = $(this).data('nama');
+            var jenis = $(this).data('jenis');
             
             $('#detil').val(deskripsi);
             $('#nama').val(nama);
             $('#short').val(short);
+            $("#jenis").val(jenis);
             $('#updateForm').attr('action', href);
             $("#editModal").modal('show');
         });
