@@ -57,3 +57,9 @@ Route::get('/pengiriman', function(){
 Route::get('/bayar', function(){
     return view("pembayaran");
 });
+Route::get('/about', function(){
+    return view("about");
+});
+Route::get('/contact', function(){
+    return view("contact");
+});
