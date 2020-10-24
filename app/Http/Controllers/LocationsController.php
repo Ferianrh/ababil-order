@@ -19,4 +19,10 @@ class LocationsController extends Controller
         $kota = Kota::where('id_provinsi',$id)->get();
         return response()->json($kota);
     }
+
+    //for shipping
+
+    public function getCost(){
+        //shipping process
+    }
 }

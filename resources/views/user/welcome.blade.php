@@ -9,12 +9,12 @@
         <br>
         <br>
         <div class="row">
-            <div class="col-4">
+            <div class="col-md-4 col-sm-4">
                 <h1>Bring Your Style With <br> TSTL - <a style="color: red">A</a>babil Sublime Printing</h1>
                 <p style="font-family: sans-serif">Lestarikan Kebudayaan dan tanamkan rasa Nasionalisme pada diri kalian dengan <br>Apparel dari TSTL - Ababil Sublime Printing yang dibungkus dengan teknologi dan modernisasi.</p>
             </div>
-            <div class="col-4">
-                <img src="{{asset('assets/images/examples/image1.png')}}"> 
+            <div class="col-md-4 col-sm-4">
+                <img src="{{asset('assets/images/examples/image1.png')}}" width="90%"> 
             </div>
         </div>
     </div>
@@ -51,18 +51,16 @@
 
  <!-- tampilkan barang -->
 
-    @include('templates.partials._footer')
+@include('templates.partials._footer')
 @endsection
 
 @push('scripts')
-@include('templates.partials._scriptsuser')
-
 <script type="text/javascript">
             var menuitems = document.getElementById("menuitems");
             menuitems.style.maxHeight = "0px";
             function menutoggle(){
                 if (menuitems.style.maxHeight == "0px") {
-                    menuitems.style.maxHeight = "200px";
+                    menuitems.style.maxHeight = "250px";
                 } else{
                     menuitems.style.maxHeight = "0px";
                 }

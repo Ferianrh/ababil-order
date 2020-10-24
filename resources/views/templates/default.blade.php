@@ -97,7 +97,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    @include('templates.partials._scriptsuser')
+
     @include('templates.partials._sweetalert')
     @stack('scripts')
 
