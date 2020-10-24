@@ -54,3 +54,6 @@ Route::get('/pemesanan', function(){
 Route::get('/pengiriman', function(){
     return view("pengiriman");
 });
+Route::get('/bayar', function(){
+    return view("pembayaran");
+});
