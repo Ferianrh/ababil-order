@@ -22,4 +22,8 @@ class Kurir extends Model
         return $this->hasMany('App\Models\Pesanan','id_kurir');
     }
 
+    public function pengiriman(){
+        return $this->hasMany('App\Models\Pengiriman','id_kurir');
+    }
+
 }

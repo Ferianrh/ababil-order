@@ -21,13 +21,13 @@
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="Text" class="form-control" >
+                            <input type="Text" name="nama_lengkap" class="form-control" >
                         </div>
                     </div>
                     
                     <Label>Ukuran</Label>
                     <div class="form-group row justiy-content-md-center">
-                        <div class="col-sm-10">
+                        <!-- <div class="col-sm-10">
                             <div class="form-check row mb-1">
                                 <div class="col-md-1">
                                 <input class="form-check-input" type="checkbox" id="gridCheck1">
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             
-                        </div>    
+                        </div>     -->
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Desain</label>

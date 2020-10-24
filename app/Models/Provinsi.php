@@ -21,6 +21,10 @@ class Provinsi extends Model
         return $this->hasMany('App\Models\Pelanggan','id_provinsi');
     }
 
+    public function pengiriman(){
+        return $this->hasMany('App\Models\Pengiriman','id_provinsi');
+    }
+
     public function Kota(){
         return $this->hasMany('App\Models\Kota','id_provinsi');
     }

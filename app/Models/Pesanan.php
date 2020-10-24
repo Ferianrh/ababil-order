@@ -29,7 +29,9 @@ class Pesanan extends Model
         return $this->belongsTo('App\Models\Katalog','id_paket');
     }
 
-    
+    public function pengiriman(){
+        return $this->hasOne('App\Models\Pengiriman', 'id_pesanan');
+    }
 
     public function kurir(){
         return $this->belongsTo('App\Models\Kurir','id_kurir');

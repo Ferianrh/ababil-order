@@ -22,4 +22,8 @@ class Kota extends Model
         return $this->hasMany('App\Models\Pelanggan','id_kota');
     }
 
+    public function pengiriman(){
+        return $this->hasMany('App\Models\Pengiriman','id_kota');
+    }
+
 }
