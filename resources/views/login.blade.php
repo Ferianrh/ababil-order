@@ -45,7 +45,7 @@
             </form>
         </div>
 
-        <div class="overlay-container">
+        <div class="overlay-container 	d-none d-sm-block">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
                     <h1>Selamat Datang!</h1>
