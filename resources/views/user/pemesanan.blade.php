@@ -17,7 +17,7 @@
         <div class="col-md-8 mt-4 mb-4">
             <div class="p-5 bg--white border--radius">
             <h2 class="mt-0 text-center">Form Pemesanan Paket</h2>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{route('pesan.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="bg-light border border-success rounded p-2 mb-3">
                         <h4 class="text-center text-dark">Data Paket</h4>
@@ -68,7 +68,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Jenis Kain:  </label>
                         <div class="col-sm-9">
-                        <select name="grade" class="form-control" id="kain">
+                        <select name="id_kain" class="form-control" id="kain">
                                 
                         </select>
                         </div>
@@ -144,25 +144,18 @@
                     
                     <div class="form-group">
                         <label class="control-label ">Upload Desain <span class="text-danger">*</span>:</label>
-                        <input type="file" class="form-control" id="image-source" onchange="previewImage()">
+                        <input type="file" class="form-control" id="image-source" name="image" accept="image/*" onchange="previewImage()" required>
                         <img id="image-preview" src="" class=" rounded img-fluid d-block p-2" width="200">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Keterangan</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Nomer celana + Nama"></textarea>
+                        <textarea class="form-control" name="keterangan_pesanan" rows="3" placeholder="Nomer celana + Nama"></textarea>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Penerima <span class="text-danger">*</span>:</label>
-                        <div class="col-sm-10">
-                            <input type="Text" name="nama_lengkap" class="form-control" >
-                        </div>
-                    </div>
-                    
                     <!-- <input type="checkbox" val="asd" class="cheks"> -->
                     <!-- <label class="form-check-label">H</label> -->
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary float-right">Lanjut ke Pengiriman <i class="fa fa-arrow-right"></i></button>
                 </form>
             </div>
         </div>
