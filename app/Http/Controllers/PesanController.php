@@ -10,17 +10,35 @@ use App\Models\Pemesanan;
 use App\Models\JenisJahit;
 use App\Models\Ukuran;
 use App\Models\Kain;
-
+use DB;
 
 use Auth;
 
 class PesanController extends Controller
 {
+
+    public function ukuran($id_jahit, $jenis){
+        $ukuran = Ukuran::where('id_jahit',$id_jahit)
+                        ->where('nama_ukuran',$jenis)
+                        ->get();
+        return response()->json($ukuran);
+        
+     }
+
+     public function kain(){
+        $kain = Kain::get();
+        // dd($kain);
+        return response()->json($kain,200);
+     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+     
+
     public function index()
     {
         //

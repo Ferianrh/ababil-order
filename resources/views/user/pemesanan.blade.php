@@ -19,32 +19,60 @@
             <h2 class="mt-0 text-center">Form Pemesanan Paket</h2>
                 <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="id_paket" value="{{$katalog->id_paket}}">
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Paket:  </label>
-                        <div class="col-sm-9">
-                            <input type="text" value="{{$katalog->nama_paket}}" class="form-control" disabled>
+                    <div class="bg-light border border-success rounded p-2 mb-3">
+                        <h4 class="text-center text-dark">Data Paket</h4>
+                        <input type="hidden" name="id_paket" value="{{$katalog->id_paket}}">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Nama Paket:  </label>
+                            <div class="col-sm-9">
+                                <input type="text" value="{{$katalog->nama_paket}}" class="form-control" disabled>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Deskripsi Paket:  </label>
-                        <div class="col-sm-9">
-                            <input type="text" value="{{$katalog->deskripsi_paket}}" class="form-control" disabled>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Deskripsi Paket:  </label>
+                            <div class="col-sm-9">
+                                <input type="text" value="{{$katalog->deskripsi_paket}}" class="form-control" disabled>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Ilustrasi :</label>
-                        <div class="col-sm-9">
-                            <img class="rounded img-thumbnail img-fluid d-block p-2" src={{URL::asset("assets/images/examples/$katalog->gambar_desain")}} width=200px alt="ilustrasi.jpg" >
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ilustrasi :</label>
+                            <div class="col-sm-9">
+                                <img class="rounded img-thumbnail img-fluid d-block p-2" src={{URL::asset("assets/images/examples/$katalog->gambar_desain")}} width=200px alt="ilustrasi.jpg" >
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Harga Paket/pcs:  </label>
-                        <div class="col-sm-9">
-                            <input type="text" value="{{format_rupiah($katalog->harga_paket)}}" class="form-control" disabled>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Harga Paket/pcs:  </label>
+                            <div class="col-sm-9">
+                                <input type="text" value="{{format_rupiah($katalog->harga_paket)}}" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Minimal Order:  </label>
+                            <div class="col-sm-9">
+                                <label class="text-normal">1 lusin</label>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Pilih Grade:  </label>
+                        <div class="col-sm-9">
+                        <select name="grade" class="form-control" id="grade">
+                                <option value="A">Grade A Kain Premium yang tidak ada di menu ( + {{format_rupiah(20000)}})</option>
+                                <option value="B">Grade B Memilih Kain di menu</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Jenis Kain:  </label>
+                        <div class="col-sm-9">
+                        <select name="grade" class="form-control" id="kain">
+                                
+                        </select>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-sm-3">
                             <label class="form-check-label"> Jenis Lengan <span class="text-danger">*</span>:</label>
@@ -67,7 +95,7 @@
                         <div class="col-sm-9">
                             <select name="jenis_jahit" id="jenis_jahit" class="form-control">
                                 @foreach($jenis as $row)
-                                    <option value="{{$row->id_jenis}}">{{$row->nama_jahit}}</option>
+                                    <option value="{{$row->id_jahit}}">{{$row->nama_jahit}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -80,78 +108,40 @@
                                 <option selected disabled>--Jenis Ukuran--</option>
                                 <option value="Dewasa">Dewasa</option>
                                 <option value="Kids (SSB)">Kids (SSB)</option>
-                                <option value="SD/TK">SD/TK</option>
+                                <option value="SD TK">SD/TK</option>
                             </select>
                         </div>
                     </div>
-                    <label for="">Ukuran <span class="text-danger">*</span>:</label>
-                    <div class="form-group row justiy-content-md-center">
-                        <!-- <div class="col-sm-10">
-                            <div class="form-check row mb-1">
-                                <div class="col-md-1">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                S
-                                </label>
+                    <p class="text-warning text-sm font-weight-lighter">Note : Centang ukuran yang anda butuhkan</p>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3">Ukuran <span class="text-danger">*</span>:</label>
+                        <div class="col-sm-9">
+                            <div class="row" >
+                                <div class="col-6" id="ukuran1">
+
                                 </div>
-                                <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="jumlah" >
-                                </div>
-                                <div class="col-md-1">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                XL
-                                </label>
-                                </div>
-                                <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="jumlah">
+                                <div class="col-6" id="ukuran2">
+                                
                                 </div>
                             </div>
-                            
-                            <div class="form-check row mb-1">
-                                <div class="col-md-1">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                M
-                                </label>
-                                </div>
-                                <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="jumlah">
-                                </div>
-                                <div class="col-md-1">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                XXL
-                                </label>
-                                </div>
-                                <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="jumlah">
-                                </div>
-                            </div>
-                            
-                            <div class="form-check row mb-1">
-                                <div class="col-md-1">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                L
-                                </label>
-                                </div>
-                                <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="jumlah">
-                                </div>
-                                <div class="col-md-1">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                XXXL
-                                </label>
-                                </div>
-                                <div class="col-md-3">
-                                <input type="text" class="form-control" placeholder="jumlah">
-                                </div>
-                            </div>
-                            
-                        </div>     -->
+                        </div>                  
                     </div>
+
+                    <!-- <div class="form-group row">
+                        <div class="col-sm-8 offset-2">
+                            <div class="row" >
+                                <div class="col-6" id="jumlah1">
+                                
+                                </div>
+
+                                <div class="col-6" id="jumlah2">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Desain</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1">
@@ -168,8 +158,10 @@
                             <input type="Text" name="nama_lengkap" class="form-control" >
                         </div>
                     </div>
+                    
+                    <!-- <input type="checkbox" val="asd" class="cheks"> -->
+                    <!-- <label class="form-check-label">H</label> -->
                     <button type="submit" class="btn btn-primary">Save</button>
-                        
                 </form>
             </div>
         </div>
@@ -187,17 +179,91 @@
 
 
 <script type="text/javascript">
-           var menuitems = document.getElementById("menuitems");
-           menuitems.style.maxHeight = "0px";
-           function menutoggle(){
-               if (menuitems.style.maxHeight == "0px") {
-                   menuitems.style.maxHeight = "250px";
-               } else{
-                   menuitems.style.maxHeight = "0px";
-               }
-           }
-           function read(){
-               location.href = "#small-container";
-           }
-       </script>
+    // $(document).ready(function(){
+        $("#jenis_ukuran").on('change',function(){
+            // $("#ukuran1").each(function(){
+            //     $(this).remove();
+            // });
+            // $("#ukuran2").each(function(){
+            //     $(this).remove();
+            // });
+            var updateJahit = $("#jenis_jahit").val();
+            var jenis = $(this).val();
+            $.get({
+                url:"{{url('/ukuran')}}/" + updateJahit + "/" + jenis,
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+                        var id = response[i]['id_ukuran'];
+                        var name = response[i]['singkatan_ukuran'];
+                        // var jenis = response[i]['nama_ukuran'];
+                        var row =  "<div class='form-group row'>"
+                        var div = "<div class='col-sm-1'>";
+                        var cb ="<input class='form-check-input' type='checkbox' name='id_ukuran[]' onclick='enable_form(this)' value='"+ id +"'>";
+                        var label = "<label class='form-check-label'>"+ name +"</label>";
+                        
+                        var input = "<input type='number' name='jumlah[]' id='in"+id+"' class='jumlah form-control col-sm-4' disabled>";
+                        var result = row+div+cb+label+"</div>"+input+"</div>";
+
+                        if(id%2 != 0){
+                            $("#ukuran1").append(result); 
+                            // $("#basicform #short").append(option);
+                        }else{
+                            $("#ukuran2").append(result); 
+                        }
+                    }
+                }
+            });
+        });
+
+        $("#grade").on('change',function(){
+            $.get({
+                url:"{{url('/getKain')}}",
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+                        var id = response[i]['id_kain'];
+                        var name = response[i]['nama_kain'];
+                        var option = "<option value='"+id+"'>"+name + "</option>"; 
+                        $("#kain").append(option); 
+                        // $("#basicform #short").append(option);
+                    }
+                }
+            });
+        });
+
+        function enable_form(tes) {
+            if (tes.checked) {
+                var id = $(tes).val();
+                $('#in'+id ).prop("disabled",false);
+            } else {
+                $('#in'+id).prop("disabled",true);
+            }
+
+            // if(tes.checked == false){
+            //     $('#in'+id).prop("disabled",true);
+
+            // }
+        }
+        // $("#ukuran .cheks").change(function(){
+        //     var updateUkuran = $(this).val();
+        //     alert("checked");
+
+        // });
+
+    // });
+
+</script>
 @endpush

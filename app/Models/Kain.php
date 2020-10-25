@@ -17,6 +17,6 @@ class Kain extends Model
     ];
 
     public function pesanan(){
-        return $this->hasMany('App\Models\DetailPesanan','id_kain');
+        return $this->hasMany('App\Models\Pesanan','id_kain');
     }
 }

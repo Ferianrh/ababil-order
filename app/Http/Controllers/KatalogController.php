@@ -100,7 +100,7 @@ class KatalogController extends Controller
             'harga_paket' => $request->harga_paket,
             'gambar_desain' => $file,
             'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->back();

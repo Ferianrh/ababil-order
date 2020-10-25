@@ -44,6 +44,8 @@ Route::resource('admin/custom-print','CustomPrintController')->middleware(['role
 Route::get('/getUkuran/{id}','CustomPrintController@getUkuran');
 Route::get('/getJenis','CustomPrintController@getJenis');
 Route::get('/getSisi','CustomPrintController@getSisi');
+Route::get('/ukuran/{id}/{jenis}','PesanController@ukuran');
+Route::get('/getKain','PesanController@kain');
 Route::get('/getProvince','LocationsController@getProvince');
 Route::get('/getCity/{id}','LocationsController@getCity');
 
