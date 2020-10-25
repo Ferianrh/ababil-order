@@ -132,14 +132,10 @@
 
     @include('templates.partials._footer')
 
-<!-- tampilkan barang -->
-
-   @include('templates.partials._footer')
-
 @endsection
 
 @push('scripts')
-@include('templates.partials._scripts-user')
+@include('templates.partials._scriptsuser')
 
 <script type="text/javascript">
            var menuitems = document.getElementById("menuitems");

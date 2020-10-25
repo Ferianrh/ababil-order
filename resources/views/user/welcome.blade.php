@@ -55,6 +55,7 @@
 @endsection
 
 @push('scripts')
+@include('templates.partials._scriptsuser')
 <script type="text/javascript">
             var menuitems = document.getElementById("menuitems");
             menuitems.style.maxHeight = "0px";

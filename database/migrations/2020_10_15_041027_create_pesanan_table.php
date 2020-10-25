@@ -18,6 +18,8 @@ class CreatePesananTable extends Migration
             $table->integer('id_paket')->nullable()->unsigned();
             // $table->integer('id_kurir')->nullable()->unsigned();
             $table->integer('id_kain')->nullable()->unsigned();
+            $table->string('keterangan_pesanan',250);
+
             $table->date('tanggal_pesanan');
             // $table->string('alamat_pengiriman',200);
             $table->string('status_pesanan',30);

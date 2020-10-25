@@ -13,13 +13,11 @@ class Pesanan extends Model
 
     protected $fillable = [
         'id_paket',
-        'id_kurir',
         'id_kain',
-        'total_pembayaran',
-        'sudah_dibayar',
-        'tanggal_pembayaran',
-        'bukti_pembayaran',
-        'status_pembayaran'
+        'keterangan_pesanan',
+        'tanggal_pesanan',
+        'status_pesanan',
+        'custom_desain'
     ];
 
     public function pembayaran(){

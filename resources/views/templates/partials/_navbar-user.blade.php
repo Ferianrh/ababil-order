@@ -1,53 +1,3 @@
-<<<<<<< HEAD
-<div class="navbar">
-    <div class="logo">
-        <img src="{{asset('assets/images/logo/ABABIL 1.png')}}" width="125px"  alt="logo"/>
-    </div>
-    <nav>
-        <ul id="menuitems">
-        @if(Auth::check())
-            <li><a href="{{route('home')}}">Home</a></li>
-        @else
-            <li><a href="/">Home</a></li>
-        @endif
-            <li><a href="#">Products</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            
-            @if(Auth::check())
-            <li>
-                <div class="dropdown">
-                    <div class="btn btn-primary-outline dropdown-toggle text-center pr-3"  data-toggle="dropdown" aria-expanded="true">
-                        <i class="fa fa-user-o"></i> {{Auth::user()->username}}
-                    </div>
-
-                    <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{route('setting.index')}}">
-                            <i class="fa fa-cog mr-3 ml-1"></i> Profil
-                        </a>
-                        <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();" >
-                                <i class="fa fa-power-off mr-3 ml-1"></i> Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                    </div>
-                </div>
-            </li>
-            @else
-            <li><a href="{{ route('login') }}">Login</a></li>
-            @endif
-        </ul>
-    </nav>
-    <a><img src="{{asset('assets/images/logo/menu.png')}}" class="menu-icon" onclick="menutoggle();"></a>
-</div>
-@push('scripts')
-    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-@endpush
-=======
     <!-- <div class="navbar">
                 <div class="logo ">
                     <img src="{{asset('assets/images/logo/ABABIL 1.png')}}" width="125px"  alt="logo"/>
@@ -104,23 +54,27 @@
                 </button>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                     <ul class="nav navbar-nav ">
-                        <li class="nav-item"><a  class="nav-link" href="#">Home</a></li>
+                    @if(Auth::check())
+                        <li class="nav-item"><a  class="nav-link" href="{{route('home')}}">Home</a></li>
+                    @else
+                    <li class="nav-item"><a  class="nav-link" href="/">Home</a></li>
+                    @endif
                         <li class="nav-item"><a  class="nav-link" href="#">Products</a></li>
-                        <li class="nav-item"><a  class="nav-link" href="#">About</a></li>
-                        <li class="nav-item"><a   class="nav-link"href="#">Contact</a></li>
+                        <li class="nav-item"><a  class="nav-link" href="/about">About</a></li>
+                        <li class="nav-item"><a   class="nav-link"href="/contact">Contact</a></li>
                         
                         @if(Auth::check())
                         <li class="nav-item">
                             <div class="dropdown">
-                                <a  class="btn btn-primary dropdown-toggle text-center pr-3 nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user-circle"></i> {{Auth::user()->username}}
+                                <a  class="btn dropdown-toggle text-center pr-3 nav-link bg-transparent text-dark" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user-circle text-dark"></i> {{Auth::user()->username}}
                                 </a>
 
                                 <div class="dropdown-menu item-dropdown" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item nav-link" href="#">
                                         <i class="fa fa-user-circle mr-3 ml-1"></i>  {{Auth::user()->username}}
                                     </a>
-                                    <a class="dropdown-item nav-link" href="">
+                                    <a class="dropdown-item nav-link" href="{{route('setting.index')}}">
                                         <i class="fa fa-cog mr-3 ml-1"></i> Profil
                                     </a>
                                     <a class="dropdown-item nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
@@ -143,5 +97,4 @@
     </nav>
 
             
->>>>>>> 88c641ba0d3d9ddce98339701f63dbbd57760c38
             

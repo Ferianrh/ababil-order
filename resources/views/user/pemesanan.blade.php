@@ -54,9 +54,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <input type="hidden" name="id_pelanggan" value="{{Auth::user()->pelanggan->id_pelanggan}}">
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Pilih Grade:  </label>
+                        <label class="col-sm-3 col-form-label">Pilih Grade<span class="text-danger">*</span>:  </label>
                         <div class="col-sm-9">
                         <select name="grade" class="form-control" id="grade">
                                 <option value="A">Grade A Kain Premium yang tidak ada di menu ( + {{format_rupiah(20000)}})</option>
@@ -143,8 +143,9 @@
                     </div> -->
                     
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Desain</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <label class="control-label ">Upload Desain <span class="text-danger">*</span>:</label>
+                        <input type="file" class="form-control" id="image-source" onchange="previewImage()">
+                        <img id="image-preview" src="" class=" rounded img-fluid d-block p-2" width="200">
                     </div>
 
                     <div class="form-group">
@@ -176,10 +177,22 @@
 @endsection
 
 @push('scripts')
+@include('templates.partials._scriptsuser')
 
 
 <script type="text/javascript">
     // $(document).ready(function(){
+
+    function previewImage() {
+        document.getElementById("image-preview").style.display = "block"; 
+        document.getElementById("image-preview").style.width = "200";
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("image-preview").src = oFREvent.target.result;
+        };
+    };
         $("#jenis_ukuran").on('change',function(){
             // $("#ukuran1").each(function(){
             //     $(this).remove();

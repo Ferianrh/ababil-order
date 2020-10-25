@@ -90,6 +90,7 @@
 @endsection
 
 @push('scripts')
+@include('templates.partials._scriptsuser')
 
 
 <script type="text/javascript">

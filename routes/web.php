@@ -54,6 +54,12 @@ Route::get('/getCity/{id}','LocationsController@getCity');
 Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 Route::resource('/setting', 'SettingController')->middleware(['auth']);
 Route::resource('/pesan','PesanController')->middleware(['auth']);
+Route::get('/about', function(){
+    return view("user/about");
+});
+Route::get('/contact', function(){
+    return view("user/contact");
+});
 
 
 // Route::get('/jersey', function(){
@@ -73,12 +79,7 @@ Route::get('/pengiriman', function(){
 Route::get('/bayar', function(){
     return view("pembayaran");
 });
-Route::get('/about', function(){
-    return view("about");
-});
-Route::get('/contact', function(){
-    return view("contact");
-});
+
 Route::get('/sign-up', function(){
     return view("Sign-up");
 });
