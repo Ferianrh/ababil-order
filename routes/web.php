@@ -70,3 +70,15 @@ Route::get('/pemesanan', function(){
 Route::get('/pengiriman', function(){
     return view("pengiriman");
 });
+Route::get('/bayar', function(){
+    return view("pembayaran");
+});
+Route::get('/about', function(){
+    return view("about");
+});
+Route::get('/contact', function(){
+    return view("contact");
+});
+Route::get('/sign-up', function(){
+    return view("Sign-up");
+});

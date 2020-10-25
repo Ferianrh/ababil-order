@@ -6,32 +6,52 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1 form-sign-in ">
+            <div class="col-md-10 col-md-offset-1 form-sign-in">
                 <div class="row">
-                    <div class="col-md-5">
-                        <form action="{{route('login')}}" method="POST">
-                            @csrf
-                            <h1>Sign In</h1>
+                    <div class="col-md-4 form-label d-none d-sm-block">
+                        <h1>Selamat Datang!</h1>
+                        <p>Silahkan daftar bersama kami dan kenali serta lestarikan budaya Indonesia dengan Produk dari TSTL-<a style="color: red;">C</a>oolture.ID </p>
+                        <!-- <button class="ghost" id="signIn">Sign In</button> -->
+                        <a href=""  class="btn btn-sign ">Sign In</a>
+                    </div>
+                    <div class="col-md-5 ">
+                        <form action="#" method="POST">
+                                @csrf
+                            <h1>Create Account</h1>
                             <div class="social-container">
                                 <a href="#" class="social"><i class="fa fa-facebook"></i></a>
                                 <a href="#" class="social"><i class="fa fa-google"></i></a>
                                 <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
                             </div>
-                           <div class="form-group">
-                                <input class="input-login-sign-up"  type="text" name="username" placeholder="Username">
-                                <span>or use your account</span>
-                                <input class="input-login-sign-up" id="exampleInputPassword1" type="password" name="password" placeholder="Password">
-                                <a href="#">Forgot Your Password</a>
-                                
-                           </div>
-                           <button type="submit"  class="btn btn-sign ">Sign In</button>
+                            <div class="form-group">
+                                <input class="input-login-sign-up" type="text" name="fname" placeholder="First Name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input class="input-login-sign-up" type="text" name="lname" placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="input-login-sign-up" name="email" placeholder="Email">
+                                <span>or use your email for registration</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="alamat" class="input-login-sign-up" placeholder="Alamat">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="input-login-sign-up" name="user" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="input-login-sign-up" name="password" placeholder="Password">    
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox"  class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">I agree to terms & conditions</label>
+                                <!-- <input type="checkbox" class="cek" id="icek"><span class="spancek">I agree to terms & conditions</span> -->
+                            </div>
+                         
+                            <button type="submit" class="btn btn-sign " name="regis" id="reg" onclick="cek();">Sign Up</button>
+                            <!-- <input type="submit" name="regis" value="Sign Up" id="reg" onclick="cek();" disabled> -->
                         </form>
-                    </div>
-                    <div class="col-md-4 form-label d-none d-sm-block">
-                        <h1>Haii, Gaiss!</h1>
-                        <p>Silahkan masuk dan nikmati produk dari TSTL-<a style="color: red;">C</a>oolture.ID  </p>
-                        <a href=""class="btn btn-sign " id="signUp">Sign Up</a>
-                        <!-- <button type="submit"  class="btn btn-sign " id="signUp">Sign Up</button> -->
                     </div>
                 </div>
             </div>
