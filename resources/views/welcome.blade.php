@@ -6,15 +6,19 @@
 @section('content')
     <div class="container">
         @include('templates.partials._navbar-user') 
+    </div>
+    <br>
         <br>
-        <br>
+    <div class="container">
+    
+       
         <div class="row">
-            <div class="col-4">
+            <div class="col-md-4">
                 <h1>Bring Your Style With <br> TSTL - <a style="color: red">A</a>babil Sublime Printing</h1>
                 <p style="font-family: sans-serif">Lestarikan Kebudayaan dan tanamkan rasa Nasionalisme pada diri kalian dengan <br>Apparel dari TSTL - Ababil Sublime Printing yang dibungkus dengan teknologi dan modernisasi.</p>
             </div>
-            <div class="col-4">
-                <img src="{{asset('assets/images/examples/image1.png')}}"> 
+            <div class="col-md-4 d-sm-none d-md-block d-none d-sm-block">
+                <img src="{{asset('assets/images/examples/image1.png')}}" height="302"> 
             </div>
         </div>
     </div>
@@ -128,6 +132,70 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+        <div class="row justiy-content-md-center ">
+            <div class="col-md-8 col-md-offset-2 mb-4">
+                <div class="p-5 bg--white border--radius">
+                    <h3 class="text-center">Ukuran Jersey</h3>
+                    <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Ukuran 
+                                </th>
+                                <th>
+                                    Panjang
+                                </th>
+                                <th>
+                                    Lebar
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                               <tr>
+                                   
+                                   <td>S</td>
+                                   <td>69</td>
+                                   <td>48</td>
+                                   
+                               </tr>
+                               <tr>
+                                   
+                                   <td>M</td>
+                                   <td>72</td>
+                                   <td>50,5</td>
+                               </tr>
+                               <tr>
+                                   
+                                   <td>L</td>
+                                   <td>75</td>
+                                   <td>53</td>
+                               </tr>
+                               <tr>
+                                   
+                                   <td>XL</td>
+                                   <td>76,5</td>
+                                   <td>55,5</td>
+                               </tr>
+                               <tr>
+                                   
+                                   <td>XXL</td>
+                                   <td>80,5</td>
+                                   <td>58,5</td>
+                               </tr>
+                               <tr>
+                                  
+                                   <td>XXXL</td>
+                                   <td>82</td>
+                                   <td>63,5</td>
+                               </tr>
+                           </tbody>
+                    </table>    
+                    </div>
+                   
+                </div>
             </div>
         </div>
     </div>

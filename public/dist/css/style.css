@@ -13,10 +13,10 @@ body{
     align-items: center;
     padding: 20px;
 }
-nav{
+/* nav{
     flex: 1;
     text-align: right;
-}
+} */
 nav ul{
     display: inline-block;
     list-style-type: none;
