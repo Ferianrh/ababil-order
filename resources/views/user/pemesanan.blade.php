@@ -199,6 +199,8 @@
                 success:function(response){
                     var len = 0;
                     len = response.length;
+                    var app = '';
+                    var app2='';
                     for(var i=0; i<len; i++){
                         var id = response[i]['id_ukuran'];
                         var name = response[i]['singkatan_ukuran'];
@@ -212,12 +214,18 @@
                         var result = row+div+cb+label+"</div>"+input+"</div>";
 
                         if(id%2 != 0){
-                            $("#ukuran1").append(result); 
+                            app+=result;
+                            // $("#ukuran1").empty().append(result);
+                            // $("#ukuran1").append(result); 
                             // $("#basicform #short").append(option);
                         }else{
-                            $("#ukuran2").append(result); 
+                            app2+=result;
+                            // $("#ukuran2").empty().append(result);
+                            // $("#ukuran2").append(result); 
                         }
                     }
+                    $("#ukuran2").empty().append(app2);
+                    $("#ukuran1").empty().append(app);
                 }
             });
         });
@@ -245,11 +253,13 @@
         });
 
         function enable_form(tes) {
+            var id = $(tes).val();
             if (tes.checked) {
-                var id = $(tes).val();
+                
                 $('#in'+id ).prop("disabled",false);
             } else {
                 $('#in'+id).prop("disabled",true);
+                // alert('ha');
             }
 
             // if(tes.checked == false){
