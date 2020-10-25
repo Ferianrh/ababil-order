@@ -60,7 +60,9 @@ class CustomPrintController extends Controller
             'id_print' => $request->sisi_print,
             'id_ukuran' => $request->nama_ukuran,
             'id_jahit' => $request->jenis_jahit,
-            'harga' =>$request->harga
+            'harga' =>$request->harga,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->back();
@@ -102,7 +104,9 @@ class CustomPrintController extends Controller
             'id_print' => $request->sisi_print,
             'id_ukuran' => $request->nama_ukuran,
             'id_jahit' => $request->jenis_jahit,
-            'harga' =>$request->harga
+            'harga' =>$request->harga,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->back();

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CustomPrint extends Model
 {
+    public $timestamps = true;
     protected $table = 'custom_print';
 
     protected $primaryKey = 'id_custom';

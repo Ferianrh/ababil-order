@@ -43,7 +43,9 @@ class UkuranController extends Controller
             "id_jahit" => $request->id_jahit,
             'nama_ukuran' => $request->nama_ukuran,
             'singkatan_ukuran' => $request->singkatan_ukuran,            
-            'detil_ukuran' => $request->detil_ukuran
+            'detil_ukuran' => $request->detil_ukuran,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
         return redirect()->back()->with(['success' => 'Data Jahit Berhasil Ditambahkan']);
     }
@@ -84,7 +86,9 @@ class UkuranController extends Controller
             "id_jahit" => $request->id_jahit,
             "nama_ukuran" => $request->nama_ukuran,
             "singkatan_ukuran" => $request->singkatan_ukuran,
-            "detil_ukuran" => $request->detil_ukuran
+            "detil_ukuran" => $request->detil_ukuran,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
         return redirect()->back();
     }

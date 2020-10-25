@@ -98,7 +98,9 @@ class KatalogController extends Controller
             'nama_paket' => $request->nama_paket,
             'deskripsi_paket' => $request->deskripsi_paket,
             'harga_paket' => $request->harga_paket,
-            'gambar_desain' => $file
+            'gambar_desain' => $file,
+            'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->back();

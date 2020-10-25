@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Katalog;
+use App\Models\CustomPrint;
+use App\Models\Pemesanan;
+use App\Models\JenisJahit;
+use App\Models\Ukuran;
+use App\Models\Kain;
+
+
 use Auth;
 
 class PesanController extends Controller
@@ -48,7 +56,11 @@ class PesanController extends Controller
      */
     public function show($id)
     {
-        //
+        //show paket
+
+        $katalog = Katalog::where('id_paket',$id)->first();
+        $jenis = JenisJahit::get();
+        return view('user/pemesanan',compact('katalog','jenis'));
     }
 
     /**

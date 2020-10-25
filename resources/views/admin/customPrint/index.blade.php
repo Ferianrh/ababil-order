@@ -216,6 +216,7 @@
             });
         });
 
+
         $("#basicform #detil").on('change',function(){
             var updateJahit = $(this).val();
             $("#basicForm #short option").each(function(){

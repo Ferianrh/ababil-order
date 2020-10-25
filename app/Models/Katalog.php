@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Katalog extends Model
 {
+    public $timestamps = true;
     protected $table ='katalog';
 
     protected $primaryKey = 'id_paket';

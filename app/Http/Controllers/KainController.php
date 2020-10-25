@@ -42,7 +42,9 @@ class KainController extends Controller
         //insert
         $kain = Kain::insert([
             'nama_kain' => $request->nama_kain,
-            'deskripsi_kain' => $request->deskripsi_kain
+            'deskripsi_kain' => $request->deskripsi_kain,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->back()->with(['success' => 'Data Kain Berhasil Ditambahkan']);
@@ -82,7 +84,9 @@ class KainController extends Controller
         //update
         $kain = Kain::where('id_kain', $id)->update([
             'nama_kain' => $request->nama_kain,
-            'deskripsi_kain' =>$request->deskripsi_kain
+            'deskripsi_kain' =>$request->deskripsi_kain,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
         return redirect()->back();
     }

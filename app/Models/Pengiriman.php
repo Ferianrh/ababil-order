@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pengiriman extends Model
 {
+    public $timestamps = true;
     //table
 
     protected $table = 'pengiriman';

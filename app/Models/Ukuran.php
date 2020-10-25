@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ukuran extends Model
 {
+    public $timestamps = true;
     protected $table = 'ukuran';
 
     protected $primaryKey = 'id_ukuran';

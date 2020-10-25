@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SisiPrint extends Model
 {
+    public $timestamps = true;
     protected $table = 'sisi_print';
 
     protected $primaryKey = 'id_print';

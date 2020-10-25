@@ -35,7 +35,7 @@
                                     <p class="card-text">
                                         {{$row->deskripsi_paket}}
                                     </p>
-                                    <a href="{{route('pesan.index')}}" class="btn btn-primary btn-card">Beli</a>
+                                    <a href="{{route('pesan.show',$row->id_paket)}}" class="btn btn-primary btn-card">Beli</a>
                                     <p class="float-right" >{{ format_rupiah($row->harga_paket) }}</p>
                                 </div>  
                             </div>

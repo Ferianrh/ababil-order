@@ -155,6 +155,8 @@
 @endsection
 
 @push('scripts')
+@include('templates.partials._scripts-admin')
+
 <script>
         (function($) {
             "use strict";

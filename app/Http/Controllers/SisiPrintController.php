@@ -40,7 +40,9 @@ class SisiPrintController extends Controller
     {
         //insert
         $sisi = SisiPrint::insert([
-            'keterangan_print' => $request->ket_print
+            'keterangan_print' => $request->ket_print,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
         return redirect()->back()->with(['success' => 'Data Sisi Print Berhasil Ditambahkan']);
     }
@@ -78,7 +80,9 @@ class SisiPrintController extends Controller
     {
         //update
         $sisi = SisiPrint::where('id_print',$id)->update([
-            'keterangan_print' => $request->ket_print
+            'keterangan_print' => $request->ket_print,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->back();

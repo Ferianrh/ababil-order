@@ -16,7 +16,7 @@
                         <!-- basic form -->
                         <!-- ============================================================== -->
                         <form action="" method="POST" id="updateForm"
-                            data-parsley-validate="">
+                            data-parsley-validate="" enctype="multipart/form-data">
                             @csrf
                             {{ method_field('PUT') }}
                             <div class="form-group">
