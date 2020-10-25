@@ -13,3 +13,5 @@
     <script src="{{asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('assets/libs/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
     <script src="{{asset('dist/js/data-table/datatables-init.js')}}"></script>
+
+<!-- admin scripts -->

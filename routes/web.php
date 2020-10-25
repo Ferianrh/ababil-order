@@ -26,15 +26,43 @@ Route::group(['middleware' => 'guest'], function () {
 
 // Route::get('/','')
 
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//admin
+Route::get('admin/dashboard', function(){
+    return view('admin/dashboard');
+})->middleware(['role','auth'])->name('admin.dashboard');
+//user
+Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 
 
-Route::get('/jersey', function(){
-    return view("jersey");
-});
+// Route::get('/jersey', function(){
+//     return view("jersey");
+// });
 
 Route::get('/form-jersey', function(){
     return view("form-jersey");
+});
+Route::get('/setting', function(){
+    return view("setting-profile");
+});
+Route::get('/pemesanan', function(){
+    return view("pemesanan");
+});
+Route::get('/pengiriman', function(){
+    return view("pengiriman");
+});
+Route::get('/bayar', function(){
+    return view("pembayaran");
+});
+Route::get('/about', function(){
+    return view("about");
+});
+Route::get('/contact', function(){
+    return view("contact");
+});
+Route::get('/sign-up', function(){
+    return view("Sign-up");
 });
