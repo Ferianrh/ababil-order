@@ -15,7 +15,7 @@
         <div class="row ">
             <div class="col-md-12 mt-4 mb-4">
                 <div class="p-4 bg--white border--radius">
-                    <h3 class="mt-0">Checkout</h3>
+                    <h3 class="mt-0">Data pengirimana</h3>
                     <form action="">
                     <div class="form-group">
                         <label for="comment">Alamat Pengirim</label>
@@ -25,8 +25,6 @@
                     <button type="button" class="btn btn-light p-2">Pilih Alamat Lain</button>
 
                     <div class="form-group mt-4 ">
-                        
-                        
                         <div class="row">
                             <div class="col-md-3  " >
                                 <label for="comment">Produk Dipesan</label>

@@ -90,7 +90,7 @@ class PesanController extends Controller
                 ]);
             }
 
-        return redirect('/pengiriman');
+        return redirect(route('pengiriman.show',$order->id_pesanan));
     }
 
     /**

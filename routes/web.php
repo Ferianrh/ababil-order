@@ -61,21 +61,20 @@ Route::get('/contact', function(){
     return view("user/contact");
 });
 
+Route::get('/pengiriman', function(){
+    return view("pengiriman");
+});
+
 
 // Route::get('/jersey', function(){
 //     return view("jersey");
 // });
 
-Route::get('/form-jersey', function(){
-    return view("form-jersey");
-});
 
-Route::get('/pemesanan', function(){
-    return view("pemesanan");
-});
-Route::get('/pengiriman', function(){
-    return view("pengiriman");
-});
+// Route::get('/pemesanan', function(){
+//     return view("pemesanan");
+// });
+
 Route::get('/bayar', function(){
     return view("pembayaran");
 });
