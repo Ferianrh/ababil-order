@@ -61,9 +61,7 @@ Route::get('/contact', function(){
     return view("user/contact");
 });
 
-Route::get('/pengiriman', function(){
-    return view("pengiriman");
-});
+Route::resource('/pengiriman', 'PengirimanController');
 
 
 // Route::get('/jersey', function(){
