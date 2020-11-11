@@ -19,7 +19,7 @@ class Ukuran extends Model
     ];
 
     public function jenisJahit(){
-        return $this->belongsto('App\Models\JenisJahit','id_jahit');
+        return $this->belongsTo('App\Models\JenisJahit','id_jahit');
     }
     
     public function pesanan(){

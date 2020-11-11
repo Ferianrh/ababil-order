@@ -38,4 +38,10 @@ class Pelanggan extends Model
     public function Kota(){
         return $this->belongsTo('App\Models\Kota','id_kota');
     }
+
+    public function pesanan(){
+        return $this->belongsToMany('App\Models\Pesanan','detail_pesanan', 'id_pelanggan','id_pesanan');
+    }
+
+
 }

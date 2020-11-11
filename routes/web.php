@@ -48,6 +48,8 @@ Route::get('/ukuran/{id}/{jenis}','PesanController@ukuran');
 Route::get('/getKain','PesanController@kain');
 Route::get('/getProvince','LocationsController@getProvince');
 Route::get('/getCity/{id}','LocationsController@getCity');
+Route::post('/getService','LocationsController@getService')->name('rajaongkir.service');
+Route::post('/getCost', 'LocationsController@getCost')->name('rajaongkir.cost');
 
 
 //user
@@ -61,7 +63,7 @@ Route::get('/contact', function(){
     return view("user/contact");
 });
 
-Route::resource('/pengiriman', 'PengirimanController');
+Route::resource('/pengiriman', 'PengirimanController')->middleware(['auth']);
 
 
 // Route::get('/jersey', function(){

@@ -19,15 +19,15 @@ class CustomPrint extends Model
     ];
 
     public function sisiPrint(){
-        return $this->belongsto('App\Models\SisiPrint','id_print');
+        return $this->belongsTo('App\Models\SisiPrint','id_print');
     }
 
     public function ukuran(){
-        return $this->belongsto('App\Models\Ukuran','id_ukuran');
+        return $this->belongsTo('App\Models\Ukuran','id_ukuran');
     }
 
     public function jenisJahit(){
-        return $this->belongsto('App\Models\JenisJahit','id_jahit');
+        return $this->belongsTo('App\Models\JenisJahit','id_jahit');
     }
 
     public function detailPesanan(){

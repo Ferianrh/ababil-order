@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+
 
 use App\Models\Provinsi;
 use App\Models\Kota;
@@ -24,5 +26,55 @@ class LocationsController extends Controller
 
     public function getCost(){
         //shipping process
+        $client = new Client();
+
+        try {
+            $response = $client->request('POST','https://api.rajaongkir.com/starter/cost',
+            array(
+                'body' => 'origin=501&destination=247&weight=1700&courier=jne',
+                'headers' => array (
+                    'key' => env('RAJAONGKIR_API_KEY','c6254e68e946ac3f5f7ba7e4adcbea0e'),
+                    'content-type' => 'application/x-www-form-urlencoded',
+                )
+            )
+        );
+        } catch (RequestException $e) {
+            //throw $th;
+            var_dump($e->getResponse()->getBody()->getContents());
+        }
+        $json = $response->getBody()->getContents();
+
+        $array_result = json_decode($json, true);
+
+        return $array_result['rajaongkir']['results'][0];
+
+        
+    }
+
+    public function getService(){
+        //shipping process
+        $client = new Client();
+
+        try {
+            $response = $client->request('POST','https://api.rajaongkir.com/starter/cost',
+            array(
+                'body' => 'origin=501&destination=247&weight=1700&courier=jne',
+                'headers' => array (
+                    'key' => env('RAJAONGKIR_API_KEY','c6254e68e946ac3f5f7ba7e4adcbea0e'),
+                    'content-type' => 'application/x-www-form-urlencoded',
+                )
+            )
+        );
+        } catch (RequestException $e) {
+            //throw $th;
+            var_dump($e->getResponse()->getBody()->getContents());
+        }
+        $json = $response->getBody()->getContents();
+
+        $array_result = json_decode($json, true);
+
+        return $array_result['rajaongkir']['results'][0];
+
+        
     }
 }

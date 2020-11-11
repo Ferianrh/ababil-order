@@ -59,6 +59,7 @@
                         <label class="col-sm-3 col-form-label">Pilih Grade<span class="text-danger">*</span>:  </label>
                         <div class="col-sm-9">
                         <select name="grade" class="form-control" id="grade">
+                                <option value="" disabled selected>Pilih Grade</option>
                                 <option value="A">Grade A Kain Premium yang tidak ada di menu ( + {{format_rupiah(20000)}})</option>
                                 <option value="B">Grade B Memilih Kain di menu</option>
                             </select>
@@ -237,6 +238,7 @@
         });
 
         $("#grade").on('change',function(){
+            var grade = $(this).val();
             $.get({
                 url:"{{url('/getKain')}}",
                 type:'get',
@@ -245,14 +247,23 @@
                         "_token": "{{ csrf_token() }}",
                     },
                 success:function(response){
+                    if(grade=="A"){
+                        $("#kain").empty().append(
+                        '<option value="Kain Premium">Kain Premium</option>');
+                    }else{
+                        $("#kain").empty().append(
+                        '<option value="" disabled >Pilih Kain</option>');
+                    }
                     var len = 0;
                     len = response.length;
-                    for(var i=0; i<len; i++){
-                        var id = response[i]['id_kain'];
-                        var name = response[i]['nama_kain'];
-                        var option = "<option value='"+id+"'>"+name + "</option>"; 
-                        $("#kain").append(option); 
-                        // $("#basicform #short").append(option);
+                    if(grade=="B"){
+                        for(var i=0; i<len; i++){
+                            var id = response[i]['id_kain'];
+                            var name = response[i]['nama_kain'];
+                            var option = "<option value='"+id+"'>"+name + "</option>"; 
+                            $("#kain").append(option); 
+                            // $("#basicform #short").append(option);
+                        }
                     }
                 }
             });

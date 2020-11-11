@@ -8,6 +8,7 @@ use App\Models\Pesanan;
 use App\Models\DetailPesanan;
 use App\Models\Pengiriman;
 use App\Models\Pelanggan;
+use App\Models\Kurir;
 
 class PengirimanController extends Controller
 {
@@ -51,8 +52,9 @@ class PengirimanController extends Controller
     public function show($id)
     {
         //
-        $order = Pesanan::where('id_pesanan',$id)->first();
-        return view('user/pengiriman',compact('order'));
+        $order = DetailPesanan::where('id_pesanan',$id)->first();
+        $courier = Kurir::get();
+        return view('user/pengiriman',compact('order','courier'));
     }
 
     /**
