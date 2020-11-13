@@ -24,7 +24,8 @@ class CreatePengirimanTable extends Migration
             $table->integer('kode_pos')->unsigned();
             $table->string('alamat_pengiriman',200);
             $table->string('jenis_pengiriman',50);
-            $table->string('no_resi',30);
+            $table->integer('biaya_pengiriman')->unsigned();
+            $table->string('no_resi',30)->nullable();
             $table->timestamps();
             $table->softDeletes();
 

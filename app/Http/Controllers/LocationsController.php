@@ -24,14 +24,14 @@ class LocationsController extends Controller
 
     //for shipping
 
-    public function getCost(){
+    public function getCost(Request $request){
         //shipping process
         $client = new Client();
 
         try {
             $response = $client->request('POST','https://api.rajaongkir.com/starter/cost',
             array(
-                'body' => 'origin=501&destination=247&weight=1700&courier=jne',
+                'body' => 'origin=247&destination='.$request->kota.'&weight='.$request->berat.'&courier='.$request->kurir,
                 'headers' => array (
                     'key' => env('RAJAONGKIR_API_KEY','c6254e68e946ac3f5f7ba7e4adcbea0e'),
                     'content-type' => 'application/x-www-form-urlencoded',
@@ -51,14 +51,14 @@ class LocationsController extends Controller
         
     }
 
-    public function getService(){
+    public function getService(Request $request){
         //shipping process
         $client = new Client();
 
         try {
             $response = $client->request('POST','https://api.rajaongkir.com/starter/cost',
             array(
-                'body' => 'origin=501&destination=247&weight=1700&courier=jne',
+                'body' => 'origin=247&destination='.$request->kota.'&weight=1700&courier='.$request->kurir,
                 'headers' => array (
                     'key' => env('RAJAONGKIR_API_KEY','c6254e68e946ac3f5f7ba7e4adcbea0e'),
                     'content-type' => 'application/x-www-form-urlencoded',

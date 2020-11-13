@@ -11,7 +11,8 @@ use App\Models\Pelanggan;
 use App\Models\Kurir;
 use App\Models\Pembayaran;
 
-class PengirimanController extends Controller
+
+class PembayaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,31 +42,7 @@ class PengirimanController extends Controller
      */
     public function store(Request $request)
     {
-        //insert pengiriman
-        $id_kurir = Kurir::where('kode_kurir',$request->kurir)->first();
-        $pengiriman = Pengiriman::create([
-            'id_provinsi' => $request->provinsi,
-            'id_kota' => $request->kota,
-            'id_pesanan' => $request->id_pesanan,
-            'id_kurir' => $id_kurir->id_kurir,
-            'nama_penerima' => $request->nama_pelanggan,
-            'no_hp' => $request->no_hp,
-            'alamat_pengiriman' => $request->alamat_lengkap,
-            'kode_pos' => $request->kode_pos,
-            'jenis_pengiriman' => $request->jenis_pengiriman,
-            'biaya_pengiriman' => $request->biaya_pengiriman
-        ]);
-        //insert pembayaran
-        $payment = Pembayaran::create([
-            'id_pesanan' => $request->id_pesanan,
-            'total_pembayaran' => $request->grand_total,
-            'sudah_dibayar' => null,
-            'tanggal_pembayaran' => null,
-            'bukti_pembayaran' => null,
-            'status_pembayaran' => 'BELUM BAYAR'
-        ]);
-
-        return redirect(route('pembayaran.show',$request->id_pesanan));
+        //
     }
 
     /**
@@ -76,11 +53,13 @@ class PengirimanController extends Controller
      */
     public function show($id)
     {
-        //
+        //show pembayaran
+        $payment = Pembayaran::where('id_pesanan',$id)->first();
         $order = DetailPesanan::where('id_pesanan',$id)->first();
         $detailOrder = DetailPesanan::where('id_pesanan',$id)->get();
-        $courier = Kurir::get();
-        return view('user/pengiriman',compact('order','courier', 'detailOrder'));
+        $pengiriman = Pengiriman::where('id_pesanan',$id)->first();
+        
+        return view('user/pembayaran',compact('payment','order','detailOrder','pengiriman'));
     }
 
     /**
@@ -89,7 +68,6 @@ class PengirimanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function edit($id)
     {
         //
@@ -104,7 +82,20 @@ class PengirimanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //update pembayaran
+        $uploadedFile = $request->file('image');
+            $extension = '.'.$uploadedFile->getClientOriginalExtension();
+            $filename  = $id."_".$request->id_pesanan."_".date('Y-m-d ').$extension;
+            $file = str_replace(' ','_',$filename);
+            $uploadedFile->move(base_path('public/assets/images/pembayaran'), $file);
+        $payment = Pembayaran::where('id_pembayaran',$id)->update([
+            'id_pesanan' => $request->id_pesanan,
+            'sudah_dibayar' => null,
+            'tanggal_pembayaran' => null,
+            'bukti_pembayaran' => $file,
+        ]);
+
+        return redirect()->back();
     }
 
     /**

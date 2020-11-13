@@ -16,7 +16,9 @@
             <div class="col-md-12 mt-4 mb-4">
                 <div class="p-4 bg--white border--radius">
                     <h3 class="mt-0">Data pengiriman</h3>
-                    <form action="">
+                    <form action="{{ route('pengiriman.store') }}" method="POST">
+                    @csrf
+                        <input type="hidden" name="id_pesanan" value="{{$order->id_pesanan}}">
                         <div class="form-group row">
                             <label class="control-label col-sm-3">Nama <span class="text-danger">*</span>:</label>
                             <input type="text" class="form-control col-sm-9" name="nama_pelanggan" value="{{$order->pelanggan->nama_lengkap}}">
@@ -24,12 +26,12 @@
 
                         <div class="form-group row">
                             <label class="control-label col-sm-3">Email <span class="text-danger">*</span>:</label>
-                            <input type="text" class="form-control col-sm-9" name="nama_pelanggan" value="{{$order->pelanggan->email}}">
+                            <input type="text" class="form-control col-sm-9" name="email" value="{{$order->pelanggan->email}}">
                         </div>
 
                         <div class="form-group row">
                             <label class="control-label col-sm-3">No Hp <span class="text-danger">*</span>:</label>
-                            <input type="text" class="form-control col-sm-9" name="nama_pelanggan" value="{{$order->pelanggan->no_hp}}">
+                            <input type="text" class="form-control col-sm-9" name="no_hp" value="{{$order->pelanggan->no_hp}}">
                         </div>
 
                         <div class="form-group row">
@@ -59,6 +61,7 @@
                         <div class="form-group row">
                             <label class="control-label col-sm-3">Kurir <spant class="text-danger">*</spant>:</label>
                             <select name="kurir" id="courier" class="form-control col-sm-9">
+                            <option value="" disabled selected>--Pilih Kurir--</option>
                                 @foreach($courier as $row)
                                     <option value="{{$row->kode_kurir}}">{{$row->nama_kurir}}</option>
                                 @endforeach
@@ -67,14 +70,16 @@
 
                         <div class="form-group row">
                             <label class="control-label col-sm-3">Jenis Layanan <spant class="text-danger">*</spant>:</label>
-                            <select name="kurir" id="service" class="form-control col-sm-5">
+                            <select name="jenis_pengiriman" id="service" class="form-control col-sm-5">
                                
                             </select>
 
                             <label class="control-label col-sm-1">Harga :</label>
-                            <input type="text" value="" id="cost" class="form-control col-sm-3" disabled>
+                            <input type="text" value="" id="cost" name="biaya_pengiriman" class="form-control col-sm-3" readonly required>
                         </div>
-
+                        <?php $berat = ($detailOrder->sum('jumlah') / 12) * 2000 ?>
+                        <input type="hidden" name="berat" value="{{$berat}}" id="berat">
+                        <p class="text-warning">Note: Berat akan di asumsikan 1 lusin = 2kg</p>
                         
                     <!-- <button type="button" class="btn btn-light p-2">Pilih Alamat Lain</button> -->
 
@@ -86,7 +91,10 @@
                             <div class="col-md-3 " >
                                 <p class="judul text-center">Harga Satuan</p>
                             </div>
-                            <div class="col-md-3 " >
+                            <div class="col-md-2 " >
+                                <p class="judul text-center">Ukuran</p>
+                            </div>
+                            <div class="col-md-1 " >
                                 <p class="judul text-center">Jumlah</p>
                             </div>
                             <div class="col-md-3 " >
@@ -95,35 +103,86 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-3  " >
-                                <img src="{{asset('assets/images/examples/A.jpeg')}}" width="40" height="40">
-                                <p style="display:inline-block; margin-left:15px;">Paket A</p>
+                                <img src="{{asset('assets/images/pesan')}}/{{$order->pesanan->custom_desain}}" width="40" height="40">
+                                <p style="display:inline-block; margin-left:15px;">{{$order->pesanan->katalog->nama_paket}}</p>
                             </div>
                             <div class="col-md-3 " >
-                                <p class="text-center">Rp135.000</p>
+                                <p class="text-center">{{format_rupiah($order->pesanan->katalog->harga_paket)}}</p>
+                            </div>
+                            <div class="col-md-2 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{ $row->ukuran->singkatan_ukuran }} ({{ $row->ukuran->nama_ukuran }})</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-1 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{$row->jumlah}}</p>
+                            @endforeach
                             </div>
                             <div class="col-md-3 " >
-                                <p  class="text-center">10</p>
+                            @foreach($detailOrder as $row)
+                                <p  class="text-right">{{ format_rupiah($row->jumlah * $order->pesanan->katalog->harga_paket) }}</p>
+                            @endforeach
                             </div>
-                            <div class="col-md-3 " >
-                                <p class="text-right">Rp1.350.000</p>
-                            </div>
+                            <?php 
+                                $totalPesan = $detailOrder->sum('jumlah') * $order->pesanan->katalog->harga_paket;
+                            ?>
                         </div>
                         
                     </div>
                     
                     <div class="form-group mt-4 ">
+                        <p>Opsi Pemesanan :</p>
                         <div class="row">
-                            <div class="col-md-3  " >
-                                <label for="comment">Opsi Pemesanan :</label>
+                            <div class="col-md-1">
+                                <p>Grade :</p>
                             </div>
-                            <div class="col-md-3 " >
-                                <p class="judul text-center"></p>
+                            <?php 
+                                if($order->pesanan->grade_kain == 'B'){
+                                    $harga = 0;
+                                }else{
+                                    $harga = 20000;
+                                }
+                            ?>
+                            <div class="col-md-1  offset-md-1" >
+                                <p>{{ $order->pesanan->grade_kain }}</p>
                             </div>
-                            <div class="col-md-3 " >
-                                <p class="judul text-center"></p>
+                            <div class=" col-md-3" >
+                                <p class="text-center"> {{format_rupiah($harga)}}</p>
                             </div>
-                            <div class="col-md-3 " >
-                                <p class="judul text-left"></p>
+                            <div class="offset-md-2 col-md-1 " >
+                                <p class=" text-center">{{ $detailOrder->sum('jumlah') }}</p>
+                            </div>
+                            <div class="offset-md-1 col-md-2 " >
+                                <p class="text-right">{{ format_rupiah($harga * $detailOrder->sum('jumlah')) }}</p>
+                                <?php
+                                    $totalGrade = $harga * $detailOrder->sum('jumlah');
+                                ?>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <?php 
+                                if($order->pesanan->jenis_lengan == 'Lengan Panjang'){
+                                    $lengan = 10000;
+                                }else{
+                                    $lengan = 0;
+                                }
+                            ?>
+                            <div class="col-md-3" >
+                                <p>{{ $order->pesanan->jenis_lengan }}</p>
+                            </div>
+                            <div class="offset-md-1 col-md-2" >
+                                <p class="text-left"> {{format_rupiah($lengan)}}</p>
+                            </div>
+                            <div class="offset-md-2 col-md-1 " >
+                                <p class=" text-center">{{ $detailOrder->sum('jumlah') }}</p>
+                            </div>
+                            <div class="offset-md-1 col-md-2 " >
+                                <p class="text-right">{{ format_rupiah($lengan * $detailOrder->sum('jumlah') ) }}</p>
+                                <?php 
+                                    $totalLengan =  $lengan * $detailOrder->sum('jumlah');
+                                ?>
                             </div>
                         </div>
                         <div class="row mt-3 mb-3">
@@ -132,12 +191,23 @@
                                 <p  class="text-right">Total:</p>
                             </div>
                             <div class="col-md-3 " >
-                                <p class="text-right">Rp1.357.000</p>
+                                <p class="text-right">{{format_rupiah($totalPesan + $totalLengan + $totalGrade)}}</p>
+                                <input type="hidden" value = "{{$totalPesan + $totalLengan + $totalGrade}}" id="total">
+                                
                             </div>
                         </div>
-                        
+                        <div class="row mb-3">
+                            
+                            <div class="col-md-9 " >
+                                <p  class="text-right" >Grand Total:</p>
+                            </div>
+                            <div class="col-md-3 " >
+                                <p class="text-right" id="grand"></p>
+                                <input type="hidden" name="grand_total" value = "" id="grandTotal">
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-right">Buat Pesanan</button>
+                    <button type="submit" class="btn btn-primary float-right">Lanjut ke Pembayaran <i class="fa fa-arrow-right"></i></button>
                     </form>
                 </div>
             </div>
@@ -153,6 +223,15 @@
 @include('templates.partials._scriptsuser')
 
 <script type="text/javascript">
+
+function convertToRupiah(angka)
+{
+    var rupiah = '';		
+    var angkarev = angka.toString().split('').reverse().join('');
+    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+    return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
+}
+
 $(document).ready(function(){
     $.get({
         url:"{{url('/getProvince')}}",
@@ -244,7 +323,7 @@ $(document).ready(function(){
                 },
             success:function(response){
                 $("#service").empty().append(
-                        '<option value=""> Select Service </option>');
+                        '<option value="" selected disabled> Select Service </option>');
 
                 var services = response.costs;
                 // for(var i=0; i<len; i++){
@@ -270,14 +349,14 @@ $(document).ready(function(){
             // dataType: 'json',
             data: 
                 {
-                    // "kota": cityId, 
-                    // "kurir": courier,
+                    "kota": cityId, 
+                    "kurir": courier,
                     "_token": "{{ csrf_token() }}",
                     
                 },
             success:function(response){
                 $("#service").empty().append(
-                        '<option value=""> Select Service </option>');
+                        '<option value="" selected disabled> Select Service </option>');
 
                 var services = response.costs;
                 // for(var i=0; i<len; i++){
@@ -298,14 +377,16 @@ $(document).ready(function(){
        var courier = $("#courier").val();
        var cityId = $('#city').val();
        var layanan = $(this).val();
+       var berat = $("#berat").val();
        $.ajax({
-            url:"{{route('rajaongkir.service')}}",
+            url:"{{route('rajaongkir.cost')}}",
             type:'POST',
             // dataType: 'json',
             data: 
                 {
-                    // "kota": cityId, 
-                    // "kurir": courier,
+                    "kota": cityId, 
+                    "kurir": courier,
+                    "berat": berat,
                     "_token": "{{ csrf_token() }}",
                     
                 },
@@ -316,8 +397,15 @@ $(document).ready(function(){
                 services.forEach(function (courier) {
                     // var id_layanan = courier.service;
                    if(courier.service == layanan){
-                    var cost = courier.cost[0].value;
+                    var cost = parseInt(courier.cost[0].value);
+                    var total = parseInt($("#total").val());
+                    var grand = 0;
+                    grand = cost+total;
+                    // console.log(cost);
                     $("#cost").val(cost);
+                    $("#grand").text(convertToRupiah(grand));
+                    $("#grandTotal").val(grand);
+
                    }
                 });
             }    

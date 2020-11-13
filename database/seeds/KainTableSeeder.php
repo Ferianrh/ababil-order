@@ -13,6 +13,15 @@ class KainTableSeeder extends Seeder
     {
         DB::table('kain')->insert(
             [
+                'nama_kain' => 'Kain Premium (Grade A)',
+                'deskripsi_kain' => 'Kain Premium Grade A',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]
+        );
+
+        DB::table('kain')->insert(
+            [
                 'nama_kain' => 'df pique',
                 'deskripsi_kain' => 'corak rajutan padat pada permukaan kainnya',
                 'created_at' => date('Y-m-d H:i:s'),

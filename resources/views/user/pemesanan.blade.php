@@ -59,7 +59,7 @@
                         <label class="col-sm-3 col-form-label">Pilih Grade<span class="text-danger">*</span>:  </label>
                         <div class="col-sm-9">
                         <select name="grade" class="form-control" id="grade">
-                                <option value="" disabled selected>Pilih Grade</option>
+                                <option value="" disabled selected>--Pilih Grade--</option>
                                 <option value="A">Grade A Kain Premium yang tidak ada di menu ( + {{format_rupiah(20000)}})</option>
                                 <option value="B">Grade B Memilih Kain di menu</option>
                             </select>
@@ -95,6 +95,7 @@
                         <label class="control-label col-sm-3">Jenis Jahit <span class="text-danger">*</span>:</label>
                         <div class="col-sm-9">
                             <select name="jenis_jahit" id="jenis_jahit" class="form-control">
+                            <option value="" disabled selected>--Pilih Jenis Jahit--</option>
                                 @foreach($jenis as $row)
                                     <option value="{{$row->id_jahit}}">{{$row->nama_jahit}}</option>
                                 @endforeach
@@ -143,15 +144,16 @@
                         </div>
                     </div> -->
                     
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label class="control-label ">Upload Desain <span class="text-danger">*</span>:</label>
-                        <input type="file" class="form-control" id="image-source" name="image" accept="image/*" onchange="previewImage()" required>
-                        <img id="image-preview" src="" class=" rounded img-fluid d-block p-2" width="200">
+                        <input type="file" class="form-control" id="image-source" name="image" accept="image/*" onchange="previewImage();" required>
+                        <img id="image-preview" src="" class="rounded img-fluid d-block p-2" width="200">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Keterangan</label>
-                        <textarea class="form-control" name="keterangan_pesanan" rows="3" placeholder="Nomer celana + Nama"></textarea>
+                        <label class="control-label">Keterangan <span class="text-danger">*</span>:</label>
+                        <p class="text-warning text-sm font-weight-lighter"> Note: Pisahkan dengan Koma (contoh: 01-Yuda,02-Alfin, dst ...)</p>
+                        <textarea class="form-control" name="keterangan_pesanan" rows="3" placeholder="Nomer - Nama"></textarea>
                     </div>
 
                     <!-- <input type="checkbox" val="asd" class="cheks"> -->
@@ -177,16 +179,17 @@
 <script type="text/javascript">
     // $(document).ready(function(){
 
-    function previewImage() {
-        document.getElementById("image-preview").style.display = "block"; 
-        document.getElementById("image-preview").style.width = "200";
-        var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
+        function previewImage() {
+            document.getElementById("image-preview").style.display = "block"; 
+            document.getElementById("image-preview").style.width = "200";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("image-source").files[0]);
 
-        oFReader.onload = function (oFREvent) {
-            document.getElementById("image-preview").src = oFREvent.target.result;
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("image-preview").src = oFREvent.target.result;
+            };
         };
-    };
+    // });
         $("#jenis_ukuran").on('change',function(){
             // $("#ukuran1").each(function(){
             //     $(this).remove();
@@ -249,7 +252,7 @@
                 success:function(response){
                     if(grade=="A"){
                         $("#kain").empty().append(
-                        '<option value="Kain Premium">Kain Premium</option>');
+                        '<option value="1">Kain Premium</option>');
                     }else{
                         $("#kain").empty().append(
                         '<option value="" disabled >Pilih Kain</option>');

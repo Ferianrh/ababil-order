@@ -23,6 +23,7 @@ class Pengiriman extends Model
         'kode_pos',
         'alamat_pengiriman',
         'jenis_pengiriman',
+        'biaya_pengiriman',
         'no_resi'
     ];
 

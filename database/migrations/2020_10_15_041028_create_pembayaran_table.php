@@ -17,9 +17,9 @@ class CreatePembayaranTable extends Migration
             $table->increments('id_pembayaran');
             $table->integer('id_pesanan')->unsigned();
             $table->integer('total_pembayaran')->unsigned();
-            $table->integer('sudah_dibayar')->unsigned();
-            $table->date('tanggal_pembayaran');
-            $table->string('bukti_pembayaran',100);
+            $table->integer('sudah_dibayar')->nullable()->unsigned();
+            $table->date('tanggal_pembayaran')->nullable();
+            $table->string('bukti_pembayaran',100)->nullable();
             $table->string('status_pembayaran',50);
             $table->timestamps();
             $table->softDeletes();

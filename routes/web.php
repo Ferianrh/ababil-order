@@ -64,6 +64,7 @@ Route::get('/contact', function(){
 });
 
 Route::resource('/pengiriman', 'PengirimanController')->middleware(['auth']);
+Route::resource('/pembayaran','PembayaranController')->middleware(['auth']);
 
 
 // Route::get('/jersey', function(){

@@ -27,7 +27,7 @@ class PesanController extends Controller
      }
 
      public function kain(){
-        $kain = Kain::get();
+        $kain = Kain::where('id_kain','!=','1')->get();
         // dd($kain);
         return response()->json($kain,200);
      }
@@ -69,13 +69,15 @@ class PesanController extends Controller
             $extension = '.'.$uploadedFile->getClientOriginalExtension();
             $filename  = $request->id_pelanggan."_".date('Y-m-d').$extension;
             $file = str_replace(' ','_',$filename);
-            $uploadedFile->move(base_path('public/assets/images/examples'), $file);
+            $uploadedFile->move(base_path('public/assets/images/pesan'), $file);
 
-            $ket = 'Grade : '. $request->grade.'\nJenis Lengan: '. $request->jenis_lengan.'\n'.$request->keterangan_pesanan;
+            // $ket = 'Grade : '. $request->grade.'\nJenis Lengan: '. $request->jenis_lengan.'\n'.$request->keterangan_pesanan;
             $order = Pesanan::create([
                 'id_paket' => $request->id_paket,
                 'id_kain' => $request->id_kain,
-                'keterangan_pesanan' => $ket,
+                'jenis_lengan' => $request->jenis_lengan,
+                'grade_kain' => $request->grade,
+                'keterangan_pesanan' => $request->keterangan_pesanan,
                 'tanggal_pesanan' => date('Y-m-d'),
                 'status_pesanan' => 'PENDING',
                 'custom_desain' => $file
