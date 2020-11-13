@@ -39,6 +39,7 @@ Route::resource('admin/kain','KainController')->middleware(['role','auth']);
 Route::resource('admin/katalog','KatalogController')->middleware(['role','auth']);
 Route::get('admin/pelanggan','PelangganController@index')->middleware(['role','auth'])->name('pelanggan.index');
 Route::resource('admin/custom-print','CustomPrintController')->middleware(['role','auth']);
+Route::resource('pesanan-admin','PesananAdminController')->middleware(['role','auth']);
 
 //ajax data
 Route::get('/getUkuran/{id}','CustomPrintController@getUkuran');

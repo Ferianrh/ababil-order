@@ -13,7 +13,7 @@ class KainTableSeeder extends Seeder
     {
         DB::table('kain')->insert(
             [
-                'nama_kain' => 'Kain Premium (Grade A)',
+                'nama_kain' => 'Kain Premium',
                 'deskripsi_kain' => 'Kain Premium Grade A',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

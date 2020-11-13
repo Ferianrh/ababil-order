@@ -23,7 +23,7 @@ class Pesanan extends Model
     ];
 
     public function pembayaran(){
-        return $this->hasMany('App\Models\Pesanan','id_pesanan');
+        return $this->hasMany('App\Models\Pembayaran','id_pesanan');
     }
 
     public function katalog(){

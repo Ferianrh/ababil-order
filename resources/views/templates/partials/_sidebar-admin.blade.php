@@ -44,7 +44,7 @@
                     </li>
 
                     <li>
-                        <a href="#"  class="text-left"> <i class="menu-icon fa fa-envelope"></i>Pemesanan</a>
+                        <a href="{{route('pesanan-admin.index')}}"  class="text-left"> <i class="menu-icon fa fa-envelope"></i>Pemesanan</a>
                     </li>                    
 
                 </ul>
