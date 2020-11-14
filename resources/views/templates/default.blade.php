@@ -12,13 +12,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/logo/ABABIL 1.png') }}">
     <title>Ababil - Sublime Printing</title>
 
-    <!-- admin styles -->
-    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap/dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/themify-icons/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/selectFX/css/cs-skin-elastic.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/jqvmap/dist/jqvmap.min.css') }}">
+     <!-- admin styles -->
+    <link rel="stylesheet" href="{{asset('assets/libs/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/libs/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/libs/themify-icons/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/libs/flag-icon-css/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/libs/selectFX/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/libs/jqvmap/dist/jqvmap.min.css')}}">
+
     
 
     <!-- user styles -->

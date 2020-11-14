@@ -32,7 +32,7 @@
                                 <select name="nama_ukuran" id="nama_ukuran" class="form-control">
                                     <option selected disabled>--Jenis Ukuran--</option>
                                     <option value="Dewasa">Dewasa</option>
-                                    <option value="Kids (SSB)">Kids (SSB)</option>
+                                    <option value="Kids">Kids</option>
                                     <option value="SD/TK">SD/TK</option>
                                 </select>
                             </div>

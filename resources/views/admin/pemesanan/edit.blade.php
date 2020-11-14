@@ -60,40 +60,25 @@
                     <div class="col-md-12 mt-4 mb-4">
                         <div class="p-4 bg-white border--radius">
                         <div class="form-group ">
-                        <h3>Status Pembayaran</h3>
-                        <div class="row">
-                            <label for="" class="col-sm-3">Biaya Pengerjaan :</label>
-                            @if($payment->sudah_dibayar==null)
-                            <div class="col-sm-9 ">
-                                <button class="bg-danger text-white rounded ">BELUM DIBAYAR</button>                                
-                            </div>
-                            @elseif($payment->sudah_dibayar==$payment->total_pembayaran)
-                            <div class="col-sm-9 ">
-                                <button class="bg-success text-white rounded ">LUNAS</button>                                
-                            </div>
-                            @else
-                            <div class="col-sm-9 ">
-                                <button class="bg-warning rounded ">DP ({{$payment->sudah_dibayar}})</button>                                
-                            </div>
-                            @endif
+                            <h3>Status Pembayaran</h3>
+                                <div class="row" >
+                                    <label for="" class="col-sm-3">Biaya Pengerjaan :</label>
+                                    <select name="status_pembayaran" id="state" class="form-control col-sm-6">
+                                        <option value="BELUM BAYAR">BELUM BAYAR</option>
+                                        <option value="DP">DP</option>
+                                        <option value="LUNAS">LUNAS</option>
+                                    </select>
+                                    <input type="number" name="sudah_dibayar" id="pengerjaan" class="form-control col-sm-3" readonly>
+                                </div>
+                                <div class="row">
+                                    <label for="" class="col-sm-3">Biaya Pengiriman :</label>
+                                    <select name="" id="pengiriman" class="form-control col-sm-6">
+                                        <option value="BELUM BAYAR">BELUM BAYAR</option>
+                                        <option value="LUNAS">LUNAS</option>
+                                    </select>
+                                    <input type="number" name="pengiriman" id="pengiriman" class="form-control col-sm-3" readonly>
+                                </div>
                         </div>
-                        <div class="row">
-                            <label for="" class="col-sm-3">Biaya Pengiriman :</label>
-                            @if($payment->sudah_dibayar==null)
-                            <div class="col-sm-9 ">
-                                <button class="bg-danger text-white rounded ">BELUM DIBAYAR</button>                                
-                            </div>
-                            @elseif($payment->sudah_dibayar==$payment->total_pembayaran)
-                            <div class="col-sm-9 ">
-                                <button class="bg-danger text-white rounded">BELUM DIBAYAR</button>                                
-                            </div>
-                            @elseif($payment->sudah_dibayar==$payment->total_pembayaran + $pengiriman->biaya_pengiriman)
-                            <div class="col-sm-9 ">
-                                <button class="bg-success text-white rounded ">LUNAS</button>                                
-                            </div>
-                            @endif
-                        </div>
-                    </div>
                             <h3 class="mt-0">Data pengiriman</h3>
                             <form action="{{ route('pengiriman.store') }}" method="POST">
                             @csrf
@@ -394,7 +379,23 @@ $(document).ready(function(){
         });
     });
 
-    
+    $("#state").on('change',function(){
+        var val = $(this).val();
+        if( val == "DP"){
+            $("#pengerjaan").val("");
+
+            $("#pengerjaan").attr('readonly',false);
+        } else if(val == "LUNAS"){
+            $("#pengerjaan").val( $("#total").val() );
+            
+        }
+    });
+
+    $("#pengiriman").on('change',function(){
+        var val = $(this).val();
+            $("#pengiriman").val( $("#cost").val() );
+        
+    });
 
 });
 
