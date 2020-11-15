@@ -85,8 +85,8 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-1">
                     <div class="card-body pb-0">
-                        <h4 class="mb-0">
-                            
+                        <h4 class="mb-0 text-light">
+                            {{$cust->count('id_pelanggan')}}
                         </h4>
                         <p class="text-light">Pelanggan</p>
 
@@ -103,10 +103,10 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-2">
                     <div class="card-body pb-0">
-                        <h4 class="mb-0">
-                            
+                        <h4 class="mb-0 text-light">
+                            {{$katalog->count('id_paket')}}
                         </h4>
-                        <p class="text-light">Stok Barang</p>
+                        <p class="text-light">Paket Tersedia</p>
                         <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart2"></canvas>
                         </div>
@@ -119,10 +119,10 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-3">
                     <div class="card-body pb-0">
-                        <h4 class="mb-0">
-                            
+                        <h4 class="mb-0 text-light">
+                            {{$pengiriman->count('id_pengiriman')}}
                         </h4>
-                        <p class="text-light">Barang Terjual</p>
+                        <p class="text-light">Pesanan Terkirim</p>
 
                     </div>
                     <div class="chart-wrapper px-0" style="height:70px;" height="70">
@@ -135,8 +135,8 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-4">
                     <div class="card-body pb-0">
-                        <h4 class="mb-0">
-                            
+                        <h4 class="mb-0 text-light">
+                            {{$order->count('id_pesanan')}}
                         </h4>
                         <p class="text-light">Jumlah Pemesanan</p>
 

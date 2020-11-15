@@ -15,7 +15,7 @@
                         <a href=""  class="btn btn-sign ">Sign In</a>
                     </div>
                     <div class="col-md-5 ">
-                        <form action="#" method="POST">
+                        <form action="{{route('signUp')}}" method="POST">
                                 @csrf
                             <h1>Create Account</h1>
                             <div class="social-container">
@@ -30,15 +30,33 @@
                             <div class="form-group">
                                 <input class="input-login-sign-up" type="text" name="lname" placeholder="Last Name">
                             </div>
+
+                            <div class="form-group">
+                                <input class="input-login-sign-up" type="text" name="no_hp" placeholder="No Hp">
+                            </div>
                             <div class="form-group">
                                 <input type="email" class="input-login-sign-up" name="email" placeholder="Email">
                                 <span>or use your email for registration</span>
                             </div>
                             <div class="form-group">
+                                <select name="provinsi" id="prov" class="form-control">
+                                    <option value="" disabled selected>Pilih Provinsi</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="kota" id="city" class="form-control">
+                                    <option value="" disabled selected>Pilih Kota</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <input type="text" name="alamat" class="input-login-sign-up" placeholder="Alamat">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="input-login-sign-up" name="user" placeholder="Username">
+                                <input type="text" name="kode_pos" class="input-login-sign-up" placeholder="Kode Pos">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="input-login-sign-up" name="username" placeholder="Username">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="input-login-sign-up" name="password" placeholder="Password">    
@@ -114,9 +132,13 @@
         </div>
     </div> -->
 
+   <!-- @include('templates.partials._footer') -->
+
 @endsection
 
 @push('scripts')
+@include('templates.partials._scriptsuser')
+
 <script type="text/javascript">
 		function cek(){
             var vcek = document.getElementById('icek');
@@ -127,6 +149,58 @@
                 
             }
         }
+        $.get({
+        url:"{{url('/getProvince')}}",
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+
+                        var id = response[i]['id_provinsi'];
+                        var name = response[i]['nama_provinsi'];
+
+                        var option = "<option value='"+id+"'>"+name+"</option>"; 
+
+                        $("#prov").append(option);
+                    }
+                }
+        });
+
+
+    // var prov = $(this).val();
+    // console.log(prov);
+
+    $("#prov").on('change',function(){
+    var prov = $(this).val();
+        $.get({
+                url:"{{url('/getCity')}}/"+prov,
+                type:'get',
+                dataType: 'json',
+                data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                success:function(response){
+                    $("#city option").each(function(){
+                            $(this).remove();
+                        });
+                    var len = 0;
+                    len = response.length;
+                    for(var i=0; i<len; i++){
+                        
+                        var id = response[i]['id_kota'];
+                        var name = response[i]['nama_kota'];
+
+                        var option = "<option value='"+id+"'>"+name+"</option>"; 
+                        $("#city").append(option);
+                    }
+                }
+        });
+    });
 
     const signUpButton = document.getElementById('signUp');
 	const signInButton = document.getElementById('signIn');

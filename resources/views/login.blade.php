@@ -29,8 +29,8 @@
                     </div>
                     <div class="col-md-4 form-label d-none d-sm-block">
                         <h1>Haii, Gaiss!</h1>
-                        <p>Silahkan masuk dan nikmati produk dari TSTL-<a style="color: red;">C</a>oolture.ID  </p>
-                        <a href=""class="btn btn-sign " id="signUp">Sign Up</a>
+                        <p>Silahkan masuk dan nikmati produk dari TSTL-<a style="color: red;">A</a>Sublime Printing  </p>
+                        <a href="{{route('daftar')}}" class="btn btn-sign " id="signUp">Sign Up</a>
                         <!-- <button type="submit"  class="btn btn-sign " id="signUp">Sign Up</button> -->
                     </div>
                 </div>

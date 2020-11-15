@@ -28,9 +28,12 @@ Route::group(['middleware' => 'guest'], function () {
 Auth::routes();
 
 //admin
-Route::get('admin/dashboard', function(){
-    return view('admin/dashboard');
-})->middleware(['role','auth'])->name('admin.dashboard');
+// Route::get('admin/dashboard', function(){
+//     return view('admin/dashboard');
+// })->middleware(['role','auth'])->name('admin.dashboard');
+
+Route::get('admin/dashboard','DashboardController@index')->middleware(['role','auth'])->name('admin.dashboard');
+
 
 // Route::resource('admin/jenis-jahit','JenisJahitController')->middleware(['role','auth']);
 Route::resource('admin/ukuran','UkuranController')->middleware(['role','auth']);
@@ -59,6 +62,10 @@ Route::resource('/setting', 'SettingController')->middleware(['auth']);
 Route::resource('/pesan','PesanController')->middleware(['auth']);
 Route::post('/pesanCustom','PesanController@pesanCustom')->middleware(['auth'])->name('pesan.custom');
 
+Route::get('/sign-up','PelangganController@signUp')->name('daftar');
+Route::post('/daftar','PelangganController@store')->name('signUp');
+
+
 Route::get('/about', function(){
     return view("user/about");
 });
@@ -81,8 +88,4 @@ Route::resource('/pembayaran','PembayaranController')->middleware(['auth']);
 
 Route::get('/bayar', function(){
     return view("pembayaran");
-});
-
-Route::get('/sign-up', function(){
-    return view("Sign-up");
 });

@@ -45,6 +45,10 @@
 
                     <li>
                         <a href="{{route('pesanan-admin.index')}}"  class="text-left"> <i class="menu-icon fa fa-envelope"></i>Pemesanan</a>
+                    </li>
+
+                    <li>
+                        <a href=""  class="text-left"> <i class="menu-icon fa fa-newspaper-o"></i>Laporan</a>
                     </li>                    
 
                 </ul>
