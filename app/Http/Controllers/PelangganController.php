@@ -53,6 +53,7 @@ class PelangganController extends Controller
         ];
 
         $user = User::create($dataUser);
+        // dd($user->id);
         $cust = Pelanggan::create([
             'id' => $user->id,
             'id_provinsi' => $request->provinsi,

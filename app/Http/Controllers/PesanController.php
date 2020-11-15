@@ -146,9 +146,10 @@ class PesanController extends Controller
         //show paket
 
         $katalog = Katalog::where('id_paket',$id)->first();
+        $custom = Katalog::where('id_paket',$id)->first();
         $sisi = SisiPrint::get();
         $jenis = JenisJahit::get();
-        return view('user/pemesanan',compact('katalog','jenis','sisi'));
+        return view('user/pemesanan',compact('katalog','jenis','sisi','custom'));
     }
 
     /**
