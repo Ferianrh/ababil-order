@@ -25,7 +25,7 @@ class JenisJahit extends Model
         return $this->hasMany('App\Models\Ukuran','id_jahit');
     }
 
-    public function detailPesan(){
+    public function detailPesanan(){
         return $this->hasMany('App\Models\DetailPesanan','id_jahit');
     }
 

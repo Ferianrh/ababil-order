@@ -101,7 +101,7 @@
                                                 <td>{{$row->status_pesanan}}</td>
                                                 <td>{{$row->status_pembayaran}}</td>
                                                 <td>
-                                                    <a href="{{route('pesanan-admin.edit', $row->id_paket)}}">
+                                                    <a href="{{route('pesanan-admin.edit', $row->id_pesanan)}}">
                                                         <button class="btn btn-success btn-sm " id="edit">
                                                             <i class="fa fa-edit"> </i>
                                                         </button>
@@ -124,22 +124,13 @@
                                 <!-- <a href="#" class="btn btn-info float-right mb-3" data-toggle="modal" data-target="#createModal"> <i class="fa fa-plus"></i>
                                 Tambah Data</a> -->
                             </div>
-                            @if ($errors->any())
-                                <div class="alert alert-danger alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert">x</button>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
+                            
                             <div class="card-body">
                                 <table id="basic-datatables" class="table table-striped table-bordered table-responsive-lg table-responsive-md table-responsive-sm">
                                     <thead>
                                         <tr>
-                                            <th>Sisi Print</th>
-                                            <th>Jenis Jahit</th>
+                                            <th>Nama Paket</th>
+                                            <th>Jumlah Pesanan</th>
                                             <th>Tanggal Pesanan</th>
                                             <th>Status Pesanan</th>
                                             <th>Status Pembayaran</th>
@@ -147,7 +138,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @foreach($pesananCustom as $row)
+                                        <tr>
+                                            <td>{{$row->katalog->nama_paket}}</td>
+                                            <td>{{$row->detailPesanan->sum('jumlah')}}</td>
+                                            <td>{{$row->tanggal_pesanan}}</td>
+                                            <td>{{$row->status_pesanan}}</td>
+                                            <td>{{$row->status_pembayaran}}</td>
+                                            <td>
+                                                <a href="{{route('pesanan-admin.edit', $row->id_pesanan)}}">
+                                                    <button class="btn btn-success btn-sm " id="edit">
+                                                        <i class="fa fa-edit"> </i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>                                
                             </div>

@@ -33,22 +33,6 @@
                             </div>
                             @endif
                         </div>
-                        <div class="row">
-                            <label for="" class="col-sm-3">Biaya Pengiriman :</label>
-                            @if($payment->sudah_dibayar==null)
-                            <div class="col-sm-9 ">
-                                <button class="bg-danger text-white rounded ">BELUM DIBAYAR</button>                                
-                            </div>
-                            @elseif($payment->sudah_dibayar==$payment->total_pembayaran)
-                            <div class="col-sm-9 ">
-                                <button class="bg-danger text-white rounded">BELUM DIBAYAR</button>                                
-                            </div>
-                            @elseif($payment->sudah_dibayar==$payment->total_pembayaran + $pengiriman->biaya_pengiriman)
-                            <div class="col-sm-9 ">
-                                <button class="bg-success text-white rounded ">LUNAS</button>                                
-                            </div>
-                            @endif
-                        </div>
                     </div>
                     <h3 class="mt-0">Data pengiriman</h3>
                     <form action="{{ route('pembayaran.update', $payment->id_pembayaran) }}" method="POST" enctype="multipart/form-data">
@@ -110,10 +94,16 @@
                     <!-- <button type="button" class="btn btn-light p-2">Pilih Alamat Lain</button> -->
 
                     <div class="form-group mt-4">
-                        <div class="row">
+                    <div class="row">
+                        @if($order->pesanan->id_paket != 2)
                             <div class="col-md-3">
                                 <label for="comment">Produk Dipesan</label>
                             </div>
+                        @else
+                            <div class="col-md-3">
+                                <label for="comment">Sisi Print</label>
+                            </div>
+                        @endif
                             <div class="col-md-3 " >
                                 <p class="judul text-center">Harga Satuan</p>
                             </div>
@@ -128,6 +118,7 @@
                             </div>
                         </div>
                         <div class="row mt-3">
+                        @if($order->pesanan->id_paket != 2)
                             <div class="col-md-3  " >
                                 <img src="{{asset('assets/images/pesan')}}/{{$order->pesanan->custom_desain}}" width="40" height="40">
                                 <p style="display:inline-block; margin-left:15px;">{{$order->pesanan->katalog->nama_paket}}</p>
@@ -153,11 +144,45 @@
                             <?php 
                                 $totalPesan = $detailOrder->sum('jumlah') * $order->pesanan->katalog->harga_paket;
                             ?>
+                        @else
+                            <div class="col-md-3  " >
+                                <img src="{{asset('assets/images/pesan')}}/{{$order->pesanan->custom_desain}}" width="40" height="40">
+                                <p style="display:inline-block; margin-left:15px;">{{$order->customPrint->sisiPrint->keterangan_print}}</p>
+                            </div>
+                            <div class="col-md-3 " >
+                            @foreach($detailOrder as $row)
+                                <p class="text-center">{{ format_rupiah($row->customPrint->harga) }}</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-2 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{ $row->ukuran->singkatan_ukuran }} ({{ $row->ukuran->nama_ukuran }})</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-1 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{$row->jumlah}}</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-3 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-right">{{ format_rupiah($row->jumlah * $row->customPrint->harga) }}</p>
+                            @endforeach
+                            </div>
+                            <?php $totalPesan = 0;?>
+                            @foreach($detailOrder as $row)
+                            <?php
+                                $totalPesan = $totalPesan + ($row->jumlah * $row->customPrint->harga) ;
+                            ?>
+                            @endforeach
+                            
+                        @endif
                         </div>
                         
                     </div>
                     
                     <div class="form-group mt-4 ">
+                        @if($order->pesanan->id_paket != 2)
                         <p>Opsi Pemesanan :</p>
                         <div class="row">
                             <div class="col-md-1">
@@ -186,8 +211,11 @@
                                 ?>
                             </div>
                         </div>
+                        @endif
+
 
                         <div class="row">
+                        @if($order->pesanan->id_paket != 2)
                             <?php 
                                 if($order->pesanan->jenis_lengan == 'Lengan Panjang'){
                                     $lengan = 10000;
@@ -210,6 +238,8 @@
                                     $totalLengan =  $lengan * $detailOrder->sum('jumlah');
                                 ?>
                             </div>
+                        @endif
+                            
                         </div>
                         <div class="row mt-3 mb-3">
                             
@@ -217,9 +247,13 @@
                                 <p  class="text-right">Total:</p>
                             </div>
                             <div class="col-md-3 " >
+                            @if($order->pesanan->id_paket != 2)
                                 <p class="text-right">{{format_rupiah($totalPesan + $totalLengan + $totalGrade)}}</p>
                                 <input type="hidden" value = "{{$totalPesan + $totalLengan + $totalGrade}}" id="total">
-                                
+                            @else
+                                <p class="text-right">{{format_rupiah($totalPesan )}}</p>
+                                <input type="hidden" value = "{{$totalPesan}}" id="total">
+                            @endif
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -229,12 +263,16 @@
                             </div>
                             <div class="col-md-3 " >
                                 <p class="text-right" id="grand">{{format_rupiah($payment->total_pembayaran)}}</p>
+                                <input type="hidden" name="grand_total" value = "{{$payment->total_pembayaran}}" id="grandTotal">
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="" class="control-label">Upload Bukti Pembayaran : </label>
                         <input type="file" class="form-control" id="image-source" name="image" accept="image/*" onchange="previewImage();" required>
+                        @if(isset($payment->bukti_pembayaran))
+                            <img id="image-preview" src="{{ asset('assets/images/pembayaran')}}/{{$payment->bukti_pembayaran}}" class=" rounded img-fluid d-block p-2" width="200">
+                        @endif
                         <img id="image-preview" src="" class=" rounded img-fluid d-block p-2" width="200">
                     </div>
                     <button type="submit" class="btn btn-primary float-right">Simpan <i class="fa fa-save"></i></button>

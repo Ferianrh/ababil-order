@@ -19,17 +19,17 @@ class DetailPesanan extends Model
         'jumlah'
     ];
 
-    public function pelanggan(){
-        return $this->belongsTo('App\Models\Pelanggan','id_pelanggan');
-    }
-
     public function pesanan(){
         return $this->belongsTo('App\Models\Pesanan','id_pesanan');
     }
 
-    // public function sisiPrint(){
-    //     return $this->belongsTo('App\Models\SisiPrint','id_print');
-    // }
+    public function pelanggan(){
+        return $this->belongsTo('App\Models\Pelanggan','id_pelanggan');
+    }
+
+    public function sisiPrint(){
+        return $this->belongsTo('App\Models\SisiPrint','id_print');
+    }
 
     public function ukuran(){
         return $this->belongsTo('App\Models\Ukuran','id_ukuran');
@@ -40,7 +40,7 @@ class DetailPesanan extends Model
     }
 
     
-    // public function jenisJahit(){
-    //     return $this->belongsto('App\Models\JenisJahit','id_jahit');
-    // }
+    public function jenisJahit(){
+        return $this->belongsto('App\Models\JenisJahit','id_jahit');
+    }
 }

@@ -57,6 +57,8 @@ Route::post('/getCost', 'LocationsController@getCost')->name('rajaongkir.cost');
 Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 Route::resource('/setting', 'SettingController')->middleware(['auth']);
 Route::resource('/pesan','PesanController')->middleware(['auth']);
+Route::post('/pesanCustom','PesanController@pesanCustom')->middleware(['auth'])->name('pesan.custom');
+
 Route::get('/about', function(){
     return view("user/about");
 });

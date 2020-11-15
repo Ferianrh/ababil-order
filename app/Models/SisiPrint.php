@@ -15,7 +15,7 @@ class SisiPrint extends Model
         'keterangan_print'
     ];
 
-    public function pesanan(){
+    public function detailPesanan(){
         return $this->hasMany('App\Models\DetailPesanan','id_print');
     }
 

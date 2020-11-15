@@ -85,9 +85,15 @@
 
                     <div class="form-group mt-4">
                         <div class="row">
+                        @if($order->pesanan->id_paket != 2)
                             <div class="col-md-3">
                                 <label for="comment">Produk Dipesan</label>
                             </div>
+                        @else
+                            <div class="col-md-3">
+                                <label for="comment">Sisi Print</label>
+                            </div>
+                        @endif
                             <div class="col-md-3 " >
                                 <p class="judul text-center">Harga Satuan</p>
                             </div>
@@ -102,6 +108,7 @@
                             </div>
                         </div>
                         <div class="row mt-3">
+                        @if($order->pesanan->id_paket != 2)
                             <div class="col-md-3  " >
                                 <img src="{{asset('assets/images/pesan')}}/{{$order->pesanan->custom_desain}}" width="40" height="40">
                                 <p style="display:inline-block; margin-left:15px;">{{$order->pesanan->katalog->nama_paket}}</p>
@@ -127,11 +134,45 @@
                             <?php 
                                 $totalPesan = $detailOrder->sum('jumlah') * $order->pesanan->katalog->harga_paket;
                             ?>
+                        @else
+                            <div class="col-md-3  " >
+                                <img src="{{asset('assets/images/pesan')}}/{{$order->pesanan->custom_desain}}" width="40" height="40">
+                                <p style="display:inline-block; margin-left:15px;">{{$order->customPrint->sisiPrint->keterangan_print}}</p>
+                            </div>
+                            <div class="col-md-3 " >
+                            @foreach($detailOrder as $row)
+                                <p class="text-center">{{ format_rupiah($row->customPrint->harga) }}</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-2 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{ $row->ukuran->singkatan_ukuran }} ({{ $row->ukuran->nama_ukuran }})</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-1 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{$row->jumlah}}</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-3 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-right">{{ format_rupiah($row->jumlah * $row->customPrint->harga) }}</p>
+                            @endforeach
+                            </div>
+                            <?php $totalPesan = 0;?>
+                            @foreach($detailOrder as $row)
+                            <?php
+                                $totalPesan = $totalPesan + ($row->jumlah * $row->customPrint->harga) ;
+                            ?>
+                            @endforeach
+                            
+                        @endif
                         </div>
                         
                     </div>
                     
                     <div class="form-group mt-4 ">
+                        @if($order->pesanan->id_paket != 2)
                         <p>Opsi Pemesanan :</p>
                         <div class="row">
                             <div class="col-md-1">
@@ -160,8 +201,11 @@
                                 ?>
                             </div>
                         </div>
+                        @endif
+
 
                         <div class="row">
+                        @if($order->pesanan->id_paket != 2)
                             <?php 
                                 if($order->pesanan->jenis_lengan == 'Lengan Panjang'){
                                     $lengan = 10000;
@@ -184,6 +228,8 @@
                                     $totalLengan =  $lengan * $detailOrder->sum('jumlah');
                                 ?>
                             </div>
+                        @endif
+                            
                         </div>
                         <div class="row mt-3 mb-3">
                             
@@ -191,9 +237,13 @@
                                 <p  class="text-right">Total:</p>
                             </div>
                             <div class="col-md-3 " >
+                            @if($order->pesanan->id_paket != 2)
                                 <p class="text-right">{{format_rupiah($totalPesan + $totalLengan + $totalGrade)}}</p>
                                 <input type="hidden" value = "{{$totalPesan + $totalLengan + $totalGrade}}" id="total">
-                                
+                            @else
+                                <p class="text-right">{{format_rupiah($totalPesan )}}</p>
+                                <input type="hidden" value = "{{$totalPesan}}" id="total">
+                            @endif
                             </div>
                         </div>
                         <div class="row mb-3">

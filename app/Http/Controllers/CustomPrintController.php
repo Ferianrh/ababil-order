@@ -56,6 +56,7 @@ class CustomPrintController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $custom = CustomPrint::create([
             'id_print' => $request->sisi_print,
             'id_ukuran' => $request->nama_ukuran,

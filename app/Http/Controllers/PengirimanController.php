@@ -79,6 +79,7 @@ class PengirimanController extends Controller
         //
         $order = DetailPesanan::where('id_pesanan',$id)->first();
         $detailOrder = DetailPesanan::where('id_pesanan',$id)->get();
+        
         $courier = Kurir::get();
         return view('user/pengiriman',compact('order','courier', 'detailOrder'));
     }

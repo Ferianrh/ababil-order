@@ -209,6 +209,7 @@
                         var name = response[i]['singkatan_ukuran'];
                         var jenis = response[i]['nama_ukuran'];
                         var option = "<option value='"+id+"'>"+name+" ("+ jenis +")</option>"; 
+                        console.log(id);
                         $("#updateForm #short").append(option); 
                         // $("#basicform #short").append(option);
                     }

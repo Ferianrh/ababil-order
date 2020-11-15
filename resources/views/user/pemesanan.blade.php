@@ -17,11 +17,19 @@
         <div class="col-md-8 mt-4 mb-4">
             <div class="p-5 bg--white border--radius">
             <h2 class="mt-0 text-center">Form Pemesanan Paket</h2>
+            @if($katalog->id_paket != 2)
                 <form action="{{route('pesan.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="id_paket" value="{{$katalog->id_paket}}">
+
+            @else
+                <form action="{{route('pesan.custom')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id_paket" value="{{$custom->id_paket}}">
+            @endif
+                    @if($katalog->id_paket != 2)
                     <div class="bg-light border border-success rounded p-2 mb-3">
                         <h4 class="text-center text-dark">Data Paket</h4>
-                        <input type="hidden" name="id_paket" value="{{$katalog->id_paket}}">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Nama Paket:  </label>
                             <div class="col-sm-9">
@@ -54,7 +62,45 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="bg-light border border-success rounded p-2 mb-3">
+                        <h4 class="text-center text-dark">Data Paket</h4>
+                        <input type="hidden" name="id_paket" value="{{$katalog->id_paket}}">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Nama Paket:  </label>
+                            <div class="col-sm-9">
+                                <input type="text" value="{{$katalog->nama_paket}}" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Deskripsi Paket:  </label>
+                            <div class="col-sm-9">
+                                <input type="text" value="{{$katalog->deskripsi_paket}}" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ilustrasi :</label>
+                            <div class="col-sm-9">
+                                <img class="rounded img-thumbnail img-fluid d-block p-2" src={{URL::asset("assets/images/examples/$katalog->gambar_desain")}} width=200px alt="ilustrasi.jpg" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Harga Paket/pcs:  </label>
+                            <div class="col-sm-9">
+                                <input type="text" value="Harga akan dihitung setelah pemesanan selesai" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Minimal Order:  </label>
+                            <div class="col-sm-9">
+                                <label class="text-normal">1 lusin</label>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     <input type="hidden" name="id_pelanggan" value="{{Auth::user()->pelanggan->id_pelanggan}}">
+                    @if($katalog->id_paket != 2)
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Pilih Grade<span class="text-danger">*</span>:  </label>
                         <div class="col-sm-9">
@@ -90,6 +136,19 @@
                             </div>
                         </div>
                     </div>
+
+                    @else
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Sisi Print:  </label>
+                            <div class="col-sm-9">
+                            <select name="id_print" class="form-control" id="kain">
+                            @foreach($sisi as $row)
+                                <option value="{{$row->id_print}}">{{$row->keterangan_print}}</option>
+                            @endforeach
+                            </select>
+                            </div>
+                        </div>
+                    @endif
 
                     <div class="form-group row mt-3">
                         <label class="control-label col-sm-3">Jenis Jahit <span class="text-danger">*</span>:</label>
@@ -144,7 +203,7 @@
                         </div>
                     </div> -->
                     
-                    <div class="form-group row">
+                    <div class="form-group">
                         <label class="control-label ">Upload Desain <span class="text-danger">*</span>:</label>
                         <input type="file" class="form-control" id="image-source" name="image" accept="image/*" onchange="previewImage();" required>
                         <img id="image-preview" src="" class="rounded img-fluid d-block p-2" width="200">

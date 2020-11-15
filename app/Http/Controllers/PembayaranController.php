@@ -91,7 +91,7 @@ class PembayaranController extends Controller
         $payment = Pembayaran::where('id_pembayaran',$id)->update([
             'id_pesanan' => $request->id_pesanan,
             'sudah_dibayar' => null,
-            'tanggal_pembayaran' => null,
+            'tanggal_pembayaran' => date('Y-m-d'),
             'bukti_pembayaran' => $file,
         ]);
 

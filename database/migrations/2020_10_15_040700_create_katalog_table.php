@@ -16,8 +16,8 @@ class CreateKatalogTable extends Migration
         Schema::create('katalog', function (Blueprint $table) {
             $table->increments('id_paket');
             $table->string('nama_paket',50);
-            $table->string('deskripsi_paket',150);
-            $table->integer('harga_paket');
+            $table->string('deskripsi_paket',250);
+            $table->integer('harga_paket')->nullable();
             $table->string('gambar_desain',100);
             $table->timestamps();
             $table->softDeletes();

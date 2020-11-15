@@ -22,6 +22,11 @@ class Pesanan extends Model
         'custom_desain'
     ];
 
+    public function detailPesanan(){
+        return $this->hasMany('App\Models\DetailPesanan','id_pesanan');
+
+    }
+
     public function pembayaran(){
         return $this->hasMany('App\Models\Pembayaran','id_pesanan');
     }
@@ -40,11 +45,6 @@ class Pesanan extends Model
 
     public function kain(){
         return $this->belongsTo('App\Models\Kain','id_kain');
-    }
-
-    public function detailPesanan(){
-        return $this->hasMany('App\Models\DetailPesanan','id_pesanan');
-
     }
 
     public function pelanggan(){

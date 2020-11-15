@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="container">
-        <H3 class="text-center mt-4">Newest Products</H3>
+        <h3 class="text-center mt-4">Newest Products</h3>
         <div class="row content mt-5">
             <div class="col-md-10 offset-md-1">
                 <div class="row content-isi">    
@@ -41,6 +41,28 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+
+            </div>
+        </div>
+
+        <h3 class="text-center mt-4">Custom Print</h3>
+        <div class="row content mt-5">
+            <div class="col-md-12">
+                <div class="row content-isi">    
+                    <div class="col-12 mt-3">
+                        <div class="bg-white text-dark" >
+                            <img class ="mx-auto d-block" src="{{asset('assets/images/examples/oblong.jpg')}}" width="400" alt="">
+                            <hr>
+                            <h5 class="text-center">Custom Printing</h5>
+                            <p class="text-center">Print custom adalah jasa percetakan printing khusus kaos. Yang dibutuhkan hanya mengirim kain yang akan di print ketempat produksi kami,lalu akan d kerjakan sesuai desain yang kamu inginkan..</p>
+                            <div class="text-center">
+                                <a href="{{route('pesan.show',$custom->id_paket)}}">
+                                    <button class="btn btn-primary ">Pesan Sekarang</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

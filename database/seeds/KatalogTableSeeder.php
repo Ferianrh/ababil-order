@@ -21,5 +21,16 @@ class KatalogTableSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s')
             ],
         );
+
+        DB::table('katalog')->insert(
+            [
+                'nama_paket'=>'Custom Print',
+                'deskripsi_paket' => 'Print custom adalah jasa percetakan printing khusus kaos. Yang dibutuhkan hanya mengirim kain yang akan di print ketempat produksi kami,lalu akan d kerjakan sesuai desain yang kamu inginkan..',
+                'harga_paket' => null,
+                'gambar_desain' => 'oblong.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+        );
     }
 }

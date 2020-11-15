@@ -23,10 +23,11 @@ class PesananAdminController extends Controller
     public function index()
     {
         //view pesanan
-        $pesananPaket = Pesanan::distinct('p.pesanan')->join('pembayaran as p','p.id_pesanan','=','pesanan.id_pesanan')->
-                        whereNotNull('id_paket')->orderBy('p.updated_at')->get();
-        $pesananCustom = Pesanan::distinct('p.pesanan')->join('pembayaran as p','p.id_pesanan','=','pesanan.id_pesanan')->
-                        whereNull('id_paket')->orderBy('p.updated_at')->get();
+        $pesananPaket = Pesanan::distinct('p.id_pesanan')->join('pembayaran as p','p.id_pesanan','=','pesanan.id_pesanan')->
+                        whereNotNull('id_kain')->orderBy('p.updated_at')->get();
+        $pesananCustom = Pesanan::distinct('p.id_pesanan')->join('pembayaran as p','p.id_pesanan','=','pesanan.id_pesanan')
+                        ->whereNull('id_kain')->orderBy('p.updated_at')
+                        ->get();
         return view('admin/pemesanan/index',compact('pesananPaket','pesananCustom'));
     }
 
@@ -48,7 +49,10 @@ class PesananAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+
+        // $ket = 'Grade : '. $request->grade.'\nJenis Lengan: '. $request->jenis_lengan.'\n'.$request->keterangan_pesanan;
+        
     }
 
     /**
@@ -92,6 +96,27 @@ class PesananAdminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $order = Pesanan::where('id_pesanan',$id)->update([
+            'status_pesanan' => $request->status_pesanan,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        $payment = Pembayaran::where('id_pembayaran',$request->id_pembayaran)->update([
+            'sudah_dibayar' => $request->sudah_dibayar,
+            'status_pembayaran' => $request->status_pembayaran,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        $pengiriman = Pengiriman::where('id_pengiriman',$request->id_pengiriman)->update([
+            'no_resi' => $request->no_resi,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        // dd($request->status_pesanan);
+        return redirect(route('pesanan-admin.index'));
     }
 
     /**

@@ -21,19 +21,19 @@
                             <div class="form-group">
                                 <label class="control-label">Sisi Print <span class="text-danger">*</span> :</label>
                                 <select name="sisi_print" id="nama" class="form-control">
-                                    <option value="" selected disabled>--Select Sisi Print--</option>
+                                    <option value="" disabled selected>--Select Sisi Print--</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Jenis Jahit <span class="text-danger">*</span> :</label>
                                 <select name="jenis_jahit" id="detil" class="form-control">
-                                <option value="" selected disabled>--Select Jenis Jahit--</option>
+                                <option value="" disabled selected>--Select Jenis Jahit--</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Jenis Ukuran <span class="text-danger">*</span> :</label>
                                 <select name="nama_ukuran" id="short" class="form-control">
-                                <option value="" selected disabled>--Select Jenis Ukuran--</option>
+                                <option value="" disabled selected>--Select Jenis Ukuran--</option>
                                 </select>
                             </div>
                             <div class="form-group">

@@ -58,240 +58,281 @@
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12 mt-4 mb-4">
+                    <form action="{{ route('pesanan-admin.update',$order->id_pesanan) }}" method="POST">
+                    @csrf
+                    {{method_field('PUT')}}
+                    <input type="hidden" name="id_pembayaran" value="{{$payment->id_pembayaran}}">
+                    <input type="hidden" name="id_pengiriman" value="{{$pengiriman->id_pengiriman}}">
                         <div class="p-4 bg-white border--radius">
-                        <div class="form-group ">
-                            <h3>Status Pembayaran</h3>
-                                <div class="row" >
+                        
+                            <h3>Status</h3>
+                                <div class="form-group row">
                                     <label for="" class="col-sm-3">Biaya Pengerjaan :</label>
                                     <select name="status_pembayaran" id="state" class="form-control col-sm-6">
                                         <option value="BELUM BAYAR">BELUM BAYAR</option>
                                         <option value="DP">DP</option>
                                         <option value="LUNAS">LUNAS</option>
                                     </select>
-                                    <input type="number" name="sudah_dibayar" id="pengerjaan" class="form-control col-sm-3" readonly>
+                                    @if($payment->sudah_dibayar == null)
+                                        <input type="number" name="sudah_dibayar" id="pengerjaan" value="" class="form-control col-sm-3" readonly>
+                                    @else
+                                        <input type="number" name="sudah_dibayar" id="pengerjaan" value="{{$payment->sudah_dibayar}}" class="form-control col-sm-3" readonly>
+                                    @endif
                                 </div>
-                                <div class="row">
-                                    <label for="" class="col-sm-3">Biaya Pengiriman :</label>
-                                    <select name="" id="pengiriman" class="form-control col-sm-6">
-                                        <option value="BELUM BAYAR">BELUM BAYAR</option>
-                                        <option value="LUNAS">LUNAS</option>
+                                <div class="row form-group">
+                                    <label for="" class="col-sm-3">Status Pesanan :</label>
+                                    <select name="status_pesanan" id="pesanan" class="form-control col-sm-9">
+                                        <option value="PENDING">PENDING</option>
+                                        <option value="PROSES">PROSES</option>
+                                        <option value="SELESAI">SELESAI</option>
+                                        <option value="BATAL">BATAL</option>
                                     </select>
-                                    <input type="number" name="pengiriman" id="pengiriman" class="form-control col-sm-3" readonly>
                                 </div>
-                        </div>
+                        
                             <h3 class="mt-0">Data pengiriman</h3>
-                            <form action="{{ route('pengiriman.store') }}" method="POST">
-                            @csrf
-                                <input type="hidden" name="id_pesanan" value="{{$order->id_pesanan}}">
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3">Nama <span class="text-danger">*</span>:</label>
-                                    <input type="text" class="form-control col-sm-9" name="nama_pelanggan" value="{{$order->pelanggan->nama_lengkap}}">
+                                    <label class="control-label col-sm-3">No Resi <span class="text-danger">*</span>:</label>
+                                    <input type="text" class="form-control col-sm-9" name="no_resi" value="{{$pengiriman->no_resi}}" >
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3">Email <span class="text-danger">*</span>:</label>
-                                    <input type="text" class="form-control col-sm-9" name="email" value="{{$order->pelanggan->email}}">
+                                    <label class="control-label col-sm-3">Nama </label>
+                                    <label class="col-sm-9">: {{$order->pelanggan->nama_lengkap}}</label>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3">No Hp <span class="text-danger">*</span>:</label>
-                                    <input type="text" class="form-control col-sm-9" name="no_hp" value="{{$order->pelanggan->no_hp}}">
+                                    <label class="control-label col-sm-3">Email</label>
+                                    <label class="col-sm-9">: {{$order->pelanggan->email}}</label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-3">No Hp</label>
+                                    <label class="col-sm-9">: {{$order->pelanggan->no_hp}}</label>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="control-label col-sm-3">Provinsi</label>
-                                    <select name="provinsi" id="prov" class="form-control col-sm-9">
-                                    @foreach($prov as $row)
-                                        @if($row->id_provinsi == $pengiriman->id_provinsi)
-                                            <option value="{{$row->id_provinsi}}" selected>{{$row->nama_provinsi}}</option>
-                                        @else
-                                        <option value="{{$row->id_provinsi}}">{{$row->nama_provinsi}}</option>
-
-                                        @endif
-                                    @endforeach
-                                    </select>
+                                    <label class="col-sm-9">: {{$pengiriman->provinsi->nama_provinsi}}</label>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="control-label col-sm-3">Kota</label>
-                                    <select name="kota" id="city" class="form-control col-sm-9">
-                                    @foreach($city as $row)
-                                        @if($row->id_kota == $pengiriman->id_kota)
-                                            <option value="{{$row->id_kota}}" selected>{{$row->nama_kota}}</option>
-                                        @else
-                                        <option value="{{$row->id_kota}}">{{$row->nama_kota}}</option>
-
-                                        @endif
-                                    @endforeach
-                                    </select>
+                                    <label class="col-sm-9">: {{$pengiriman->kota->nama_kota}}</label>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3">Alamat Lengkap <span class="text-danger">*</span> :</label>
-                                    <input type="text" class="form-control col-sm-9" name="alamat_lengkap" value="{{$order->pelanggan->alamat_lengkap}}">
+                                    <label class="control-label col-sm-3">Alamat Lengkap</label>
+                                    <label class="col-sm-9">: {{$pengiriman->alamat_pengiriman}}</label>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3">Kode Pos <span class="text-danger">*</span> :</label>
-                                    <input type="text" class="form-control col-sm-9" name="kode_pos" value="{{$order->pelanggan->kode_pos}}">
+                                    <label class="control-label col-sm-3">Kode Pos</label>
+                                    <label class="col-sm-9">: {{$pengiriman->kode_pos}}</label>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3">Kurir <spant class="text-danger">*</spant>:</label>
-                                    <select name="kurir" id="courier" class="form-control col-sm-9">
-                                    <!-- <option value="" disabled selected>--Pilih Kurir--</option> -->
-                                        @foreach($courier as $row)
-                                        @if($pengiriman->id_kurir == $row->id_kurir)
-                                            <option value="{{$row->kode_kurir}}" selected>{{$row->nama_kurir}}</option>
-                                        @else
-                                        <option value="{{$row->kode_kurir}}">{{$row->nama_kurir}}</option>
-                                        @endif
-                                            
-                                        @endforeach
-                                    </select>
+                                    <label class="control-label col-sm-3">Kurir </label>
+                                    <label class="col-sm-9">: {{$pengiriman->kurir->nama_kurir}}</label>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="control-label col-sm-3">Jenis Layanan <spant class="text-danger">*</spant>:</label>
-                                    <label class="control-label col-sm-4">{{$pengiriman->jenis_pengiriman}}</label>
+                                    <label class="control-label col-sm-3">Jenis Layanan <spant class="text-danger">*</spant></label>
+                                    <label class="control-label col-sm-4">: {{$pengiriman->jenis_pengiriman}}</label>
 
                                     <label class="control-label col-sm-2">Harga :</label>
                                     <input type="text" value="{{$pengiriman->biaya_pengiriman}}" id="cost" name="biaya_pengiriman" class="form-control col-sm-3" readonly required>
                                 </div>
                                 <?php $berat = ($detailOrder->sum('jumlah') / 12) * 2000 ?>
                                 <input type="hidden" name="berat" value="{{$berat}}" id="berat">
-                                <p class="text-warning">Note: Berat akan di asumsikan 1 lusin = 2kg</p>
+                                <!-- <p class="text-warning">Note: Berat akan di asumsikan 1 lusin = 2kg</p> -->
                                 
                             <!-- <button type="button" class="btn btn-light p-2">Pilih Alamat Lain</button> -->
 
                             <div class="form-group mt-4">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="comment">Produk Dipesan</label>
-                                    </div>
-                                    <div class="col-md-3 " >
-                                        <p class="judul text-center">Harga Satuan</p>
-                                    </div>
-                                    <div class="col-md-2 " >
-                                        <p class="judul text-center">Ukuran</p>
-                                    </div>
-                                    <div class="col-md-1 " >
-                                        <p class="judul text-center">Jumlah</p>
-                                    </div>
-                                    <div class="col-md-3 " >
-                                        <p class="judul text-right">Sub Total</p>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-3  " >
-                                        <img src="{{asset('assets/images/pesan')}}/{{$order->pesanan->custom_desain}}" width="40" height="40">
-                                        <p style="display:inline-block; margin-left:15px;">{{$order->pesanan->katalog->nama_paket}}</p>
-                                    </div>
-                                    <div class="col-md-3 " >
-                                        <p class="text-center">{{format_rupiah($order->pesanan->katalog->harga_paket)}}</p>
-                                    </div>
-                                    <div class="col-md-2 " >
-                                    @foreach($detailOrder as $row)
-                                        <p  class="text-center ">{{ $row->ukuran->singkatan_ukuran }} ({{ $row->ukuran->nama_ukuran }})</p>
-                                    @endforeach
-                                    </div>
-                                    <div class="col-md-1 " >
-                                    @foreach($detailOrder as $row)
-                                        <p  class="text-center ">{{$row->jumlah}}</p>
-                                    @endforeach
-                                    </div>
-                                    <div class="col-md-3 " >
-                                    @foreach($detailOrder as $row)
-                                        <p  class="text-right">{{ format_rupiah($row->jumlah * $order->pesanan->katalog->harga_paket) }}</p>
-                                    @endforeach
-                                    </div>
-                                    <?php 
-                                        $totalPesan = $detailOrder->sum('jumlah') * $order->pesanan->katalog->harga_paket;
-                                    ?>
-                                </div>
-                                
+                            <div class="row">
+                        @if($order->pesanan->id_paket != 2)
+                            <div class="col-md-3">
+                                <label for="comment">Produk Dipesan</label>
                             </div>
-                            
-                            <div class="form-group mt-4 ">
-                                <p>Opsi Pemesanan :</p>
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <p>Grade :</p>
-                                    </div>
-                                    <?php 
-                                        if($order->pesanan->grade_kain == 'B'){
-                                            $harga = 0;
-                                        }else{
-                                            $harga = 20000;
-                                        }
-                                    ?>
-                                    <div class="col-md-1  offset-md-1" >
-                                        <p>{{ $order->pesanan->grade_kain }}</p>
-                                    </div>
-                                    <div class=" col-md-3" >
-                                        <p class="text-center"> {{format_rupiah($harga)}}</p>
-                                    </div>
-                                    <div class="offset-md-2 col-md-1 " >
-                                        <p class=" text-center">{{ $detailOrder->sum('jumlah') }}</p>
-                                    </div>
-                                    <div class="offset-md-1 col-md-2 " >
-                                        <p class="text-right">{{ format_rupiah($harga * $detailOrder->sum('jumlah')) }}</p>
-                                        <?php
-                                            $totalGrade = $harga * $detailOrder->sum('jumlah');
-                                        ?>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <?php 
-                                        if($order->pesanan->jenis_lengan == 'Lengan Panjang'){
-                                            $lengan = 10000;
-                                        }else{
-                                            $lengan = 0;
-                                        }
-                                    ?>
-                                    <div class="col-md-3" >
-                                        <p>{{ $order->pesanan->jenis_lengan }}</p>
-                                    </div>
-                                    <div class="offset-md-1 col-md-2" >
-                                        <p class="text-left"> {{format_rupiah($lengan)}}</p>
-                                    </div>
-                                    <div class="offset-md-2 col-md-1 " >
-                                        <p class=" text-center">{{ $detailOrder->sum('jumlah') }}</p>
-                                    </div>
-                                    <div class="offset-md-1 col-md-2 " >
-                                        <p class="text-right">{{ format_rupiah($lengan * $detailOrder->sum('jumlah') ) }}</p>
-                                        <?php 
-                                            $totalLengan =  $lengan * $detailOrder->sum('jumlah');
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="row mt-3 mb-3">
-                                    
-                                    <div class="col-md-9 " >
-                                        <p  class="text-right">Total:</p>
-                                    </div>
-                                    <div class="col-md-3 " >
-                                        <p class="text-right">{{format_rupiah($totalPesan + $totalLengan + $totalGrade)}}</p>
-                                        <input type="hidden" value = "{{$totalPesan + $totalLengan + $totalGrade}}" id="total">
-                                        
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    
-                                    <div class="col-md-9 " >
-                                        <p  class="text-right" >Grand Total:</p>
-                                    </div>
-                                    <div class="col-md-3 " >
-                                        <p class="text-right" id="grand">{{format_rupiah($payment->total_pembayaran)}}</p>
-                                        <input type="hidden" name="grand_total" value = "" id="grandTotal">
-                                    </div>
-                                </div>
+                        @else
+                            <div class="col-md-3">
+                                <label for="comment">Sisi Print</label>
                             </div>
-                            <button type="submit" class="btn btn-primary float-right">Simpan <i class="fa fa-save"></i></button>
-                            <div class="clearfix"></div>
-                            </form>
+                        @endif
+                            <div class="col-md-3 " >
+                                <p class="judul text-center">Harga Satuan</p>
+                            </div>
+                            <div class="col-md-2 " >
+                                <p class="judul text-center">Ukuran</p>
+                            </div>
+                            <div class="col-md-1 " >
+                                <p class="judul text-center">Jumlah</p>
+                            </div>
+                            <div class="col-md-3 " >
+                                <p class="judul text-right">Sub Total</p>
+                            </div>
                         </div>
+                        <div class="row mt-3">
+                        @if($order->pesanan->id_paket != 2)
+                            <div class="col-md-3  " >
+                                <img src="{{asset('assets/images/pesan')}}/{{$order->pesanan->custom_desain}}" width="40" height="40">
+                                <p style="display:inline-block; margin-left:15px;">{{$order->pesanan->katalog->nama_paket}}</p>
+                            </div>
+                            <div class="col-md-3 " >
+                                <p class="text-center">{{format_rupiah($order->pesanan->katalog->harga_paket)}}</p>
+                            </div>
+                            <div class="col-md-2 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{ $row->ukuran->singkatan_ukuran }} ({{ $row->ukuran->nama_ukuran }})</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-1 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{$row->jumlah}}</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-3 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-right">{{ format_rupiah($row->jumlah * $order->pesanan->katalog->harga_paket) }}</p>
+                            @endforeach
+                            </div>
+                            <?php 
+                                $totalPesan = $detailOrder->sum('jumlah') * $order->pesanan->katalog->harga_paket;
+                            ?>
+                        @else
+                            <div class="col-md-3  " >
+                                <img src="{{asset('assets/images/pesan')}}/{{$order->pesanan->custom_desain}}" width="40" height="40">
+                                <p style="display:inline-block; margin-left:15px;">{{$order->customPrint->sisiPrint->keterangan_print}}</p>
+                            </div>
+                            <div class="col-md-3 " >
+                            @foreach($detailOrder as $row)
+                                <p class="text-center">{{ format_rupiah($row->customPrint->harga) }}</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-2 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{ $row->ukuran->singkatan_ukuran }} ({{ $row->ukuran->nama_ukuran }})</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-1 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-center ">{{$row->jumlah}}</p>
+                            @endforeach
+                            </div>
+                            <div class="col-md-3 " >
+                            @foreach($detailOrder as $row)
+                                <p  class="text-right">{{ format_rupiah($row->jumlah * $row->customPrint->harga) }}</p>
+                            @endforeach
+                            </div>
+                            <?php $totalPesan = 0;?>
+                            @foreach($detailOrder as $row)
+                            <?php
+                                $totalPesan = $totalPesan + ($row->jumlah * $row->customPrint->harga) ;
+                            ?>
+                            @endforeach
+                            
+                        @endif
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="form-group mt-4 ">
+                        @if($order->pesanan->id_paket != 2)
+                        <p>Opsi Pemesanan :</p>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <p>Grade :</p>
+                            </div>
+                            <?php 
+                                if($order->pesanan->grade_kain == 'B'){
+                                    $harga = 0;
+                                }else{
+                                    $harga = 20000;
+                                }
+                            ?>
+                            <div class="col-md-1  offset-md-1" >
+                                <p>{{ $order->pesanan->grade_kain }}</p>
+                            </div>
+                            <div class=" col-md-3" >
+                                <p class="text-center"> {{format_rupiah($harga)}}</p>
+                            </div>
+                            <div class="offset-md-2 col-md-1 " >
+                                <p class=" text-center">{{ $detailOrder->sum('jumlah') }}</p>
+                            </div>
+                            <div class="offset-md-1 col-md-2 " >
+                                <p class="text-right">{{ format_rupiah($harga * $detailOrder->sum('jumlah')) }}</p>
+                                <?php
+                                    $totalGrade = $harga * $detailOrder->sum('jumlah');
+                                ?>
+                            </div>
+                        </div>
+                        @endif
+
+
+                        <div class="row">
+                        @if($order->pesanan->id_paket != 2)
+                            <?php 
+                                if($order->pesanan->jenis_lengan == 'Lengan Panjang'){
+                                    $lengan = 10000;
+                                }else{
+                                    $lengan = 0;
+                                }
+                            ?>
+                            <div class="col-md-3" >
+                                <p>{{ $order->pesanan->jenis_lengan }}</p>
+                            </div>
+                            <div class="offset-md-1 col-md-2" >
+                                <p class="text-left"> {{format_rupiah($lengan)}}</p>
+                            </div>
+                            <div class="offset-md-2 col-md-1 " >
+                                <p class=" text-center">{{ $detailOrder->sum('jumlah') }}</p>
+                            </div>
+                            <div class="offset-md-1 col-md-2 " >
+                                <p class="text-right">{{ format_rupiah($lengan * $detailOrder->sum('jumlah') ) }}</p>
+                                <?php 
+                                    $totalLengan =  $lengan * $detailOrder->sum('jumlah');
+                                ?>
+                            </div>
+                        @endif
+                            
+                        </div>
+                        <div class="row mt-3 mb-3">
+                            
+                            <div class="col-md-9 " >
+                                <p  class="text-right">Total:</p>
+                            </div>
+                            <div class="col-md-3 " >
+                            @if($order->pesanan->id_paket != 2)
+                                <p class="text-right">{{format_rupiah($totalPesan + $totalLengan + $totalGrade)}}</p>
+                                <input type="hidden" value = "{{$totalPesan + $totalLengan + $totalGrade}}" id="total">
+                            @else
+                                <p class="text-right">{{format_rupiah($totalPesan )}}</p>
+                                <input type="hidden" value = "{{$totalPesan}}" id="total">
+                            @endif
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            
+                            <div class="col-md-9 " >
+                                <p  class="text-right" >Grand Total:</p>
+                            </div>
+                            <div class="col-md-3 " >
+                                <p class="text-right" id="grand">{{format_rupiah($payment->total_pembayaran)}}</p>
+                                <input type="hidden" name="grand_total" value = "{{$payment->total_pembayaran}}" id="grandTotal">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label">Upload Bukti Pembayaran : </label>
+                        <input type="file" class="form-control" id="image-source" name="image" accept="image/*" onchange="previewImage();" required>
+                        @if(isset($payment->bukti_pembayaran))
+                            <img id="image-preview" src="{{ asset('assets/images/pembayaran')}}/{{$payment->bukti_pembayaran}}" class=" rounded img-fluid d-block p-2" width="200">
+                        @endif
+                        <img id="image-preview" src="" class=" rounded img-fluid d-block p-2" width="200">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Simpan <i class="fa fa-save"></i></button>
+                    <div class="clearfix"></div>
+                    </form>
                     </div>
                 </div>
             </div><!-- .animated -->
@@ -386,16 +427,20 @@ $(document).ready(function(){
 
             $("#pengerjaan").attr('readonly',false);
         } else if(val == "LUNAS"){
-            $("#pengerjaan").val( $("#total").val() );
-            
+            $("#pengerjaan").val("{{$payment->total_pembayaran}}");
+        }else{
+            $("#pengerjaan").val("");
+            $("#pengerjaan").attr('readonly',true);
         }
     });
 
     $("#pengiriman").on('change',function(){
         var val = $(this).val();
-            $("#pengiriman").val( $("#cost").val() );
+            $("#delive").val( $("#cost").val() );
         
     });
+
+    
 
 });
 
