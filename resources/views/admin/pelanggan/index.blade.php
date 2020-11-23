@@ -124,6 +124,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script>
+    $(document).ready(function(){
+        $("#basic-datatables").DataTable();
+    });
         (function($) {
             "use strict";
 

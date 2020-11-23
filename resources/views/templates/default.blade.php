@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="{{asset('assets/libs/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/libs/selectFX/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{asset('assets/libs/jqvmap/dist/jqvmap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/libs/jqvmap/dist/jqvmap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/libs/datatables.net/css/jquery.dataTables.min.css')}}">
+
 
     
 

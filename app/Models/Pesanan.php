@@ -28,7 +28,7 @@ class Pesanan extends Model
     }
 
     public function pembayaran(){
-        return $this->hasMany('App\Models\Pembayaran','id_pesanan');
+        return $this->hasOne('App\Models\Pembayaran','id_pesanan');
     }
 
     public function katalog(){

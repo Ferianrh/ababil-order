@@ -21,6 +21,6 @@ class Pembayaran extends Model
     ];
 
     public function pesanan(){
-        return $this->belongsTo('App\Models\Pesanan','id_pesanan');
+        return $this->hasOne('App\Models\Pesanan','id_pesanan','id_pembayaran');
     }
 }

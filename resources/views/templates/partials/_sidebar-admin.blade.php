@@ -48,7 +48,7 @@
                     </li>
 
                     <li>
-                        <a href=""  class="text-left"> <i class="menu-icon fa fa-newspaper-o"></i>Laporan</a>
+                        <a href="{{route('laporan.index')}}"  class="text-left"> <i class="menu-icon fa fa-newspaper-o"></i>Laporan</a>
                     </li>                    
 
                 </ul>

@@ -69,9 +69,23 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3">Biaya Pengerjaan :</label>
                                     <select name="status_pembayaran" id="state" class="form-control col-sm-6">
-                                        <option value="BELUM BAYAR">BELUM BAYAR</option>
+                                    @if($payment->status_pembayaran=='BELUM BAYAR')
+                                        <option value="BELUM BAYAR" selected>BELUM BAYAR</option>
                                         <option value="DP">DP</option>
                                         <option value="LUNAS">LUNAS</option>
+                                    @elseif($payment->status_pembayaran=='DP')
+                                        <option value="BELUM BAYAR" >BELUM BAYAR</option>
+                                        <option value="DP" selected>DP</option>
+                                        <option value="LUNAS">LUNAS</option>
+                                    @elseif($payment->status_pembayaran=='LUNAS')
+                                        <option value="BELUM BAYAR" >BELUM BAYAR</option>
+                                        <option value="DP" >DP</option>
+                                        <option value="LUNAS" selected>LUNAS</option>
+                                    @else
+                                        <option value="BELUM BAYAR" >BELUM BAYAR</option>
+                                        <option value="DP" >DP</option>
+                                        <option value="LUNAS">LUNAS</option>
+                                    @endif
                                     </select>
                                     @if($payment->sudah_dibayar == null)
                                         <input type="number" name="sudah_dibayar" id="pengerjaan" value="" class="form-control col-sm-3" readonly>
@@ -82,10 +96,32 @@
                                 <div class="row form-group">
                                     <label for="" class="col-sm-3">Status Pesanan :</label>
                                     <select name="status_pesanan" id="pesanan" class="form-control col-sm-9">
+                                    @if($order->pesanan->status_pesanan=='PENDING')
+                                        <option value="PENDING" selected>PENDING</option>
+                                        <option value="PROSES">PROSES</option>
+                                        <option value="SELESAI">SELESAI</option>
+                                        <option value="BATAL">BATAL</option>
+                                    @elseif($order->pesanan->status_pesanan=='PROSES')
+                                        <option value="PENDING">PENDING</option>
+                                        <option value="PROSES" selected>PROSES</option>
+                                        <option value="SELESAI">SELESAI</option>
+                                        <option value="BATAL">BATAL</option>
+                                    @elseif($order->pesanan->status_pesanan=='SELESAI')
+                                        <option value="PENDING">PENDING</option>
+                                        <option value="PROSES" >PROSES</option>
+                                        <option value="SELESAI" selected>SELESAI</option>
+                                        <option value="BATAL">BATAL</option>
+                                    @elseif($order->pesanan->status_pesanan=='BATAL')
+                                    <option value="PENDING">PENDING</option>
+                                        <option value="PROSES" >PROSES</option>
+                                        <option value="SELESAI" >SELESAI</option>
+                                        <option value="BATAL" selected>BATAL</option>
+                                    @else
                                         <option value="PENDING">PENDING</option>
                                         <option value="PROSES">PROSES</option>
                                         <option value="SELESAI">SELESAI</option>
                                         <option value="BATAL">BATAL</option>
+                                    @endif
                                     </select>
                                 </div>
                         
@@ -322,9 +358,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="" class="control-label">Upload Bukti Pembayaran : </label>
-                        <input type="file" class="form-control" id="image-source" name="image" accept="image/*" onchange="previewImage();" required>
+                    <div class="form-group">
+                        <label for="" class="control-label">Bukti Pembayaran : </label>
                         @if(isset($payment->bukti_pembayaran))
                             <img id="image-preview" src="{{ asset('assets/images/pembayaran')}}/{{$payment->bukti_pembayaran}}" class=" rounded img-fluid d-block p-2" width="200">
                         @endif

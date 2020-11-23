@@ -126,7 +126,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-    <script>        
+    <script>
+    $(document).ready(function(){
+        $("#basic-datatables").DataTable();
+    });        
         //additional
         // $('button#delete').on('click', function () {
         // var href = $(this).attr('href');

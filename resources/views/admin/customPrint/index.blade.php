@@ -169,6 +169,8 @@
         // });
 
     $(document).ready(function(){
+        $("#basic-datatables").DataTable();
+
         $.get({
             url:"{{url('/getJenis')}}",
             type:'get',
