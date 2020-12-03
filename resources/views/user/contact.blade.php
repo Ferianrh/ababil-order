@@ -51,8 +51,8 @@
                             </p>
                             <label for="">No Telepon</label>
                             <p><i class="fa fa-phone mr-2"></i> 0822-3310-8896</p>
-                            <label for="">Instagram</label>
-                            <p><i class="fa fa-instagram mr-2"></i></p>
+                            <label for="">Instagram :</label>
+                            <p><a href="https://www.instagram.com/ababil.sublime/"><i class="fa fa-instagram mr-2"></i>ababil.sublime</a></p>
                             <label for="">Facebook</label>
                             <p><i class="fa fa-facebook mr-2"></i></p>
 

@@ -67,6 +67,246 @@
 
             </div>
         </div>
+
+        <h3 class="text-center mt-4">Size Chart (Untuk Custom Print)</h3>
+
+        <div class="row content mt-5">
+            <div class="col-md-12">
+                <div class="row content-isi">    
+                    <div class="col-12 mt-3">
+                    <label class="text-center">Ukuran Mentah Reglan</label>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td rowspan="2" class="text-center">Ukuran Dewasa</td>
+                                    <td colspan="2" rowspan="1" class="text-center">Badan</td>
+                                    <td colspan="2" rowspan="1" class="text-center">Lengan</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" rowspan="1">Panjang</td>
+                                    <td colspan="1" rowspan="1">Lebar</td>
+                                    <td colspan="1" rowspan="1">Panjang</td>
+                                    <td colspan="1" rowspan="1">Pendek</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">S</td>
+                                    <td class="text-center">71</td>
+                                    <td class="text-center">49,5</td>
+                                    <td class="text-center">73</td>
+                                    <td class="text-center">41</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">M</td>
+                                    <td class="text-center">74</td>
+                                    <td class="text-center">52</td>
+                                    <td class="text-center">75</td>
+                                    <td class="text-center">43</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">L</td>
+                                    <td class="text-center">77</td>
+                                    <td class="text-center">54,5</td>
+                                    <td class="text-center">77</td>
+                                    <td class="text-center">45</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XL</td>
+                                    <td class="text-center">79</td>
+                                    <td class="text-center">57</td>
+                                    <td class="text-center">80</td>
+                                    <td class="text-center">48</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XXL</td>
+                                    <td class="text-center">82</td>
+                                    <td class="text-center">60</td>
+                                    <td class="text-center">82</td>
+                                    <td class="text-center">51</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XXXL</td>
+                                    <td class="text-center">84</td>
+                                    <td class="text-center">65</td>
+                                    <td class="text-center">85</td>
+                                    <td class="text-center">54</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XXXXL</td>
+                                    <td class="text-center">87</td>
+                                    <td class="text-center">70</td>
+                                    <td class="text-center">88</td>
+                                    <td class="text-center">57</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-12">
+                <div class="row content-isi">    
+                    <div class="col-12">
+                    <label class="text-center">Ukuran Mentah Non Reglan</label>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td rowspan="2" class="text-center">Ukuran Dewasa</td>
+                                    <td colspan="2" rowspan="1" class="text-center">Badan</td>
+                                    <td colspan="2" rowspan="1" class="text-center">Lengan</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" rowspan="1">Panjang</td>
+                                    <td colspan="1" rowspan="1">Lebar</td>
+                                    <td colspan="1" rowspan="1">Panjang</td>
+                                    <td colspan="1" rowspan="1">Pendek</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">S</td>
+                                    <td class="text-center">72</td>
+                                    <td class="text-center">49,5</td>
+                                    <td class="text-center">60</td>
+                                    <td class="text-center">24</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">M</td>
+                                    <td class="text-center">75</td>
+                                    <td class="text-center">52</td>
+                                    <td class="text-center">62</td>
+                                    <td class="text-center">25</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">L</td>
+                                    <td class="text-center">78</td>
+                                    <td class="text-center">54,5</td>
+                                    <td class="text-center">64</td>
+                                    <td class="text-center">26,5</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XL</td>
+                                    <td class="text-center">80</td>
+                                    <td class="text-center">57</td>
+                                    <td class="text-center">65</td>
+                                    <td class="text-center">27,5</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XXL</td>
+                                    <td class="text-center">83</td>
+                                    <td class="text-center">60</td>
+                                    <td class="text-center">65,5</td>
+                                    <td class="text-center">29</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XXXL</td>
+                                    <td class="text-center">85</td>
+                                    <td class="text-center">65</td>
+                                    <td class="text-center">66</td>
+                                    <td class="text-center">31</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XXXXL</td>
+                                    <td class="text-center">88</td>
+                                    <td class="text-center">70</td>
+                                    <td class="text-center">67</td>
+                                    <td class="text-center">33</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row content-isi">
+                    <div class="col-12">
+                    <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td rowspan="2" class="text-center">Ukuran Kids</td>
+                                    <td colspan="2" rowspan="1" class="text-center">Badan</td>
+                                    <td colspan="2" rowspan="1" class="text-center">Lengan</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" rowspan="1">Panjang</td>
+                                    <td colspan="1" rowspan="1">Lebar</td>
+                                    <td colspan="1" rowspan="1">Panjang</td>
+                                    <td colspan="1" rowspan="1">Pendek</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">M</td>
+                                    <td class="text-center">66</td>
+                                    <td class="text-center">45</td>
+                                    <td class="text-center">54,5</td>
+                                    <td class="text-center">22</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">L</td>
+                                    <td class="text-center">70</td>
+                                    <td class="text-center">47,5</td>
+                                    <td class="text-center">57,5</td>
+                                    <td class="text-center">23</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XL</td>
+                                    <td class="text-center">72</td>
+                                    <td class="text-center">49,5</td>
+                                    <td class="text-center">60</td>
+                                    <td class="text-center">24</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row content-isi">
+                    <div class="col-12">
+                    <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td rowspan="2" class="text-center">Ukuran SD/TK</td>
+                                    <td colspan="2" rowspan="1" class="text-center">Badan</td>
+                                    <td colspan="2" rowspan="1" class="text-center">Lengan</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" rowspan="1">Panjang</td>
+                                    <td colspan="1" rowspan="1">Lebar</td>
+                                    <td colspan="1" rowspan="1">Panjang</td>
+                                    <td colspan="1" rowspan="1">Pendek</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">M</td>
+                                    <td class="text-center">56,5</td>
+                                    <td class="text-center">39</td>
+                                    <td class="text-center">48</td>
+                                    <td class="text-center">19,5</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">L</td>
+                                    <td class="text-center">59,5</td>
+                                    <td class="text-center">41</td>
+                                    <td class="text-center">50</td>
+                                    <td class="text-center">20,5</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">XL</td>
+                                    <td class="text-center">62</td>
+                                    <td class="text-center">42,5</td>
+                                    <td class="text-center">52</td>
+                                    <td class="text-center">21</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
  <!-- tampilkan barang -->
