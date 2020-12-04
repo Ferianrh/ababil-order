@@ -19,6 +19,8 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/','WelcomeController@index');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login');
+    Route::get('/produk','WelcomeController@product')->name('produk');
+
 });
 
 // Route::get('/','')

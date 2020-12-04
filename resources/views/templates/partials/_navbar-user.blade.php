@@ -55,18 +55,19 @@
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                     <ul class="nav navbar-nav ">
                     @if(Auth::check())
-                        <li class="nav-item"><a  class="nav-link" href="{{route('home')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
                     @else
-                    <li class="nav-item"><a  class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     @endif
-                        <li class="nav-item"><a  class="nav-link" href="#">Products</a></li>
-                        <li class="nav-item"><a  class="nav-link" href="/about">About</a></li>
-                        <li class="nav-item"><a   class="nav-link"href="/contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('produk')}}">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link"href="/contact">Contact</a></li>
                         
                         @if(Auth::check())
+                        <li class="nav-item"><a class="nav-link"href="#">My Order</a></li>
                         <li class="nav-item">
                             <div class="dropdown">
-                                <a  class="btn dropdown-toggle text-center pr-3 nav-link bg-transparent text-dark" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="btn dropdown-toggle text-center pr-3 nav-link bg-transparent text-dark" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user-circle text-dark"></i> {{Auth::user()->username}}
                                 </a>
 
@@ -89,7 +90,7 @@
                         </li>
                         @else
                             
-                        <li class="nav-item"><a  class="nav-link"href="{{ route('login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link"href="{{ route('login') }}">Login</a></li>
                         @endif
                     </ul>
             </div>       
