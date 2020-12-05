@@ -44,7 +44,7 @@ return [
         ],
 
         'mysql' => [
-            'driver' => 'MySQL ODBC 5.1 Driver',
+            'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', 'MYSQL5040.site4now.net'),
             'port' => env('DB_PORT', '3306'),
