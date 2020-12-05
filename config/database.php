@@ -44,12 +44,12 @@ return [
         ],
 
         'mysql' => [
-            'driver' => 'mysql',
+            'driver' => 'MySQL ODBC 5.1 Driver',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'db4free.net'),
+            'host' => env('DB_HOST', 'MYSQL5040.site4now.net'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'ababilorder12'),
-            'username' => env('DB_USERNAME', 'root16'),
+            'database' => env('DB_DATABASE', 'db_a6ba23_ababil'),
+            'username' => env('DB_USERNAME', 'a6ba23_ababil'),
             'password' => env('DB_PASSWORD', 'ferian123'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
