@@ -10,8 +10,8 @@
         .modal-backdrop{display: none;}
     </style>
 @endpush
-@include('templates.partials._sidebar-admin')
 @section('content')
+@include('templates.partials._sidebar-admin')
  
  <!-- Header-->
  <header id="header" class="header">
