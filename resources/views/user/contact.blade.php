@@ -1,6 +1,6 @@
 @extends('templates.default')
 @push('style')
-    <link rel="stylesheet" href="{{asset('dist/css/contact.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('dist/css/contact.css')}}">
 @endpush
 
 @section('content')

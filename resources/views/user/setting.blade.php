@@ -1,6 +1,6 @@
 @extends('templates.default')
 @push('style')
-    <link rel="stylesheet" href="{{asset('dist/css/setting.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('dist/css/setting.css')}}">
 @endpush
 
 @section('content')
