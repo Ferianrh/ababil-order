@@ -6,7 +6,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1 form-sign-in">
+            <div class="col-md-10 col-md-offset-1 form-sign-up">
                 <div class="row">
                     <div class="col-md-4 form-label d-none d-sm-block">
                         <h1>Selamat Datang!</h1>

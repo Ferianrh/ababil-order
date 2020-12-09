@@ -113,7 +113,7 @@ form {
 	max-width: 100%;
 	min-height: 580px; */
 
-.form-sign-in{
+.form-sign-up{
 	padding-top: 100px;
 	margin-top: 25%;
     padding-bottom: 100px;
@@ -121,6 +121,15 @@ form {
     overflow: hidden;
     border-radius: 8px;
 }
+
+.form-sign-in{
+	padding-top: 100px;
+    padding-bottom: 100px;
+    background:  #FFFFFF;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
 .form-label{
 	color: #FF416C;
 }
