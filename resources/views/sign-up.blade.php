@@ -17,7 +17,7 @@
                     <div class="col-md-5 ">
                         <form action="{{route('signUp')}}" method="POST">
                                 @csrf
-                            <h1>Create Account</h1>
+                            <h2 class="text-left">Create Account</h2>
                             <div class="social-container">
                                 <a href="#" class="social"><i class="fa fa-facebook"></i></a>
                                 <a href="#" class="social"><i class="fa fa-google"></i></a>
