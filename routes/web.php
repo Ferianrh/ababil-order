@@ -66,6 +66,8 @@ Route::get('/home', 'HomeController@index')->middleware(['auth'])->name('home');
 Route::resource('/setting', 'SettingController')->middleware(['auth']);
 Route::resource('/pesan','PesanController')->middleware(['auth']);
 Route::post('/pesanCustom','PesanController@pesanCustom')->middleware(['auth'])->name('pesan.custom');
+Route::get('/produk','WelcomeController@product')->name('produk');
+
 
 Route::get('/sign-up','PelangganController@signUp')->name('daftar');
 Route::post('/daftar','PelangganController@store')->name('signUp');
